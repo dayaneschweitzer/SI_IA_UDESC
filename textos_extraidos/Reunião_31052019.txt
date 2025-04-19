@@ -1,0 +1,202 @@
+ 
+ 
+Ata da septuagésima terceira reunião do Colegiado do Programa de Pós-Graduação em Computação 
+1 
+Aplicada do Centro de Ciências Tecnológicas. Ao trigésimo primeiro dia do mês de maio de dois mil e 
+2 
+dezenove, às treze horas e trinta minutos, reuniu-se na sala F-212 do Centro de Ciências Tecnológicas, 
+3 
+o Colegiado do Programa de Pós-Graduação em Computação Aplicada, conforme convocação ordinária 
+4 
+n° 03/2019. Presidiu a reunião a Profa. Isabela Gasparini, coordenadora do Programa de Pós-
+5 
+Graduação em Computação Aplicada, e iniciou com a presença dos professores representantes 
+6 
+docentes, Guilherme Piêgas Koslovski, Maurício Aronne Pillon, Marcelo da Silva Hounsell (suplente), 
+7 
+Fabiano Baldo (suplente), a representante técnica Tania Regina de Campos Loch e o representante 
+8 
+discente Rafael Castro Gonçalves Silva.  Fizeram-se presentes os docentes Avanilde kemczinski, Janine 
+9 
+Kniess, Charles Christian Miers e Rafael Stubs Parpinelli. A presidente colocou a Ata 072/2019 para 
+10 
+aprovação.  Em discussão. Em aprovação. Aprovada por unanimidade. Não houve expedientes. Ordem 
+11 
+do dia:  Item 3.1 Homologação aceitação de artigo 2: Algoritmo Escalonado baseado em Deep 
+12 
+Reinforcement Learning para Computação Grids do aluno Lucas Camelo Casagrande. Relator: Profa. 
+13 
+Isabela Gasparini. A relatora leu seu parecer. Foi homologado por unanimidade o parecer da relatora 
+14 
+favorável à aprovação. Item 3.2 Processo 7169/2019. Interessado: Mestrando Tiago Pastorello. 
+15 
+Assunto: Trancamento de matrícula. Relator: Prof. Guilherme Piêgas Koslovski. O relator leu sua análise 
+16 
+e parecer. Prof. Adriano compareceu à reunião neste momento. Em discussão. Em aprovação. 
+17 
+Aprovado por unanimidade o voto do relator favorável à aprovação do trancamento por dois meses a 
+18 
+partir de 03.05.19. Profa. Carla Diacui compareceu à reunião neste momento. Item 3.3 Solicitação de 
+19 
+coorientador Profa. Isabela Gasparini ao aluno Gabriel Guebarra Conejo. A presidente leu a 
+20 
+solicitação do Prof. Marcelo Hounsel. Em discussão. Em aprovação. Aprovado por unanimidade.  Item 
+21 
+3.4 Solicitação de coorientador Profa. Isabela Gasparini ao aluno Diego Sauter Possamai. Foi lida a 
+22 
+solicitação do Prof. Marcelo Hounsell. Em discussão. Em aprovação. Aprovado por unanimidade. 
+23 
+Professores Cristiano Damiani, Rafael Obelheiro e Roberto Rosso compareceram à reunião neste 
+24 
+momento. Item 3.5 Edital n° 01/2019 – PNPD. Profa. Isabela explanou que para o atual estagiário de 
+25 
+pós-doutorado o prazo finaliza em junho e para termos novo candidato para julho foi lançado novo 
+26 
+edital.  Com os cortes que a CAPES está anunciando ainda não há certeza que a bolsa será atribuída ao 
+27 
+PPGCA. Para não perdermos o prazo lançamos o edital e foi instituída a comissão composta pelos 
+28 
+docentes André Tavares da Silva, Isabela Gasparini e Guilherme Piêgas Koslovski.  Item 3.6 Edital 
+29 
+02/2019 – Processo Seletivo. A presidente comentou que a CAPES cobrou sobre o número de vagas 
+30 
+abertas e número de selecionados devido a isto tivemos cuidado ao alocar a quantidade de vagas. A 
+31 
+comissão do processo seletivo será composta pelos docentes: Adriano Fiorese (presidente); Carla 
+32 
+Diacui Medeiros Berkenbrock (membro); Charles Christian Miers (membro) e André Tavares da Silva 
+33 
+(suplente). Em comunicações pessoais: Item 4.2 A presidente informou que a reunião na CAPES da 
+34 
+área de computação será realizada em agosto e como o Prof. Ricardo Medeiros do mestrado em 
+35 
+engenharia mecânica já participou da reunião na CAPES o convidou para explicar informações quanto 
+36 
+ao qualis e avaliação dos programas. Item 4.1 Profa. Isabela comentou sobre o andamento da comissão 
+37 
+de resolução de bolsas. Informou que a comissão professores Cristiano Damiani, Marcelo Hounsell, 
+38 
+Isabela Gasparini, Rafael Obelheiro e o discente Rafael Castro) tem realizado reuniões constantes. 
+39 
+Houve ampla discussão sobre o tema Poscomp. Profa. Janine sugeriu a participação de professores 
+40 
+para auxiliar no início do Poscomp para ajudar na divulgação enquanto o coordenador está cuidando 
+41 
+dos procedimentos da prova. Prof. Fabiano se prontificou para ajudar. Após discussão Profa. Isabela 
+42 
+informou que o texto da resolução de bolsas ainda não está pronto e quando estiver será enviado para 
+43 
+todos. Item 4.3 Informe quanto a reunião dos coordenadores e Pró-reitora (28.05) – Resolução Pós-
+44 
+Graduação UDESC e informes do FOPROP 2019 e visita do Pró-Reitor de Pesquisa e Pós-Graduação ao 
+45 
+CCT no dia 06.06. Na reunião de coordenadores foram discutidas as alterações dos artigos 19, 22, 39, 
+46 
+ 
+ 
+42 e 112 da resolução 013/2014. Quanto ao Art. 39 a princípio ficará como está porque o CEE ainda 
+47 
+não respondeu sobre a legalidade de oferta de disciplina isolada para alunos de graduação. Caso seja 
+48 
+positivo a resolução será posteriormente alterada. Nos outros itens foram melhorados alguns e outros 
+49 
+por estarem na forma antiga que serão revisados. Foi alterado a questão dos créditos. No doutorado 
+50 
+foi estabelecido no mínimo 36 e máximo 48 créditos. No mestrado no mínimo 24 e no máximo 30, 
+51 
+sendo 4 para dissertação. Cada programa terá o prazo de 360 dias para providenciar as normatizações 
+52 
+específicas. Prof. Marcelo questionou se foi solicitado alterar a atribuição aos coordenadores de curso 
+53 
+a responsabilidade de emitir bancas, portarias, etc. Prof. Obelheiro também questionou a questão de 
+54 
+mudar o mandato do coordenador de 3 anos para até 3 anos. A presidente comunicou que estes dois 
+55 
+itens não entraram em pauta para alteração. Na reunião de coordenadores o Profa. Vargas comunicou 
+56 
+que serão cortadas bolsas, programas novos podem não receber bolsas e verba PROAP. Quanto as 
+57 
+bolsas da UDESC não há uma definição porque há a questão do duodécimo.  Quanto a bolsas de PNPD 
+58 
+será regulamentado que não poderão ser dadas para alunos do mesmo programa. Querem 
+59 
+regulamentar que se tenha ficado pelo menos 4 anos fora para poder recebe-la. A CAPES está 
+60 
+estimulando fusões entre programas na própria instituição ou em outra instituição. Prof. Roberto 
+61 
+Rosso lembrou que quanto aos programas de doutorado conceito 4 para 3 fechar não é novidade. Já 
+62 
+estava na pauta da CAPES. Prof. Isabela explanou que a UDESC como todo já perdeu 5 bolsas. A avalição 
+63 
+de meio termo será muito importante. Solicitam uma auto avalição quanto ao CCT e quanto ao 
+64 
+programa. A última informação passada pelo Prof. Vargas foi que a extensão será avaliada, a questão 
+65 
+social e outras questões como informar sobre nossos egressos. Em paralelo há o documento de área 
+66 
+da computação que já foi encaminhado por e-mail para todos. Profa. Isabela colocou na tela a ficha de 
+67 
+avaliação reformulada. Nesta ficha haverá três itens: programa, formação e impacto na sociedade. No 
+68 
+item 1 programa. Articulação, perfil do corpo docente, planejamento estratégico e processos, 
+69 
+procedimentos e resultados da auto avaliação do programa, com foco na formação discente e 
+70 
+produção intelectual. Item 2 Formação. Qualidade e adequação das teses, qualidade da produção 
+71 
+intelectual de discentes e egressos, destino, atuação e avaliação dos egressos e qualidade das 
+72 
+atividades de pesquisa e da produção intelectual do corpo docente. Item 3 Impacto na sociedade. 
+73 
+Impacto e caráter inovador da produção intelectual em função da natureza do programa, impacto 
+74 
+econômico, social e cultural e internacionalização e visibilidade do programa. Prof. Robeto Rosso 
+75 
+questionou se o qualis será excluído. Ao que foi informado que o qualis será único para todos os 
+76 
+programas, vai se olhar o Scopus, índice do evento ou do journal. Teremos que reavaliar o curso num 
+77 
+todo e após a resolução for alterada  poderemos avaliar o curso e mudar o que for necessário. Item 
+78 
+4.5 Criação comissão auto avaliação. Perguntado se alguém se prontifica para a comissão. Professoras 
+79 
+Avanilde e Janine informaram que estão à disposição e prof. Maurício irá confirmar. Nada mais 
+80 
+havendo a tratar, deu-se por encerrada a reunião, da qual eu, Tania Regina de Campos Loch, secretária  
+81 
+ad-hoc,  lavrei  a presente ata que, após lida e aprovada, vai assinada por mim e por todos os presentes. 
+82 
+Profa. Isabela Gasparini                                                           ______________________________ 
+83 
+Prof. Cristiano Damiani Vasconcellos                                    ______________________________ 
+84 
+Prof. Fabiano Baldo                                                                   ______________________________ 
+85 
+Prof. Guilherme Piêgas Koslovski                                            ______________________________ 
+86 
+Prof. Maurício Aronne Pillon                                                   ______________________________  
+87 
+Prof. Marcelo da Silva Hounsell                                              ______________________________ 
+88 
+Prof. Rafael Rodrigues Obelheiro                                           ______________________________ 
+89 
+Prof. Roberto Silvio Ubertino Rosso Junior                           ______________________________ 
+90 
+Téc. Univ. Tania Regina de Campos Loch                              ______________________________ 
+91 
+Discente Rafael Castro Gonçalves Silva                                 ______________________________  
+92 
+ 
+ 
+(Membros do corpo docente presentes na reunião) 
+93 
+Prof. Adriano Fiorese                                                                      _____________________________ 
+94 
+Profa. Avanilde Kemczinski                                                          _____________________________ 
+95 
+Profa. Carla Diacui Medeiros Berkenbrock                                 _____________________________         
+96 
+Prof. Charles Christian Miers                                                        ______________________________ 
+97 
+Prof. Rafael Stubs Parpinelli                                                          _____________________________ 
+98 

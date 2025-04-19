@@ -1,0 +1,204 @@
+ 
+ 
+Ata da septuagésima oitava reunião do Colegiado do Programa de Pós-Graduação em Computação 
+1 
+Aplicada do Centro de Ciências Tecnológicas. Ao vigésimo sétimo dia do mês de setembro de dois mil 
+2 
+e dezenove, às treze horas e trinta minutos, reuniu-se na sala F-205 do Centro de Ciências 
+3 
+Tecnológicas, o Colegiado do Programa de Pós-Graduação em Computação Aplicada, conforme 
+4 
+convocação ordinária n° 08/2019. Presidiu a reunião a Profa. Isabela Gasparini, coordenadora do 
+5 
+Programa de Pós-Graduação em Computação Aplicada, e iniciou com a presença dos professores 
+6 
+representantes docentes, Fabiano Baldo, Rafael Rodrigues Obelheiro, Marcelo da Silva Hounsell, a 
+7 
+representante técnica Tania Regina de Campos Loch e o representante discente Gabriel Guebarra 
+8 
+Conejo. Se fizeram presentes os docentes Avanilde Kemczinski, Charles Christian Miers e Rafael Stubs 
+9 
+Parpinelli. A presidente colocou as Atas 076/2019 e 77/20190 para aprovação. Em discussão. Em 
+10 
+aprovação. Aprovadas por unanimidade. Em expedientes. Foi justificada a ausência do Prof. Roberto 
+11 
+Rosso por estar em banca examinadora. Prof. André Tavares em treinamento de formação continuada. 
+12 
+Prof. Guilherme Koslovski em licença e Prof. Adriano Fiorese por estar participando de congresso. 
+13 
+Solicitou acrescentar na pauta os itens 3.6 Processo n° 24625/2019 (processo digital). Interessado: 
+14 
+Mestrando Gabriel Guebarra Conejo. Assunto: Solicitação de recursos financeiros via centro para 
+15 
+pagamento de inscrição e hospedagem para apresentação de artigo científico no evento CBIE/2019, 
+16 
+nos dias 11.11 a 19.11.19, em Brasília/DF. Item 3.7 Processo n° 24651/2019 (processo digital). 
+17 
+Interessado: Mestrando Gabriel Guebarra Conejo. Assunto: Solicitação de passagem aérea via centro 
+18 
+para apresentação de artigo científico no evento CBIE/2019, nos dias 11.11 a 19.11.2019, em 
+19 
+Brasília/DF. Item 3.8 Homologação de exame de qualificação. Interessado: Mestrando Jhonatan 
+20 
+Thallisson Cabral Néry. Relator: Profa. Isabela Gasparini. Ao que todos concordaram. Professores Carla 
+21 
+Diacui Medeiros Berkenbrock e Maurício Aronne Pillon compareceram à reunião neste momento. 
+22 
+Ordem do dia:  Item 3.1 Homologação de Aceitação de Artigo 1: Escalonamento de Contêineres com 
+23 
+Método de Decisão Multicritério Acelerado por GPU. Interessado: Mestrando Leonardo Rosa 
+24 
+Rodrigues. Relator: Profa. Isabela Gasparini. Foi homologado por unanimidade pelo colegiado. Item 
+25 
+3.2 Processo n° 19605/2019. Interessado: Mestrando Eduardo Augusto Klosovski. Assunto: Validação 
+26 
+de disciplinas. Relator: Prof. Roberto Silvio Ubertino Rosso Junior. Retirado de pauta pela ausência do 
+27 
+relator e do processo. Item 3.3 Processo n° 20224/2019. Interessado: Mestrando Gabriel Guebarra 
+28 
+Conejo. Assunto: Validação de disciplinas. Relator: Prof. Maurício Aronne Pillon.  O relator leu sua 
+29 
+análise e parecer. Em discussão. Em aprovação. Aprovado por unanimidade o voto do relator favorável 
+30 
+à aprovação das disciplinas Metodologia da Pesquisa com 60h/a e TEPG: Jogos Sérios com 60h/a. Item 
+31 
+3.4 
+Apresentação 
+da 
+sistemática 
+que 
+será 
+usada 
+pela 
+CCAA 
+(Comissão 
+de 
+32 
+credenciamento/recredenciamento/descredenciamento e acompanhamento.  Prof. Marcelo 
+33 
+comentou que a comissão composta pelos docentes Avanilde, Marcelo e Maurício enviaram por e-mail 
+34 
+o que após análise a comissão chegou ao resultado das discussões. Este arquivo a princípio foi criado 
+35 
+com dados fictícios sendo que a análise real será realizada após o dia 14.10 quando todos terão 
+36 
+enviados suas informações individuais. Os slides foram apresentados um a um e acompanhado de 
+37 
+explicações. Marcelo Hounsell explanou sobre outros cursos na área e que precisamos definir nossa 
+38 
+identidade analisarmos no que somos bons.  Em discussão. Rafael Obelheiro falou que a avaliação da 
+39 
+CAPES nunca será objetiva. Parabenizou a comissão pelo trabalho. Acredita que a comissão pode ser 
+40 
+permanente e os componentes também. Isabela mencionou que teremos que analisar as normas e 
+41 
+providenciar mudanças nas resoluções, sendo que todos acabarão tendo que participar de alguma 
+42 
+comissão. Marcelo comentou que ocorreram mudanças para solicitar bolsa de pesquisa produtividade. 
+43 
+A coordenadora Isabela Gasparini perguntou se todos presentes entenderam os critérios e estavam de 
+44 
+acordo com a sistemática apresentada. Carla Berkenbrock questionou a questão de artigos com mais 
+45 
+de um professor do programa. Esta questão foi explanada pelos professores Isabela e Maurício. Após 
+46 
+esta dúvida, houve um entendimento geral e concordância quanto aos critérios e sistemática da CCAA. 
+47 
+Item 3.5 Discussão sobre a Resolução n° 005/2012 – PPGCA que dispõe sobre os critérios para 
+48 
+determinação do número de orientações para cada docente do mestrado acadêmico em 
+49 
+computação aplicada.  Isabela comentou que Rafael Parpinelli chamou atenção sobre o número de 
+50 
+orientandos por semestre. Já teve problemas para definir quantidade de orientação de alunos por 
+51 
+semestre. Charles Miers concorda com a proposição de Rafael Parpinelli, entretanto deveríamos exigir 
+52 
+requisitos para isto. Rafael Obelheiro acredita não haver muitos docentes com este tipo de problema 
+53 
+ 
+ 
+e que o docente poderia solicitar ao colegiado permissão para aceitar mais alunos. Rafael Parpinelli 
+54 
+explicou que está trabalhando com empresas e acredita que está com modus operandi e a cada 
+55 
+semestre irá solicitar liberação. Marcelo Hounsell perguntou se a necessidade é pontual, se for pontual 
+56 
+o aluno pede ser orientado por outro e o docente como coorientador após podem trocar. Isabela 
+57 
+sugeriu que o docente solicite ao colegiado em cada caso. Marcelo Hounsell lembrou que em 2012 
+58 
+quando discutimos este assunto o grupo era novo, o programa também. Consolidando modos de 
+59 
+operar foi estabelecido alguns limites para evitar problemas que ocorreram em outros programas. 
+60 
+Hoje continuamos um grupo pequeno e idêntico no mesmo modo de operar evitando discrepâncias e 
+61 
+problemas futuros. Maurício Pillon salienta que este problema deverá ser solucionado este ano para 
+62 
+não afetar novos alunos em 2020. Item 3.6 Processo n° 24625/2019 (processo digital). Interessado: 
+63 
+Mestrando Gabriel Guebarra Conejo. Assunto: Solicitação de recursos financeiros via centro para 
+64 
+pagamento de inscrição e hospedagem para apresentação de artigo científico no evento CBIE/2019, 
+65 
+nos dias 11.11 a 14.11.19, em Brasília/DF. Relator: Profa. Isabela Gasparini.  Isabela leu sua análise e 
+66 
+parecer. Comunicou que a solicitação está sendo realizada com recursos do centro devido ao aluno já 
+67 
+estar solicitando outros recursos via PROAP. O mestrando foi classificado como finalista do concurso 
+68 
+Alexandre Direne de teses, dissertações e trabalhos de conclusão de curso em Informática na Educação 
+69 
+(CTD-IE). Em discussão. Em aprovação. Aprovado por unanimidade o voto do relator favorável à 
+70 
+aprovação. Item 3.7 Processo n° 24651/2019 (processo digital). Interessado: Mestrando Gabriel 
+71 
+Guebarra Conejo. Assunto: Solicitação de passagem aérea via centro para apresentação de artigo 
+72 
+científico no evento CBIE/2019, nos dias 11.11 a 19.11.2019, em Brasília/DF. Relator: Profa. Isabela 
+73 
+Gasparini. Isabela leu sua análise e parecer. Em discussão. Em aprovação. Aprovado por unanimidade 
+74 
+o voto do relator favorável à aprovação. Item 3.8 Homologação de exame de qualificação. 
+75 
+Interessado: Mestrando Jhonatan Thallisson Cabral Néry. Foi homologado pelo colegiado o exame de 
+76 
+qualificação. Em Comunicações pessoais: Isabela agradeceu a comissão que em tão pouco tempo 
+77 
+conseguiu ser transparente, factível e com muito aprofundamento e amadurecimento quanto aos 
+78 
+critérios e sistemática. Marcelo Hounsell agradeceu ao Maurício que trouxe gráficos que ajudaram 
+79 
+muito o trabalho da comissão. Nada mais havendo a tratar, deu-se por encerrada a reunião, da qual 
+80 
+eu, Tania Regina de Campos Loch, secretária ad-hoc, lavrei a presente ata que, após lida e aprovada, 
+81 
+vai assinada por mim e por todos os presentes.  
+82 
+ 
+83 
+Profa. Isabela Gasparini                                                           ______________________________ 
+84 
+Prof. Fabiano Baldo                                                                  ______________________________ 
+85 
+Porf. Marcelo da Silva Hounsell                                             ______________________________ 
+86 
+Prof. Maurício Aronne Pillon                                                  ______________________________  
+87 
+Prof. Rafael Rodrigues Obelheiro                                           ______________________________ 
+88 
+Téc. Univ. Tania Regina de Campos Loch                              ______________________________ 
+89 
+Mestrando Gabriel Guebarra Conejo                                    ______________________________ 
+90 
+CONVIDADOS:  
+91 
+Profa. Avanilde Kemczinski                                                     ______________________________ 
+92 
+Prof. Charles Christian Miers                                                  ______________________________ 
+93 
+Profa. Carla Diacui Medeiros Berkenbrock                          ______________________________ 
+94 
+Prof. Rafael Stubs Parpinelli                                                   ______________________________ 
+95 

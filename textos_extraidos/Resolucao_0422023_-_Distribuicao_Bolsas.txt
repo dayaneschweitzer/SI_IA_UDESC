@@ -1,0 +1,156 @@
+RESOLUC¸ ˜AO No. 0042/2023 - PPGCAP
+Disp˜oe sobre os crit´erios para distribui¸c˜ao de bolsas
+institucionais aos p´os-graduandos do PPGCAP.
+O Presidente do Colegiado do Programa de P´os-Gradua¸c˜ao em Computa¸c˜ao Aplicada (PPGCAP) do DCC-CCT-
+UDESC, no uso de suas atribui¸c˜oes e considerando a delibera¸c˜ao do Colegiado, tomada em 15/12/2023,
+RESOLVE:
+Art. 10 – A distribui¸c˜ao de bolsas institucionais (CAPES-DS, UDESC-PROMOP, FAPESC, etc.) alocadas ao PPG-
+CAP ser´a feita de acordo com as seguintes diretrizes:
+I – produtividade da linha e do docente;
+II – n´umero de docentes na linha;
+III – valoriza¸c˜ao do m´erito discente;
+IV – regime de dedica¸c˜ao integral ou parcial do bolsista ao PPGCAP; e
+V – n´umero de bolsas vigentes e no ´ultimo quadriˆenio do orientador.
+Par´agrafo ´unico – Excluem-se da presente sistem´atica as bolsas oriundas de capta¸c˜ao direta a projeto.
+Art. 20 – A distribui¸c˜ao de bolsas ser´a regida por esta resolu¸c˜ao e efetivada por uma Comiss˜ao de Bolsas (CB)
+composta pelo presidente da comiss˜ao indicado pelo coordenador do PPGCAP e mais um representante de cada linha
+de pesquisa do PPGCAP.
+Par´agrafo 1o – Os membros da CB ter˜ao mandatos de dois (2) semestres, renov´aveis uma ´unica vez.
+Art. 30 – O regime de dedica¸c˜ao integral do bolsista ao PPGCAP ´e aquele em que o bolsista dedica-se exclusivamente
+ao curso do PPGCAP, sem v´ınculo empregat´ıcio permanente ou espor´adico nem atividade remunerada de outra
+natureza.
+Par´agrafo ´unico – Poder´a ser considerado bolsista de dedica¸c˜ao integral o bolsista com v´ınculo empregat´ıcio que
+comprove o afastamento pleno/integral das atividades de seu empregador durante a percep¸c˜ao da bolsa.
+Art. 40 – O regime de dedica¸c˜ao parcial do bolsista ao PPGCAP ´e aquele em que o bolsista exer¸ca atividade remu-
+nerada de outra natureza com ou sem v´ınculo empregat´ıcio.
+Art. 50 – A quantidade de bolsas que podem ser atribu´ıdas em cada semestre (n´umero de bolsas dispon´ıveis no
+semestre) deve ser aprovada em reuni˜ao do CPPGCAP com convoca¸c˜ao de todos os membros do Colegiado e demais
+docentes do PPGCAP, com direito a voz e voto a todos os presentes.
+Art. 60 – A primeira aloca¸c˜ao de bolsas de um semestre usar´a dois crit´erios, DISCENTE e DOCENTE, conforme
+descrito abaixo:
+I – caso exista uma (1) bolsa dispon´ıvel no semestre, ela ser´a atribu´ıda prioritariamente a bolsista conforme o
+crit´erio DISCENTE;
+II – caso existam duas (2) bolsas dispon´ıveis no semestre, uma ser´a atribu´ıda prioritariamente a bolsista conforme
+o crit´erio DISCENTE, e outra conforme o crit´erio DOCENTE; e
+III – caso existam mais de duas bolsas dispon´ıveis no semestre, um ter¸co (1/3) das bolsas ser˜ao atribu´ıdas priori-
+tariamente conforme o crit´erio DISCENTE. Caso o n´umero de bolsas dispon´ıveis n˜ao seja divis´ıvel por trˆes, a parte
+fracion´aria do quociente ser´a truncada. As demais bolsas ser˜ao atribu´ıdas pelo crit´erio DOCENTE.
+Art. 70 – Havendo aloca¸c˜oes subsequentes durante o semestre, para determinar se as bolsas liberadas/dispon´ıveis
+ser˜ao atribu´ıdas por crit´erio DISCENTE ou DOCENTE, e em qual regime, aplicar-se-´a o disposto nos itens do Art.
+60, com as seguintes ressalvas:
+1
+I – as bolsas dispon´ıveis no momento ser˜ao somadas ao n´umero de bolsas j´a atribu´ıdas no semestre; e
+II – bolsas inicialmente destinadas ao crit´erio DISCENTE ser˜ao computadas como tais, mesmo que tenham sido
+alocadas pelo crit´erio DOCENTE por falta de candidatos habilitados.
+Art. 80 – Para a distribui¸c˜ao de bolsas ser˜ao considerados apenas os docentes habilitados a orientar, segundo as
+normas vigentes para credenciamento docente, seus respectivos ´ındices de produtividade, bolsas vigentes e bolsistas
+orientados no ´ultimo quadriˆenio.
+Art. 90 – As bolsas dispon´ıveis no semestre ser˜ao atribu´ıdas em rodadas, de acordo com o respectivo crit´erio (DIS-
+CENTE ou DOCENTE) e regime de dedica¸c˜ao.
+Par´agrafo 1o – As bolsas destinadas ao crit´erio DISCENTE ser˜ao atribu´ıdas prioritariamente `a candidatos a bolsista
+com dedica¸c˜ao integral at´e que se esgotem os candidatos, para ent˜ao ocorrer atribui¸c˜ao `a bolsista com dedica¸c˜ao parcial.
+Par´agrafo 2o – As bolsas destinadas ao crit´erio DISCENTE com dedica¸c˜ao parcial poder˜ao ter sua vigˆencia alterada
+pela comiss˜ao de bolsas caso haja demanda de alunos com dedica¸c˜ao integral.
+Par´agrafo 3o – Quando n˜ao for poss´ıvel atribuir uma bolsa pelo crit´erio DISCENTE, essa bolsa ser´a atribu´ıda pelo
+crit´erio DOCENTE.
+Art. 100 – Havendo mais de um candidato a bolsa destinadas ao crit´erio DISCENTE com o mesmo regime de de-
+dica¸c˜ao, estes ser˜ao ordenados em ordem decrescente (do maior para o menor) conforme o Escore Discente (EDIS),
+dado por:
+EDIS = min(48; max(0; Z × 24)) + min(M; 24) + 3 × G
+No qual:
+• Z ´e o escore padronizado da nota POSCOMP, dado por:
+Z = x −¯x
+s
+;
+No qual:
+– x ´e a nota do candidato no POSCOMP;
+– ¯x ´e a m´edia e s o desvio padr˜ao referentes `a mesma prova realizado pelo candidato no POSCOMP;
+• M ´e a soma ponderada das notas cursadas no PPGCAP/UDESC, dada por:
+M =
+nd
+X
+i=1
+Ni × Ci;
+No qual:
+– nd ´e o n´umero de disciplinas cursadas e aprovadas pelo estudante no PPGCAP;
+– Ni ´e a nota da i-´esima disciplina cursada e aprovada, com os conceitos traduzidos em n´umeros: A = 2, B =
+1 e C=0;
+– Ci ´e o n´umero de cr´editos da i-´esima disciplina; e
+• G ´e a m´edia do curso de gradua¸c˜ao linearmente interpolada para o intervalo de 0 a 10.
+Par´agrafo ´unico – Em caso de empate, ser˜ao priorizados os candidatos com maior Z (sem limite); persistindo o
+empate, com maior M (sem limite); persistindo o empate, com maior G. Caso o empate ainda persista, a Comiss˜ao
+de Bolsas deﬁnir´a a quem ser´a atribu´ıda a bolsa, considerando, entre outros fatores, o curr´ıculo e o hist´orico escolar
+(de gradua¸c˜ao e/ou p´os-gradua¸c˜ao) dos candidatos, suas linhas de pesquisa e orientadores.
+2
+Art. 110 – O(a) bolsista que recebeu bolsa em regime de dedica¸c˜ao integral s´o poder´a alterar o regime para dedica¸c˜ao
+em tempo parcial depois do primeiro ano de curso, sujeito a perda da bolsa.
+Par´agrafo 1o – No caso de troca para o regime de dedica¸c˜ao em tempo parcial de bolsa atribu´ıda pelo crit´erio
+DISCENTE, a Comiss˜ao de Bolsas deﬁnir´a a nova vigˆencia da bolsa.
+Par´agrafo 2o – A troca de regime de dedica¸c˜ao (de integral para parcial ou de parcial para integral) s´o poder´a
+ocorrer uma ´unica vez.
+Art. 120 – Cada rodada de atribui¸c˜ao de bolsas pelo crit´erio DOCENTE ocorrer´a em duas fases:
+I – Fase I: Cada bolsa ser´a atribu´ıda a uma linha de pesquisa, conforme estabelecido pelo Art. 140; e
+II – Fase II: A bolsa ser´a atribu´ıda ao docente dentro da linha determinada previamente, conforme estabelecido
+pelo Art. 150.
+Par´agrafo ´unico – O docente contemplado com uma bolsa na rodada DOCENTE ´e respons´avel por indicar qual
+discente a ser contemplado, dentre seus orientados.
+Art. 130 – A produtividade da linha e dos docentes ser´a determinada seguindo o c´alculo deﬁnido na resolu¸c˜ao vigente
+para produtividade docente.
+Art. 140 – A cota de bolsas (C) de cada linha indica o n´umero ideal de bolsas que deveriam ser atribu´ıdas `a linha
+levando em considera¸c˜ao sua produtividade e seu tamanho. A cota de cada linha ´e calculada da seguinte forma:
+I – O Percentual de Produtividade da Linha (Pp) ´e a raz˜ao entre o somat´orio da Pontua¸c˜ao da Produ¸c˜ao Docente
+sem redundˆancia (PPDsr) de todos os docentes permanentes da linha, e o somat´orio da Pontua¸c˜ao da Produ¸c˜ao
+Docente sem redundˆancia de todos os docentes permanentes do curso;
+II – O Percentual de Tamanho (Pt) ´e a raz˜ao entre o n´umero de docentes permanentes da linha e o n´umero total
+de docentes permanentes do curso.
+III – A cota de cada linha ´e dada por C = NB Pp+Pt
+2
+, no qual NB ´e o n´umero total de bolsas institucionais do
+curso.
+IV – Se o c´alculo da cota de bolsas resultar em um n´umero n˜ao inteiro, a parte inteira ser´a considerada a cota de
+bolsas de linha. Se ap´os essa divis˜ao ainda houver bolsas dispon´ıveis, a parte decimal (trˆes casas decimais) ser´a usada
+para ordenar as linhas, sendo que cada linha recebe uma bolsa conforme a sua classiﬁca¸c˜ao.
+V – A bolsa ser´a atribu´ıda `a linha cujo n´umero de bolsas tiver a maior diferen¸ca negativa em rela¸c˜ao `a sua cota.
+Art. 150 – Dentro de cada linha, os docentes ser˜ao ordenados em ordem ascendente (do menor para o maior) conforme
+o Escore Docente (EDOC), dado por:
+EDOC =
+1 + BM + BA
+min(2; 1 +
+P P Dsr
+T OP 10max )
+No qual:
+• BM ´e o n´umero de bolsas-mˆes no quadriˆenio do docente, isto ´e, o somat´orio do n´umero de bolsas dos orientados
+do docente em cada mˆes no ´ultimo quadriˆenio at´e, e inclusive, o mˆes da publica¸c˜ao do edital de bolsas;
+• BA ´e o n´umero esperado de bolsas-mˆes dos orientados do docente a partir do mˆes subsequente da publica¸c˜ao do
+edital de bolsas, excluindo as bolsas j´a alocadas para orientados do docente no semestre em quest˜ao;
+• PPDsr ´e a Pontua¸c˜ao da Produ¸c˜ao Docente sem redundˆancia; e
+• TOP10max ´e a maior pontua¸c˜ao poss´ıvel do crit´erio TOP10 (melhores 10 publica¸c˜oes) segundo resolu¸c˜ao vigente
+para produtividade docente.
+3
+Par´agrafo 1o – A bolsa pelo crit´erio DOCENTE ser´a atribu´ıda ao docente com melhor classiﬁca¸c˜ao (menor EDOC)
+no ranqueamento da linha, que tenha discente(s) candidato(s) a bolsa e que ainda n˜ao tenha sido contemplado com
+bolsa pelo crit´erio DOCENTE no semestre.
+Par´agrafo 2o – Ap´os todos os docentes que tenham discente(s) candidato(s) a bolsa tenham recebido uma bolsa
+pelo crit´erio DOCENTE no semestre, caso ainda haja bolsa dispon´ıvel para a linha, o processo se repetir´a para a
+aloca¸c˜ao de uma segunda bolsa no semestre pelo crit´erio DOCENTE, e assim sucessivamente.
+Par´agrafo 3o – Caso n˜ao seja poss´ıvel atribuir a bolsa a nenhum docente da linha, essa bolsa ser´a redistribu´ıda
+para outra linha.
+Par´agrafo 4o – Caso haja empate entre os docentes com melhor ranqueamento, ser´a priorizado pelo maior PPDsr
+(sem limites). Persistindo o empate, caber´a `a Comiss˜ao de Bolsas decidir a quem a bolsa ser´a atribu´ıda.
+Par´agrafo 5o – Para docentes que n˜ao integralizaram um quadriˆenio, aplicar-se-´a BM e BA como sendo o valor
+m´edio dos BMs e BAs dos demais docentes do programa. (inclu´ıdo por decis˜ao do PPGCAP em reuni˜ao do dia 21 de
+junho de 2024)
+Art. 160 – Um bolsista pode acumular duas bolsas desde que todos os requisitos abaixo sejam satisfeitos:
+I – Seja bolsista em regime de dedica¸c˜ao integral no momento da implanta¸c˜ao da segunda bolsa;
+II – Uma bolsa foi alocada pelo crit´erio DISCENTE e outra pelo crit´erio DOCENTE; ou ambas pelo crit´erio
+DOCENTE (n˜ao necessariamente no mesmo semestre); e
+III – Haja disponibilidade de modalidade de bolsas compat´ıveis com o ac´umulo.
+Par´agrafo ´unico – A Comiss˜ao de Bolsas poder´a propor realoca¸c˜oes de modalidades de bolsas para viabilizar o
+ac´umulo.
+Art. 170 – Os casos omissos ser˜ao resolvidos pela Comiss˜ao de Bolsas.
+Art. 180 – Esta resolu¸c˜ao entra em vigor nesta data.
+Art. 190 – Revogam-se todas as resolu¸c˜oes e disposi¸c˜oes em contr´ario.
+Joinville (SC), 15 de dezembro de 2.023
+Prof Dr. Charles Christian Miers
+Coordenador do PPGCAP
+4

@@ -1,0 +1,1356 @@
+ 
+ 
+ 
+ 
+UNIVERSIDADE DO ESTADO DE SANTA CATARINA - UDESC 
+PRÓ-REITORIA DE PESQUISA E PÓS-GRADUAÇÃO - PROPPG 
+PROGRAMA DE PÓS-GRADUAÇÃO EM COMPUTAÇÃO APLICADA - PPGCA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Atualização do Plano de Curso do 
+Programa de Pós-Graduação em 
+Computação Aplicada 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Programa de Pós-Graduação  
+em Computação Aplicada (PPGCA) 
+ 
+ 
+ 
+1. INTRODUÇÃO 
+O curso de pós-graduação em questão é regulamentado pelo Estatuto e 
+Regimento Geral da UDESC, pelo Regimento Geral de Pós-Graduação da UDESC, pelas 
+Resoluções da UDESC e pelas Resoluções do PPGCA. O Programa de Pós-Graduação em 
+Computação Aplicada, modalidade mestrado acadêmico, teve a sua aprovação no 
+âmbito da UDESC através da portaria CONSUNI N˚ 006/2010 de 18/03/2010. Obteve 
+parecer de recomendação do CTC/CAPES através do ofício N0 98_06_2006/CTC/CAPES 
+de 7/02/2006 e homologação pelo Conselho Nacional de Educação através do parecer 
+n˚ 060/2012 e resolução n˚ 034/2012 de 10.04.2012, e pelo Decreto Estadual n˚ 
+990/2012 de 23/05/2012. Uma vez tendo sido regularizado, o curso teve o seu 
+primeiro ingresso em 19 de março de 2012. 
+Designação do Curso 
+Nome do Curso: Curso de Pós-Graduação Stricto Sensu em Nível de Mestrado em 
+Computação Aplicada  
+Modalidade (Acadêmico ou Profissional): Mestrado Acadêmico 
+Programa de Pós-Graduação em Computação Aplicada (PPGCA) 
+Área de Conhecimento (Grande Área): Ciências Exatas e da Terra (1.00.00.00-0) 
+Área de Concentração: Ciência da Computação (1.03.00.00-7) 
+Linhas de Pesquisa:  
+• Metodologia e Técnicas de Computação (1.03.03.00-6) e 
+• Sistemas de Computação (1.03.04.00-2) 
+Centro de Origem: Centro de Ciências Tecnológicas 
+ 
+2. COLEGIADO 
+O Colegiado do PPGCA (CPPGCA) será composto por 2 (dois) membros de cada 
+linha de pesquisa, indicado pelos pares, um representante discente, eleito pelos pares, 
+um representante técnico vinculado a pós-graduação, pelo subcoordenador, e pelo 
+coordenador, como presidente com direito ao voto de qualidade em casos de empate. 
+O mandato dos representantes docentes e técnicos será de 2 (dois) anos e dos 
+representantes discentes de 1 (um) ano. Os membros docentes e discentes serão 
+eleitos com seus respectivos suplentes. 
+Em casos excepcionais, poderá ser convocada uma reunião colegiada plena 
+com a participação de todos os membros permanentes do corpo docente, do 
+representante discente e do representante técnico, todos com direito a voz e voto. As 
+reuniões normais e as reuniões plenas podem ser convocadas pelo coordenador, 
+subcoordenador ou por um terço dos membros do colegiado. 
+ 
+ 
+3. OBJETIVOS E LINHAS DE PESQUISA 
+O Curso de Pós-Graduação Stricto Sensu em Nível de Mestrado em 
+Computação Aplicada do Centro de Ciências Tecnológicas da UDESC tem por objetivo a 
+formação de pesquisadores de alto nível aptos a: 
+ 
+(a) prosseguirem a sua formação de pesquisadores em qualquer curso 
+de doutorado em computação no país ou no exterior; e 
+ 
+(b) 
+aplicarem 
+estratégias 
+científicas 
+na 
+busca 
+de 
+soluções 
+computacionais modernas e inovadoras nas mais variadas áreas de aplicação. 
+ 
+Dentro da filosofia do curso, o mestrado é considerado como uma extensão da 
+graduação, dando ênfase à formação científica do estudante com responsabilidade 
+sobretudo com o desenvolvimento e com a divulgação do conhecimento. Com isto, o 
+curso propiciará ao mestrando a devida inserção profissional na sua área de pesquisa, 
+tanto no âmbito acadêmico quanto industrial. O PPGCA resulta além de tudo, do 
+aumento quantitativo e qualitativo da pesquisa desenvolvida no DCC, da concretização 
+de um planejamento de médio e longo prazo, bem como da necessidade de 
+crescimento da UDESC e de sua projeção no cenário nacional e internacional. 
+Detalhamento das Linhas de Pesquisa 
+Linha de Pesquisa em Metodologia e Técnicas de Computação 
+  
+Pesquisadores 
+André Tavares da Silva 
+Avanilde Kemczinski 
+Carla Diacui Medeiros Berkenbrock 
+Cristiano Damiani Vasconcellos 
+Isabela Gasparini 
+Fabiano Baldo 
+Marcelo da Silva Hounsell 
+Rafael Stubs Parpinelli 
+Roberto Silvio Ubertino Rosso Jr. 
+ 
+Descrição: Os trabalhos nesta linha têm como enfoque o 
+desenvolvimento de pesquisa teórica e aplicada, visando disseminar a 
+produção e o uso de metodologias, técnicas, ferramentas e aplicações 
+que contribuam para o desenvolvimento da computação, em pelo 
+menos um dos seguintes temas principais: Inteligência Artificial, Banco 
+de Dados, Engenharia de Software, Interação Humano-Computador, 
+Processamento Gráfico, Informática na Educação e Sistemas de 
+Informação.  
+ 
+ 
+ 
+Linha de Pesquisa em Sistemas de Computação 
+  
+Pesquisadores  
+Adriano Fiorese 
+Charles Christian Miers 
+Guilherme Piêgas Koslovski 
+Janine Kniess 
+Maurício Aronne Pillon 
+Rafael Rodrigues Obelheiro 
+ 
+Descrição: Esta linha de pesquisa investiga problemas e 
+desenvolve soluções teóricas e aplicadas com significativa base 
+experimental, relacionadas à computação de alto desempenho, redes 
+de comunicação, sistemas distribuídos, segurança computacional, 
+tolerância a faltas e avaliação de desempenho. 
+ 
+No que diz respeito à área de conhecimento, o próprio nome do programa já 
+evidencia a sua vocação para a pesquisa aplicada na área da Ciência da Computação. 
+As pesquisas realizadas no PPGCA buscam soluções inovadoras para problemas 
+práticos nas diversas subáreas contempladas pelas linhas de atuação do Programa. 
+Esse viés prático vem ao encontro tanto do perfil do seu corpo docente quanto da 
+característica regional de ser um polo de desenvolvimento tecnológico.  
+ 
+4. LOCAL DE REALIZAÇÃO 
+Universidade do Estado de Santa Catarina – UDESC, Centro de Ciências 
+Tecnológicas – CCT, Departamento de Ciência da Computação – DCC. 
+Logradouro: Rua Paulo Malschitzki, 200, Campus Universitário Professor 
+Avelino Marcante, Zona Industrial Norte, Joinville, SC. CEP: 89.219-710. 
+Telefone: (047) 3481 – 7900  
+ 
+5. VAGAS E DURAÇÃO 
+O PPGCA terá ingresso de novos mestrandos semestralmente. O número de 
+vagas em cada semestre será definido pelo Colegiado do PPGCA e ficará condicionada 
+à capacidade de orientação do corpo docente, limitada pelo número máximo por 
+docente definido pelo comitê de área da CAPES e regulamentado em resolução 
+específica.  
+O PPGCA terá uma duração mínima de 12 (doze) meses e duração máxima de 
+24 (vinte e quatro) meses, descontados os períodos de trancamento. O mestrando 
+poderá solicitar ao Colegiado do PPGCA prorrogações, que somadas não poderão 
+ultrapassar os limites regimentais da UDESC, desde que apresente justificativa 
+consubstanciada, cronograma detalhado e anuência do orientador. O Colegiado do 
+ 
+PPGCA poderá conceder total ou parcialmente o período requerido ou ainda rejeitar a 
+solicitação. 
+6. INSCRIÇÃO 
+Diretrizes e normas para seleção de candidatos ao PPGCA incluem: 
+- Uma comissão de processo seletivo será nomeada pelo Colegiado do 
+PPGCA, composta de pelo menos 3 (três) membros, mais um suplente. 
+- O parecer final da Comissão de Processo Seletivo indicará os 
+candidatos selecionados a se matricularem como alunos regulares do PPGCA e 
+seus respectivos orientadores. 
+ 
+6.1. DOCUMENTAÇÃO PARA A INSCRIÇÃO 
+1. Formulário de inscrição, devidamente preenchido; 
+2. Curriculum Vitae;  
+3. Fotocópia da Carteira de Identidade (RG) e do CPF; 
+4. Se estrangeiro, apresentar atestado de conhecimento em português 
+fornecido por um órgão oficial reconhecido pelo Ministério de Educação ou Secretaria 
+de Educação Estadual. Este documento não será necessário no caso do candidato ser 
+portador de diploma de graduação emitido por país de língua portuguesa.  
+5. Fotocópia do Histórico Escolar do curso de graduação; 
+6. Fotocópia do Diploma do curso de graduação; 
+7. Carta de referência de dois professores universitários ou profissionais de 
+nível superior que possam opinar sobre a aptidão do candidato na área, conforme 
+modelo a ser disponibilizado oportunamente; 
+8. O Edital de Processo Seletivo, aprovado pelo CPPGCA, poderá solicitar outros 
+documentos para inscrição. 
+ 
+7. SELEÇÃO E MATRÍCULA 
+A seleção dos alunos ao PPGCA levará em conta os seguintes quesitos:  
+-  Análise de Curriculum Vitae; 
+-  Análise de Histórico Escolar; 
+-  Análise das Cartas de Referência; 
+- Outros quesitos, a critério do Colegiado, especificados no Edital de 
+Processo Seletivo. 
+ 
+O Edital de Abertura de Vagas e a Secretaria de Pós-Graduação solicitarão os 
+documentos específicos para matrícula seguindo o regimento da UDESC. 
+ 
+ 
+ 
+ 
+8. PROFICIÊNCIA EM LINGUA ESTRANGEIRA 
+Uma das exigências a habilitação à defesa da dissertação é a aprovação no 
+exame de proficiência em língua estrangeira. O PPGCA define que a proficiência deve 
+ser em língua inglesa. A avaliação será efetuada através de prova específica realizada 
+por uma entidade cadastrada pelo Colegiado do PPGCA sendo que os custos ficarão 
+sob a responsabilidade de cada pós-graduando. A aprovação na avaliação de 
+proficiência deverá ser apresentada pelo mestrando à secretaria do PPGCA, durante 
+seus primeiros 12 (doze) meses no curso.  
+ 
+ 
+9. DOCÊNCIA ORIENTADA 
+A atividade de Estágio Docência (EDO) consiste na execução de atividades 
+ligadas ao ensino em disciplinas de graduação acompanhadas pelo professor 
+orientador e/ou pelo professor supervisor, que é o responsável pela disciplina na qual 
+será realizado o estágio. Casos especiais serão deliberados pelo Colegiado do PPGCA. A 
+atividade de EDO é dispensada para os mestrandos do PPGCA que comprovarem 
+experiência em ensino superior por, pelo menos, 1 (um) ano. 
+ 
+10. CANCELAMENTO, TRANCAMENTO E DESLIGAMENTO 
+Entende-se como trancamento o período de interrupção do projeto de 
+pesquisa e da matrícula em todas as disciplinas. O período de trancamento não é 
+contabilizado no tempo máximo para a integralização do curso de mestrado. O 
+mestrando só poderá pedir 2 (dois) trancamentos ao longo de seu curso. O tempo 
+máximo de trancamento será de 12 (doze) meses, ininterruptos ou não. Um 
+mestrando poderá ser desligado do curso, conforme disposto em resolução específica, 
+que considerará os requisitos de frequência mínima, reprovações por conceito 
+insuficiente, matrículas não efetuadas, exame de qualificação, limite máximo de 
+duração do curso, entre outros. 
+ 
+ 
+11. CONDIÇÕES PARA REINGRESSO NO CURSO 
+Não está previsto no PPGCA tratamento diferenciado para casos de reingresso 
+no curso. 
+ 
+ 
+ 
+12. ALUNO EM REGIME PARCIAL 
+Não está previsto no PPGCA a participação de alunos em regime parcial. Casos 
+especiais poderão ser analisados pelo colegiado do curso. 
+ 
+13. ALUNO ESPECIAL 
+No âmbito do PPGCA, os alunos especiais são aqueles que não estão 
+regularmente matriculados no curso. Poderão ser admitidos alunos especiais, a critério 
+do professor da disciplina e do Colegiado do PPGCA. 
+ 
+14. RENDIMENTO E PROGRESSÃO NO CURSO 
+Para que o aluno seja considerado aprovado, a média final para aprovação de 
+cada disciplina concluída não poderá ser inferior ao conceito C, isto é, não poderá ser 
+inferior à nota sete (7,0). Serão atribuídos os seguintes conceitos por disciplina para 
+cada aluno: 
+ A - Nota de 9,0 a 10; 
+ B - Nota de 8,0 a 8,9; 
+ C - Nota de 7,0 a 7,9; 
+ D - Nota inferior a 7,0 – Reprovado; 
+ I - Incompleto 
+ 
+O conceito I passará automaticamente para o conceito D (reprovado), caso o 
+professor da disciplina, num prazo de 60 (sessenta) dias após o final do semestre 
+letivo, não se manifeste por outra alteração do conceito. 
+ 
+15. FREQUÊNCIA 
+ A porcentagem mínima de frequência em disciplina do PPGCA é de 75%.  
+ 
+16. EXAME DE QUALIFICAÇÃO 
+O acompanhamento da evolução do trabalho de mestrado será feito pelo 
+orientador a fim de evitar eventuais atrasos na conclusão do curso. O aluno deverá 
+defender, até o término do terceiro semestre, seu projeto de pesquisa perante uma 
+Banca de Qualificação homologada pelo CPPGCA. Esta Banca de Qualificação será 
+composta de, no mínimo, 3 (três) professores doutores. 
+ 
+ 
+ 
+ 
+17. ORIENTAÇÃO DE DISSERTAÇÃO 
+Para se matricular semestralmente no PPGCA, o aluno deverá ter o aceite de 
+um professor credenciado no curso levando em conta a disponibilidade dos 
+professores da linha de pesquisa pretendida. O orientador fará o acompanhamento do 
+aluno durante toda a duração do curso. 
+ 
+O coorientador de dissertação é todo o professor com titulação mínima de 
+doutor, pertencente ou não ao corpo docente do curso que, mediante homologação 
+do CPPGCA, tenha participação no trabalho de orientação. 
+ 
+A troca de orientador de dissertação só será feita mediante aprovação do 
+Colegiado do PPGCA e apenas uma vez, nos primeiros 12 (doze) meses de curso. O 
+pedido pode ser feito pelo aluno ou pelo orientador, conforme interesse de ambos. No 
+caso de descredenciamento de professores do programa que possuam orientandos, o 
+CPPGCA determinará o novo orientador para estes alunos, não sendo necessário 
+respeitar o prazo de 12 (doze) meses. 
+ 
+Compete ao orientador: 
+● Orientar a matrícula de disciplinas compatíveis com a formação e o 
+preparo do candidato e com os propósitos de pesquisa por ele manifestados, 
+bem como na elaboração do plano de estudos do orientando; 
+● Auxiliar na definição e elaboração do Tema da Dissertação; 
+● Relatar, quando requerido, o andamento do Projeto de Dissertação; 
+● Acompanhar e orientar as tarefas de pesquisa e de preparo da 
+Dissertação; 
+● Manter contato permanente com o aluno enquanto estiver 
+matriculado no curso; 
+● Fazer os contatos necessários para assegurar ao aluno acesso às inter-
+relações e equipamentos requeridos à realização do seu trabalho. 
+ 
+18. DEFESA DE DISSERTAÇÃO 
+Para ter direito à defesa de Dissertação, o aluno deverá ter vencido as 
+seguintes etapas: 
+• Ter cumprido um mínimo de 20 (vinte) créditos em disciplinas, com 
+conceito médio B em todas as disciplinas aprovadas; 
+• Estar matriculado na disciplina Defesa de Dissertação; 
+• Comprovar proficiência em língua inglesa;  
+• Alunos estrangeiros oriundos de países cuja língua oficial não seja o 
+português, deverão comprovar proficiência em língua portuguesa. A 
+instituição avaliadora deverá ser reconhecida pela UDESC; 
+• Ter sido aprovado na atividade de EDO - Estágio Docência; 
+• Ter apresentando o Seminário de Inovação em Computação; 
+ 
+• Atestar o envio dentro do prazo estipulado, devidamente protocolado, 
+de artigo científico relacionado ao tema da dissertação (o requisito 
+mínimo será estabelecido em resolução específica); 
+• Ter sido aprovado no Exame de Qualificação;  
+• Outras exigências definidas em Resolução do CPPGCA. 
+ 
+A Dissertação deverá ser submetida à defesa pública perante uma Banca 
+Examinadora composta seguindo as definições do Regimento Geral de Pós-Graduação 
+da UDESC. É vedada a participação na banca de cônjuge ou parente(s) do candidato até 
+o 30 grau. 
+ 
+A Dissertação deve ser submetida ao PPGCA no mínimo 30 (trinta) dias antes da 
+data da defesa e com anuência expressa do orientador ou encaminhamento deste. Na 
+Ata de Defesa deverá constar uma das seguintes alternativas de parecer: 
+● Aprovado; 
+● Aprovado mediante correções a serem apresentadas no prazo 
+máximo de 60 (sessenta) dias; 
+● Reprovado. 
+ 
+Caso a dissertação seja aprovada, o mestrando deverá encaminhar à secretaria, 
+cópias da dissertação seguindo o disposto pelo Regimento Geral de Pós-Graduação da 
+UDESC e suas alterações. 
+ 
+19. ESTRUTURA CURRICULAR 
+19.1. FIXAÇÃO DO NÚMERO TOTAL DE CRÉDITOS 
+O Curso de Pós-Graduação Stricto Sensu em nível de Mestrado em Computação 
+Aplicada exige um número mínimo de 24 (vinte e quatro) créditos assim distribuídos: 
+um mínimo de 20 (vinte) créditos em disciplinas e mais 4 (quatro) créditos referentes à 
+Dissertação de Mestrado.  
+ 
+Os créditos em disciplinas são divididos em 3 (três) núcleos: 
+• Núcleo de Disciplinas Obrigatórias Comuns composto por Projeto e Análise 
+de Algoritmos (PAA); 
+• Núcleo de Disciplinas Obrigatórias por Área composto por Avaliação de 
+Desempenho (ASC), Computação Gráfica Avançada (CGA), Interação 
+Humano-Computador (IHC), Metodologia da Pesquisa (MEP), Programação 
+Paralela Avançada (PPA), Redes de Computadores (REC), Sistemas 
+Distribuídos Avançados (SDA) e Sistemas Inteligentes (SI). 
+• Núcleo de Disciplinas Eletivas composto por Tópicos Especiais em Sistemas 
+de Computação, Tópicos Especiais em Metodologia e Técnicas de 
+Computação e Aceitação de Artigos.   
+ 
+O aluno deverá cumprir no mínimo 4 (quatro) créditos do Núcleo de Disciplinas 
+Obrigatórias Comuns e no mínimo 4 (quatro) créditos no Núcleo de Disciplinas 
+ 
+Obrigatórias por Área. Não existe um mínimo de créditos definidos para o Núcleo de 
+Disciplinas Eletivas. 
+A disciplina Aceitação de Artigos (ACA) confere créditos reconhecendo 
+trabalhos de qualidade elaborados pelos discentes, relacionados com o tema de 
+pesquisa do mestrado, sendo regida por resolução própria. 
+O aluno deverá elaborar e apresentar 1 (um) Seminário de Inovação em 
+Computação até o término do segundo semestre do curso. O seminário é um item 
+curricular obrigatório, não contemplando créditos ao aluno. 
+Pelo menos uma das disciplinas que compõem o Núcleo de Disciplinas 
+Obrigatórias Comuns deverá ser ofertada anualmente e no mínimo 4 (quatro) 
+disciplinas que compõem o Núcleo de Disciplinas Obrigatórias por Área deverão ser 
+ofertadas semestralmente. Cada linha de pesquisa (Sistemas de Computação e 
+Metodologia e Técnicas e Computação) ofertará pelo menos duas disciplinas. 
+Cada disciplina de Tópicos Especiais aprovada pelo Colegiado receberá uma 
+denominação complementar (por exemplo, TESC-CN, TEMTC-RP) a fim de diferenciá-
+las. 
+ 
+19.2. DISCIPLINAS/CARGA HORÁRIA/CRÉDITOS 
+SIGLA 
+NOME DA DISCIPLINA 
+C.H. CR 
+CARÁTER 
+LINHA DE 
+PESQUISA 
+PAA Projeto e Análise de Algoritmos 
+60 
+4 Núcleo de Disciplinas 
+Obrigatórias Comuns 
+Sistemas de 
+Computação 
+e 
+Metodologia 
+e Técnicas de 
+Computação  
+ASC Avaliação de Desempenho 
+60 
+4 Núcleo de Disciplinas 
+Obrigatórias por 
+Área 
+Sistemas de 
+Computação 
+CGA Computação Gráfica Avançada 
+60 
+4 Núcleo de Disciplinas 
+Obrigatórias por 
+Área 
+Metodologia 
+e Técnicas de 
+Computação 
+IHC Interação Humano-Computador 60 
+4 Núcleo de Disciplinas 
+Obrigatórias por 
+Área 
+Metodologia 
+e Técnicas de 
+Computação 
+MEP Metodologia da Pesquisa 
+60 
+4 Núcleo de Disciplinas 
+Obrigatórias por 
+Área 
+Metodologia 
+e Técnicas de 
+Computação 
+PPA Programação Paralela Avançada 60 
+4 Núcleo de Disciplinas 
+Obrigatórias por 
+Área 
+Sistemas de 
+Computação 
+REC Redes de Computadores 
+60 
+4 Núcleo de Disciplinas 
+Obrigatórias por 
+Área 
+Sistemas de 
+Computação 
+SDA Sistemas Distribuídos 
+60 
+4 Núcleo de Disciplinas Sistemas de 
+ 
+Avançados 
+Obrigatórias por 
+Área 
+Computação 
+SI 
+Sistemas Inteligentes 
+60 
+4 Núcleo de Disciplinas 
+Obrigatórias por 
+Área 
+Metodologia 
+e Técnicas de 
+Computação 
+ACA Aceitação de Artigos 
+60 
+4 Núcleo de Disciplinas 
+Eletivas 
+Sistemas de 
+Computação 
+e 
+Metodologia 
+e Técnicas de 
+Computação 
+TESC Tópicos Especiais em Sistemas 
+de Computação 
+30, 
+45 
+e/ou 
+60 
+2, 3 
+e/ou 
+4  
+Núcleo de Disciplinas 
+Eletivas 
+Sistemas de 
+Computação 
+TEMTC Tópicos Especiais em 
+Metodologia e Técnicas de 
+Computação 
+30, 
+45 
+e/ou 
+60 
+2, 3 
+e/ou 
+4  
+Núcleo de Disciplinas 
+Eletivas 
+Metodologia 
+e Técnicas de 
+Computação 
+ 
+19.3. DA MIGRAÇÃO  
+ 
+Os alunos vinculados a matriz curricular do PPGCA anterior ao presente projeto 
+poderão solicitar a migração para a nova matriz curricular. A migração contempla a 
+linha de pesquisa principal, a estrutura curricular e o número mínimo de créditos. O 
+processo de migração será definido em resolução específica. 
+ 
+20. CORPO DOCENTE 
+O corpo docente do Curso de Pós-Graduação em Computação Aplicada é 
+composto de professores permanentes, colaboradores e/ou visitantes. Será permitido 
+o credenciamento de professor seguindo critérios definidos por resolução própria do 
+CPPGCA. 
+ 
+20.1. DETALHAMENTO DOS PROFESSORES 
+Professor 
+(Link para o Currículo Lattes) 
+Titulação IES 
+Categoria 
+Funcional 
+IES onde 
+obteve a 
+titulação 
+Regime 
+de 
+Trabalho 
+Adriano Fiorese 
+(http://lattes.cnpq.br/8623647927627876) 
+Doutor UDESC Professor 
+Adjunto 
+Universidad
+e de 
+40 horas 
+ 
+Coimbra – 
+Portugal 
+André Tavares da Silva 
+(http://lattes.cnpq.br/1668342679815086) 
+Doutor UDESC Professor 
+Adjunto 
+Universidad
+e Estadual 
+de 
+Campinas - 
+Brasil 
+40 horas 
+Avanilde Kemczinski 
+(http://lattes.cnpq.br/0048790978449306) 
+Doutor UDESC Professor 
+Associado 
+Universidad
+e Federal 
+de Santa 
+Catarina – 
+Brasil 
+40 horas 
+Carla Diacui Medeiros Berkenbrock 
+(http://lattes.cnpq.br/5460117776241230) 
+Doutora UDESC Professor 
+Associado 
+Instituto 
+Tecnológico 
+de 
+Aeronáutic
+a – Brasil 
+40 horas 
+Charles Christian Miers 
+(http://lattes.cnpq.br/1630057446729066) 
+Doutor UDESC Professor 
+Adjunto 
+Universidad
+e de São 
+Paulo – 
+Brasil 
+40 horas 
+Cristiano Damiani Vasconcellos 
+(http://lattes.cnpq.br/7291640788372419) 
+Doutor UDESC Professor 
+Associado 
+Universidad
+e Federal 
+de Minas 
+Gerais - 
+Brasil 
+40 horas 
+Fabiano Baldo 
+(http://lattes.cnpq.br/3000239587440812) 
+Doutor UDESC Professor 
+Associado 
+Universidad
+e Federal 
+de Santa 
+Catarina - 
+Brasil 
+40 horas 
+Isabela Gasparini 
+(http://lattes.cnpq.br/3262681213088048) 
+Doutora UDESC Professor 
+Associado 
+Universidad
+e Federal 
+do Rio 
+Grande do 
+Sul – Brasil 
+40 horas 
+Janine Kniess 
+(http://lattes.cnpq.br/5563978281200473) 
+Doutora UDESC Professor 
+Adjunto 
+Universidad
+e Federal 
+Fluminense 
+– Brasil 
+40 horas 
+Marcelo da Silva Hounsell 
+(http://lattes.cnpq.br/2259041691301555) 
+Doutor UDESC Professor 
+Associado 
+Loughboro
+ugh 
+University – 
+Inglaterra 
+40 horas 
+Rafael Stubs Parpinelli 
+(http://lattes.cnpq.br/4456007001373501) 
+Doutor UDESC Professor 
+Associado 
+Universidad
+e 
+Tecnológica 
+40 horas 
+ 
+Federal do 
+Paraná - 
+Brasil 
+Guilherme Piêgas Koslovski 
+(http://lattes.cnpq.br/2749773427704993) 
+Doutor UDESC Professor 
+Associado 
+École 
+Normale 
+Supérieure 
+de Lyon - 
+França 
+40 horas 
+Maurício Aronne Pillon 
+(http://lattes.cnpq.br/3752298390911021) 
+Doutor UDESC Professor 
+Associado 
+Institut 
+National 
+Polytechniq
+ue de 
+Grenoble – 
+França 
+40 horas 
+Rafael Rodrigues Obelheiro 
+(http://lattes.cnpq.br/7059889907219020) 
+Doutor UDESC Professor 
+Associado 
+Universidad
+e Federal 
+de Santa 
+Catarina - 
+Brasil 
+40 horas 
+Roberto Silvio Ubertino Rosso Jr. 
+(http://lattes.cnpq.br/3564195176994261) 
+Doutor UDESC Professor 
+Associado 
+Loughboro
+ugh 
+University - 
+Inglaterra 
+40 horas 
+ 
+20.2. RELAÇÃO PROFESSORES/DISCIPLINA  
+SIGLA 
+NOME DA 
+DISCIPLINA 
+C.H. 
+CARÁTER 
+DOCENTE 
+PAA Projeto e Análise de 
+Algoritmos 
+60 
+Núcleo de Disciplinas 
+Obrigatórias Comuns 
+Todos os docentes 
+credenciados 
+ASC Avaliação de 
+Desempenho 
+60 
+Núcleo de Disciplinas 
+Obrigatórias por Área 
+Adriano Fiorese, 
+Janine Kniess, 
+Rafael Obelheiro 
+e/ou Maurício 
+Pillon 
+CGA Computação Gráfica 
+Avançada 
+60 
+Núcleo de Disciplinas 
+Obrigatórias por Área 
+André Tavares da 
+Silva, Marcelo 
+Hounsell e/ou 
+Roberto Rosso Jr. 
+IHC Interação Humano-
+Computador 
+60 
+Núcleo de Disciplinas 
+Obrigatórias por Área 
+Avanilde 
+Kemczinski e/ou 
+Isabela Gasparini 
+MEP Metodologia da 
+Pesquisa 
+60 
+Núcleo de Disciplinas 
+Obrigatórias por Área 
+Avanilde 
+Kemczinski, Isabela 
+Gasparini e/ou 
+ 
+Marcelo Hounsell 
+PPA Programação 
+Paralela Avançada 
+60 
+Núcleo de Disciplinas 
+Obrigatórias por Área 
+Guilherme 
+Koslovski e/ou 
+Maurício Pillon 
+REC Redes de 
+Computadores 
+60 
+Núcleo de Disciplinas 
+Obrigatórias por Área 
+Adriano Fiorese, 
+Guilherme 
+Koslovski, Janine 
+Kniess e/ou Rafael 
+Obelheiro 
+SDA Sistemas 
+Distribuídos 
+Avançados 
+60 
+Núcleo de Disciplinas 
+Obrigatórias por Área 
+Adriano Fiorese, 
+Charles Miers, 
+Guilherme 
+Koslovski, Janine 
+Kniess e/ou 
+Maurício Pillon 
+SI 
+Sistemas 
+Inteligentes 
+60 
+Núcleo de Disciplinas 
+Obrigatórias por Área 
+Fabiano Baldo e/ou 
+Rafael Parpinelli 
+ACA Aceitação de Artigos 
+60 
+Núcleo de Disciplinas Eletivas Todos os docentes 
+credenciados 
+TESC Tópicos Especiais 
+em Sistemas de 
+Computação 
+30, 45 
+e/ou 
+60 
+Núcleo de Disciplinas Eletivas Todos os docentes 
+credenciados na 
+linha de Sistemas 
+de Computação 
+TEMTC Tópicos Especiais 
+em Metodologia e 
+Técnicas de 
+Computação 
+30, 45 
+e/ou 
+60 
+Núcleo de Disciplinas Eletivas Todos os docentes 
+credenciados na 
+linha de 
+Metodologia e 
+Técnicas de 
+Computação 
+ 
+20.3. RELAÇÃO DO PESSOAL TÉCNICO ADMINISTRATIVO ENVOLVIDO E 
+SUA QUALIFICAÇÃO 
+Equipe da secretaria de Ensino de Pós-Graduação do CCT, composta por 
+técnicos administrativos e Secretária Administrativa do PPGCA Tania Regina de 
+Campos Loch, Técnica de nível de suporte com função de assistente administrativo. 
+ 
+21. INSTALAÇÕES, EQUIPAMENTOS E RECURSOS 
+BIBLIOGRÁFICOS 
+21.1. ESPAÇO FÍSICO 
+O Departamento de Ciência da Computação (DCC) dispõe de espaço físico 
+específico, localizado no Bloco F do Centro de Ciências Tecnológicas (CCT), ocupando 
+ 
+uma área de aproximadamente 3 mil m2. Este espaço corresponde a um prédio de três 
+pavimentos compostos de: 
+- 2 salas de aula com recursos multimídia (26,5m x 16m); 
+- 6 salas de aula com recursos multimídia (13,25m x 16m); 
+- 8 laboratórios de ensino com recursos multimídia (discriminados mais 
+adiante); 
+- 6 laboratórios de pesquisa (discriminados mais adiante); 
+- 1 auditório com recursos multimídia com capacidade para até 120 
+pessoas; 
+- 1 centro de cópias; 
+- 2 salas compartilhadas para projetos de ensino e extensão; 
+- 2 salas de servidores e equipe de suporte do CCT; e 
+- 34 salas individuais para professores. 
+21.2. LABORATÓRIOS 
+Laboratórios de Ensino: Os laboratórios de ensino são equipados com Dell 
+Optiplex 3060 (Core i5-8500 3.00GHz, 16GB RAM, 1 TB HD, Radeon R7 200), Dell 
+Optiplex 5040 (Core i7-6700 3.40GHz, 16GB RAM, 500GB HD, Radeon R5 340X), Dell 
+Optiplex 3050 (Core i7-6700 3.60GHz, 16GB RAM, 1 TB HD, Radeon R7 200) e Lenovo 
+ThinkCentre M93p (Core i7-4770 3.40 GHz, 16GB RAM, 500 GB HD, nVidia GT 730). É 
+notável a preocupação da instituição com a renovação do parque computacional, 
+oferecendo aos alunos e professores equipamentos adequados para desenvolvimentos 
+dos estudos e trabalhos. 
+ 
+Laboratórios de Pesquisa: A evolução das pesquisas realizadas pelo PPGCA 
+reflete na organização evolutiva dos laboratórios de pesquisa. Fomentado pelos 
+recursos oriundos dos financiamentos UDESC, FAPESC e CNPq, 6 laboratórios 
+temáticos estão disponíveis para utilização aos docentes e discentes do PPGCA. 
+a) Laboratório de Processamento Paralelo e Distribuído (LabP2D): Este 
+laboratório foi inicialmente institucionalizado com a destinação de 60 máquinas 
+adquiridas em 2010 para a execução da Maratona de Programação Nacional, 
+promovida pela Sociedade Brasileira de Computação (SBC), e realizada pelo 
+DCC da UDESC de Joinville naquele ano. Estas máquinas então foram destinadas 
+para a montagem de uma nuvem computacional privada, que servisse não só 
+como recurso para pesquisas do próprio DCC, mas que também pudesse 
+oferecer serviços a outros departamentos do campus. A infraestrutura recebeu 
+novos equipamentos entre 2013 e 2020, financiados com recursos da própria 
+UDESC e da FAPESC (no âmbito do Programa de Apoio à Pesquisa - PAP). A 
+nuvem é composta por aproximadamente 40 nós, 5 servidores de 
+processamento de grande porte e rede dedicada com suporte a tecnologia de 
+Software-Defined Networking (SDN).  Recentemente, o laboratório foi 
+contemplado com Graphical Processing Units (GPU) doadas pela NVIDIA. Ainda, 
+o LabP2D conta com monitoramento de consumo energético e de climatização 
+desenvolvidos em projetos de pesquisa do PPGCA. A nuvem encontra-se em 
+operação, viabilizando o desenvolvimento de pesquisas na área de Nuvens 
+Computacionais, Computação nas Bordas, Redes Virtualizadas, Gerenciamento 
+ 
+de Redes e Sistemas Distribuídos, Processamento de Alto Desempenho entre 
+outros, facilitando a realização de experimentos computacionais que 
+demandam alto poder de processamento e servindo como ponto de 
+convergência entre professores (integrados ou não ao PPGCA), alunos de 
+mestrado e de graduação. 
+b) Laboratório de Computação Aplicada (LACA): Este espaço, que conta 
+com 16 máquinas dedicadas, mobília e cabeamento apropriados, foi criado 
+para uso exclusivo dos mestrandos do PPGCA. Para este laboratório, 
+coordenado por um docente permanente do programa, foram adquiridos 
+alguns equipamentos especiais via edital interno da UDESC para aparelhamento 
+de programas de pós-graduação emergentes. Fisicamente, este laboratório está 
+localizado ao lado dos demais laboratórios de pesquisa, propiciando maior 
+convívio e troca de experiências entre mestrandos e graduandos. 
+c) Laboratory for Research on Visual Applications (LARVA): Este 
+laboratório acomoda recursos físicos para desenvolvimento de pesquisas da 
+linha de Processamento Gráfico. Além dos mestrandos do PPGCA, atuam no 
+LARVA alunos que desenvolvem iniciação científica e trabalhos de conclusão de 
+curso. Especificamente, o LARVA dispõe de Head-Mounted Display (HMD), 
+impressora, mesa digitalizadora e 4 dispositivos Kinect, além dos 13 
+computadores: 9 semelhantes aos disponíveis nos outros laboratórios de 
+pesquisa e outros 4 com placas gráficas de alto desempenho (4 estações 
+gráficas). 
+d) Laboratório de Pesquisas em Visualização e Interação Não 
+Convencionais (VINCO): O VINCO está localizado próximo ao LARVA, sendo um 
+laboratório voltado a investigação de sistemas computacionais, notadamente 
+os com interface gráfica, que envolvam o desenvolvimento e/ou utilização de 
+dispositivos não convencionais, tanto de entrada (como câmeras RGBD, 
+plataformas, sensores de respiração, etc.), quanto de saída (como TVs 3D, 
+óculos para visão imersiva 360, etc.). Desta feita, é um ambiente adequado 
+para experimentação com formas alternativas da área do Processamento 
+Gráfico, como Realidade Virtual, Realidade Aumentada e Jogos Digitais. e 
+destina-se ao estudo de visualizações com interações. O VINCO possui TV 3D 
+(estéreo polarizadas) de 65”.  
+e) Laboratório de Pesquisa em Inteligência Computacional (LABICOM): O 
+LABICOM foi criado em novembro de 2019 e é parte do Grupo de Pesquisa em 
+Computação Cognitiva Aplicada (COCA). Está vinculado ao PPGCA e desenvolve 
+pesquisas teóricas e aplicadas na área de Inteligência Artificial e problemas 
+complexos, destacando-se Aprendizado de Máquina, Inteligência de Enxames e 
+Computação Evolutiva, otimização multi-objetivo, e uso de computação de 
+alto-desempenho. A infraestrutura recebeu novos equipamentos em novembro 
+2019 financiados com recursos FAPESC Edital 05-2018 com parceria 
+Universidade/Empresa e Edital 04-2018 do Programa de Apoio à Pesquisa 
+(PAP/UDESC/FAPESC). O laboratório foi contemplado com Unidade de 
+Processamento Gráfico (GPU) doada pela NVIDIA. As facilidades de 
+infraestrutura do LABICOM são: 08 estações de trabalho, com 06 destas 
+possuindo placas gráficas GeForce RTX 2060; 02 servidores cada um com 1.5 
+terabytes de memória e 80 núcleos; e 01 servidor com 15 núcleos equipado 
+ 
+com GPU GeForce Titan V. O LABICOM visa promover o desenvolvimento de 
+projetos e soluções de inovação tecnológica e científica na área de sistemas 
+inteligentes. 
+f) Laboratório compartilhado para Grupos de Pesquisa: Os alunos do 
+mestrado também contam com outro laboratório com 35 computadores 
+dispostos em ilhas. Este laboratório, majoritariamente utilizado por alunos da 
+graduação, está associado aos seguintes grupos de pesquisa: (i) GPIE - Grupo de 
+Pesquisas em Informática na Educação, (ii) GRADIS - Grupo de Redes e 
+Aplicações Distribuídas, (iii) LAPIS - grupo de pesquisas do Laboratório de 
+Processamento de Imagens e Sistemas, (iv) BDES - grupo de pesquisas em 
+Banco de Dados e Engenharia de Software, (v) COCA - grupo de pesquisas em 
+Computação Cognitiva Aplicada, e (vi) FUNÇÃO - Grupo de Pesquisa em 
+Fundamentos da Computação. 
+ 
+Laboratórios para desenvolvimento de Projetos de Ensino e Extensão: A 
+infraestrutura do Departamento de Ciência da Computação acomoda, ainda, 5 salas 
+equipadas para o desenvolvimento de projetos de extensão e ensino, acessíveis para 
+mestrandos e graduandos. As atividades contemplam: apoio a maratona de 
+programação, desenvolvimento de ferramentas móveis e colaborativas, estudos em 
+xadrez e tecnologias, difusão de hardware e software livre, ensino de algoritmos e 
+lógica de programação, ensino de pensamento computacional, apoio e incentivo da 
+participação feminina na área de ciência e tecnologia, estudos aprofundados sobre 
+ciência e métodos científicos, entre outras ações. 
+ 
+21.3. INFRAESTRUTURA DIDÁTICA 
+O PPGCA está usando o espaço alocado ao DCC, principalmente: 3 salas para 
+ensino, laboratórios de pesquisa, laboratórios multimídia e uma sala para um bolsista 
+de pós-doutoramento. Ainda, a infraestrutura computacional do PPGCA é integrada à 
+infraestrutura do DCC, o que possibilita racionalização de recursos e facilita a interação 
+entre alunos de pós-graduação, alunos de graduação e professores. A rede local possui 
+segmentos de 100 Mbps e 1 Gbps, e o enlace Internet do campus atual é de 400 Mbps, 
+via Centro de Informática e Automação de Santa Catarina (CIASC); um enlace de 60 
+Mbps via Rede Nacional de Pesquisa (RNP) provê redundância. A rede conta com 5 
+servidores internos, unidades de armazenamento e backup, além de um firewall 
+interno. Além disso, os professores e alunos do PPGCA podem utilizar os laboratórios 
+de pesquisa do DCC, bem como uma nuvem computacional (hospedada e gerenciada 
+no LabP2D). 
+ 
+Sobre conectividade, o CCT oferece acesso wireless para professores, 
+servidores e alunos. Em 2017, a rede passou a aceitar autenticação com o sistema 
+World Wide Education Roaming for Reseach and Education (EDUROAM). 
+Especificamente, o LabP2D oferece recursos de comunicação gerenciáveis, equipados 
+com tecnologias Software Defined Networking (SDN) que permitem configurações 
+personalizadas. 
+ 
+21.4 BIBLIOTECA 
+A Biblioteca Universitária (BU) é constituída pelo sistema de Bibliotecas 
+Setoriais e Biblioteca Central, assessorada por um Comitê Consultivo, pelas 
+Coordenações de Apoio das Bibliotecas Setoriais e Central e Chefias de Serviço dos 
+Setores Técnicos, com a seguinte estrutura organizacional: 
+- Coordenação BU; 
+- Comitê Consultivo (Bibliotecários, Técnicos de Nível Superior de 
+Desenvolvimento e/ou Professores); 
+- Bibliotecas Setoriais e Biblioteca Central (Bibliotecários); 
+- Coordenações de Apoio (Bibliotecários); 
+- Setor Técnico de Processamento Técnico/Periódicos; 
+- Setor Técnico de Assistência aos Usuários/Referência; e 
+- Setor Técnico de Desenvolvimento de Coleções/Aquisição. 
+ 
+O PPGCA possui dois representantes (um docente e outro discente) na 
+Comissão Setorial de Seleção de Acervo, colegiado consultivo que prioriza e determina 
+a política de aquisição de acervo para a BU do CCT. Desta forma, os pleitos e 
+prioridades do PPGCA estão sendo devidamente apresentados e defendidos perante a 
+biblioteca. 
+A biblioteca dispõe de um sistema informatizado de busca e empréstimos, além 
+do sistema COMUT, que permite obter cópias de artigos não disponíveis via Internet. 
+Os artigos completos de periódicos estão disponíveis através do Portal CAPES 
+(http://www.periodicos.capes.gov.br/). Além de livros físicos, oferece também acesso 
+a livros on-line (de editoras como IEEE, Springer e Wiley). Os recursos on-line podem 
+ser acessados remotamente por usuários fora do campus usando uma solução de VPN 
+(Virtual Private Network). 
+Com relação a infraestrutura física, a BU do CCT contém: 
+- Área construída total: 1000m2 
+- Área destinada ao acervo: 219m2 
+- Área destinada aos usuários: 615m2 
+A BU do CCT tem uma política de atualização anual de acervo com 
+investimentos que permitem a aquisição de novos títulos ou a compra de novas 
+versões para títulos muito usados. Em 2015 foram adquiridos 50 títulos para o PPGCA. 
+Para 2016 e 2017 houve a ampliação do acervo, abrangendo livros comprados em 
+2015 e novas aquisições solicitadas pelos docentes do programa. Em 2019, 15 livros 
+foram adquiridos pela BU do CCT específicos para Computação, ampliando a oferta 
+necessária para as disciplinas obrigatórias e optativas. 
+ 
+22. EMENTAS E BIBLIOGRAFIAS DAS DISCIPLINAS 
+22.1. NÚCLEO DE DISCIPLINAS OBRIGATÓRIAS COMUNS 
+NOME DA DISCIPLINA: PAA - PROJETO E ANÁLISE DE ALGORITMOS 
+CRÉDITOS: 4 
+ 
+CARGA HORÁRIA: 60 
+EMENTA: 
+Estruturas de dados e seus algoritmos: listas, pilhas, filas, árvores e grafos. Conceitos 
+de complexidade assintótica: notação O, Ω e Θ; indução; somatórios e relação de 
+recorrência. Paradigmas de projeto de algoritmos. Conceitos e classificação de 
+problemas NP-completos. 
+BIBLIOGRAFIA: 
+Bibliografia básica: 
+CORMEN, Thomas H. Algoritmos: teoria e prática. 3. ed. Rio de Janeiro: Elsevier, 2012. 
+CORMEN, Thomas H. Desmistificando algoritmos. Rio de Janeiro: Elsevier, 2014. 
+DASGUPTA, Sanjoy; PAPADIMITRIOU, Christos H; VAZIRANI, Umesh Virkumar. 
+Algoritmos. São Paulo: McGraw-Hill, 2009.1. 
+ 
+Bibliografia complementar: 
+AHO, Alfred V; HOPCROFT, John E.; ULLMAN, Jeffrey D.; Data structures and 
+algorithms. Reading, MA: Addison Wesley, 1987. 
+KNUTH, Donald Ervin. The art of computer programming - Fundamental Algorithms. 
+3nd ed. Massachusetts: Addison Wesley, 2008. 
+LEVITIN, Anany. Introduction to the design & analysis of algorithms. 2nd ed. 
+Pearson/Addison Wesley, 2007. 
+TOSCANI, Laira Vieira; VELOSO, Paulo A. S. Complexidade de algoritmos. 3.ed. Porto 
+Alegre: Bookman, 2012. 
+ZIVIANI, Nivio. Projeto de algoritmos: com implementações em Pascal e C. 3. ed. rev. e 
+ampl. São Paulo: Pioneira Thomson Learning, 2011 
+ 
+22.2. NÚCLEO DE DISCIPLINAS OBRIGATÓRIAS POR ÁREA 
+NOME DA DISCIPLINA: ASC - AVALIAÇÃO DE DESEMPENHO DE SISTEMAS 
+COMPUTACIONAIS 
+CRÉDITOS: 4 
+CARGA HORÁRIA: 60 
+EMENTA: 
+Técnicas de avaliação de desempenho. Métricas de desempenho. Ferramentas e 
+técnicas de medição. Técnicas de análise de dados. Cargas de trabalho. Benchmarks. 
+Projeto de experimentos. Modelagem analítica de desempenho. 
+BIBLIOGRAFIA: 
+Bibliografia Básica: 
+JAIN, R. The Art of Computer Systems Performance Analysis. John Wiley & Sons, 1994.  
+LILJA, D. J. Measuring Computer Performance: A Practitioner’s Guide. Cambridge 
+University Press, 2000. 
+MENASCÉ, D. A.; ALMEIDA, V. A. F. Planejamento de Capacidade para Serviços na Web: 
+Métricas, Modelos e Métodos. Campus, 2002. 
+ 
+ 
+Bibliografia Complementar: 
+GUNTHER, N. J. The Practical Performance Analyst. Authors Choice Press, 2000.  
+LAZOWSKA, E.; ZAHORJAN, J.; GRAHAM, S.; SEVCIK, K. Quantitative Systems 
+Performance: Computer Systems Analysis Using Queueing Network Models. Prentice 
+Hall, 1984.  
+MONTGOMERY, D. C.; RUNGER, G. C. Estatística Aplicada e Probabilidade para 
+Engenheiros,  5a. Ed. Livros Técnicos e Científicos, 2012. 
+Artigos da área. 
+ 
+NOME DA DISCIPLINA: CGA – COMPUTAÇÃO GRÁFICA AVANÇADA 
+CRÉDITOS: 4 
+CARGA HORÁRIA: 60 
+EMENTA: Modelagem Geométrica, Representação de Modelos, Transformações 
+Geométricas e Projeções; Visibilidade; Rendering; Modelos de Iluminação; Imagem e 
+Sistemas de Cores; Transformações em Imagens; Segmentação; Análise de Imagens; 
+Aplicações e Tópicos Avançados. 
+ 
+BIBLIOGRAFIA: 
+Bibliografia Básica 
+FOLEY, James D. Computer Graphics: principles and practice. 2 ed. New York: Addison 
+Wesley, 1996. 1173 p. ISBN 0201121107. Número de Chamada: 001.6443 C738 
+GONZALEZ, Rafael C; WOODS, Richard E. Processamento digital de imagens. 3. ed. São 
+Paulo: Pearson/Prentice Hall, 2010. 624 p. ISBN 9788576054016 (broch.). 
+MORTENSON, Michael E. Geometric modeling. 3rd. ed. New York, NY: Industrial Press 
+Inc., c2006. 505 p. ISBN 0831132981 (enc.). 
+ 
+Bibliografia Complementar 
+CONCI, Aura; AZEVEDO, Eduardo; LETA, Fabiana R. Computação gráfica: teoria e 
+prática. Rio de Janeiro: Campus, c2008. 407 p. ISBN 9788535223293 (broch.). Número 
+de Chamada:006.6 C744c 
+GOLDMAN, Ron. An integrated introduction to computer graphics and geometric 
+modeling. New York, NY: CRC, c2009. 543 p. ISBN 9781439803349 (enc.). 
+MORTENSON, Michael E. Mathematics for computer graphics applications. 2nd ed. 
+New York, NY: Industrial Press, 1999. 354 p. ISBN 083113111X (enc.). 
+OPENGL SuperBible: comprehensive tutorial and reference. 5th. ed. New Jersey: 
+Addison Wesley c2011. 969 p. ISBN 9780321712615 (broch.). 
+PEDRINI, Hélio; SCHWARTZ, William Robson. Análise de imagens digitais: princípios, 
+algoritmos e aplicações. São Paulo: Thomson Learning, c2008. 508 p. ISBN 
+9788522105953 (broch.). 
+WATT, Alan H. 3D computer graphics. 3 ed. London: Addison Wesley, 2000. 570 p. ISBN 
+0201398559 (enc.). 
+ 
+E, artigos científicos atualizados. 
+ 
+NOME DA DISCIPLINA: IHC - INTERAÇÃO HUMANO-COMPUTADOR 
+ 
+CRÉDITOS: 4 
+CARGA HORÁRIA: 60 
+EMENTA: 
+Introdução e Fundamentos. Estudo de aspectos teórico-práticos da interação entre 
+seres humanos e artefatos computacionais. Aspectos éticos e sociais em IHC. Processos 
+de Design. Princípios do Design de Interação. Métodos de Avaliação. Inovações e 
+Tendências. 
+BIBLIOGRAFIA: 
+Bibliografia Básica: 
+ROGERS, Yvonne; SHARP, Helen; PREECE ,Jennifer. Design de interação: além da 
+interação 
+humano-computador, 
+Bookman, 
+3ª. 
+edição, 2013. 
+BARBOSA, S.D.J.; SILVA, B.S. Interação Humano-Computador. Editora Campus-Elsevier, 
+2010. 
+PREECE, Jenifer. Design de Interação: Além da Interação Homem-Computador, 
+Bookman, 
+2005. 
+SHNEIDERMAN, Ben; PLAISANT, Catherine. Designing the User Interface: Strategies for 
+Effective Human-Computer Interaction, 5th edition. Addison-Wesley, 2009. 
+DIX, Alan; FINLAY, Janet, ABOWD, Gregory ; BEALE, Russell. Human-Computer 
+Interaction. 3rd Edition. Prentice Hall, 2004. 
+ROCHA , Heloísa V. da; BARANAUSKAS, Maria C. C. Design e Avaliação de Interfaces 
+Humano 
+Computador, 
+NIED, 
+2003. 
+Disponível 
+em: https://www.nied.unicamp.br/biblioteca/design-e-avaliacao-de-interfaces-
+humano-computador/ 
+NIELSEN, Jakob. Usability Engineering, Academic Press, 1993. 
+CAIRNS, Paul; COX, Anna L. (Ed.). Research methods for human-computer interaction. 
+New York, NY: Cambridge University Press, 2008. 242 p. ISBN 9780521690317 (broch.).  
+LAZAR, Jonathan; FENG, Jinjuan Heidi; HOCHHEISER, Harry. Research methods in 
+human-computer interaction. United Kingdom: Wiley, 24 cm. 426 p. ISBN 
+9780470723371 (broch.).  
+  
+Bibliografia Complementar: 
+CYBIS, W; Betiol, A.; FAUST, R. Ergonomia e Usabilidade: Conhecimentos, Métodos 
+e Aplicações, 
+Novatec, 
+2007. 
+OLSON, Judith S.; KELLOGG, Wendy A. Ways of knowing in HCI. New York, NY: Springer, 
+2014.  
+BOWMAN, D.; KRUIJFF, E.; LAVIOLA, J. J. Jr; POUPYREV, I. 3D User Interfaces: Theory 
+and Practice, 
+Addison-Wesley, 
+2004. 
+LYNCH, 
+P; 
+HORTON, 
+S. 
+Web 
+Style 
+Guide, 
+Yale 
+University, 
+2008. 
+HORTON, S. Access by Design: A Guide to Universal Usability for Web Designers, New 
+Riders Press, 
+2006. 
+NIELSEN, J.; LORANGER, H. Prioritizing Web Usability, New Riders Press, 2007. 
+NIELSEN, 
+J. 
+Projetando 
+websites, 
+Campus, 
+2000. 
+PREECE, J., ROGERS, Y., SHARP, H., BENYON, D., Holland, S. & CAREY, T. Human-
+Computer Interaction. Wokingham, UK: Addison-Wesley 2002.   
+BARNUM, Carol M. Usability testing essentials: ready, set-- test.Amsterdam: Morgan 
+Kaufmann Publishers, c2011. 382 p. (Human-Computer Interaction / Web Design.). 
+ 
+ISBN 9780123750921(broch,).    
+DUMAS, Joseph S.; LORING, Beth A. Moderating usability tests:principles and practice 
+for interacting . Amsterdam: Elsevier, 2008.185 p. ISBN 978-0-12-373933-9 (broch    
+MAYHEW, Deborah J. The Usability engineering lifecycle: a practitioner's handbook for 
+user interface design . Califórnia: Morgan Kaufmann, c1999. 542 p. (The Morgan 
+Kaufmann series in interactive technologies.). ISBN 9781558605619 (broch.).  
+RUBIN, Jeffrey. Handbook of Usability Testing: How to Plan, Design, and Conduct 
+Effective Tests. New York: Wiley, 1994   
+RUBIN, Jeffrey; CHISNELL, Dana. Handbook of usability testing : how to plan, design, 
+and conduct effective tests. 2. ed. Indianapolis, IN: Wiley, c2008. 348 p. ISBN 
+9780470185483 (broch.).  
+MACKENZIE, I. Scott. Human-computer interaction: an empirical research perspective. 
+Amsterdam: Morgan Kaufmann, 2013.  
+COURAGE, Catherine; BAXTER, Kathleen A.; CAINE, Kelly. Understanding your users: a 
+practical guide to user research methods. 2nd ed. Amsterdam: Morgan Kaufmann, 
+2015. 
+TULLIS, Tom; ALBERT, Bill. Measuring the user experience: collecting, analyzing, and 
+presenting usability metrics. 2nd ed. Boston, MA: Morgan Kaufmann, c2013.  
+TULLIS, Tom; ALBERT, Bill. Measuring the user experience: collecting, analyzing, and 
+presenting usability metrics. Boston, MA: Morgan Kaufmann, c2008. 
+KUNIAVSKY, Mike; GOODMAN, Elizabeth; MOED, Andrea. Observing the user 
+experience: a practitioner's guide to user research. 2nd ed. Amsterdam: Morgan 
+Kaufmann, c2012 
+Artigos dos principais periódicos e conferências internacionais e nacionais de IHC. 
+ 
+NOME DA DISCIPLINA: MEP - METODOLOGIA DA PESQUISA 
+CRÉDITOS: 4 
+CARGA HORÁRIA: 60 
+EMENTA: 
+Normatização do Documento Científico. O Método Científico.  Classificação da Ciência 
+e da Pesquisa. Pesquisa Bibliográfica. Planejamento da Pesquisa. Produção Científica e 
+Escrita de Artigo Científico. Estrutura de uma Monografia. Preparação de Apresentação 
+Oral. Seminários. 
+BIBLIOGRAFIA: 
+Bibliografia Básica: 
+MARCONI, Maria de Andrade; LAKATOS, Eva Maria. Fundamentos da Metodologia 
+Científica. São Paulo : Atlas, 2005. 315 p. 6a. edição. 
+VOLPATO, Gilson Luiz. Pérolas da Redação Científica. 1ª Ed. São Paulo. Cultura 
+Acadêmica Editora. 2010.189 pgs. 
+WAZLAWICK, Raul Sidnei. Metodologia de Pesquisa para Ciência da Computação.Rio de 
+Janeiro: Elsevier, 2008. ISBN 978-85-352-3522-7. 159 pgs. 
+  
+Bibliografia Complementar: 
+Projeto do Curso de Pós-Graduação em Nível de Mestrado em Computação Aplicada. 
+APPOLINÁRIO, Fábio. Metodologia da ciência: filosofia e prática da pesquisa. São Paulo: 
+Cengage Learning, 2012. 2a ed.  
+ 
+DEMO, P. (2009) Pesquisa: Princípio Científico e Educativo.  13a. ed. São Paulo : Cortez, 
+2009, v.14 (Col. Biblioteca da Educação - Série 1). 120 p.  
+  
+ 
+  
+NOME DA DISCIPLINA: PPA – PROGRAMAÇÃO PARALELA AVANÇADA 
+CRÉDITOS: 4 
+CARGA HORÁRIA: 60 
+EMENTA: Conceitos de sistema de computação paralela, modelos de computação 
+(sequencial e paralela), noções de complexidade e escalonamento de algoritmos 
+paralelos, implementação de algoritmos paralelos, avaliação qualitativa e quantitativa 
+de algoritmos paralelos. 
+BIBLIOGRAFIA: 
+Bibliografia Básica: 
+FOSTER, I. Designing and Building Parallel Programs. Addison-Wesley, 1995. 
+LIN, Yun Calvin; SNYDER, Lawrence. Principles of parallel programming. Massachusetts: 
+Pearson, c2009. 338 p. ISBN 9780321487902 (enc.). 
+ROOSTA, Seyed H. Parallel processing and parallel algorithms: theory and computation. 
+New York, NY: Springer, c2000. 566 p. ISBN 0387987169 (enc.). 
+ 
+Bibliografia Complementar:  
+JAJA, J. An Introduction to Parallel Algorithms. Addison-Wesley, 1992. 
+LEWIS and EL-REWINI. Task Scheduling in Parallel and Distributed Systems. Prentice-
+Hall. 
+MATLOFF, N. Programming on Parallel Machines, Open source textbook, 2017. 
+Disponível 
+em 
+http://heather.cs.ucdavis.edu/~matloff/158/PLN/ParProcBookECS158S16.pdf. 
+SARBAZI-AZAD, Hamid; ZOMAYA, Albert Y. Large Scale Network-Centric Distributed 
+Systems. Hoboken, New Jersey: Wiley, c2014. online resource (Iviii, 70 (Wiley Series on 
+Parallel and Distributed Computing). ISBN 9781118640708 (eletrônico).  Disponível em: 
+<http://ieeexplore.ieee.org/xpl/bkabstractplus.jsp?bkn=6670810 > 
+Artigos, dissertações, teses e documentações técnicas recentes. 
+ 
+NOME DA DISCIPLINA: REC - REDES DE COMPUTADORES 
+CRÉDITOS: 4 
+CARGA HORÁRIA: 60 
+EMENTA: 
+Introdução a redes de computadores. Arquiteturas, protocolos e serviços de redes. O 
+modelo de referência OSI. Camada física. Camada de enlace. Camada de rede. Camada 
+de transporte. Camadas de sessão, apresentação e aplicação. 
+BIBLIOGRAFIA: 
+Bibliografia Básica: 
+KUROSE, J. F.; ROSS, K. W. Redes de Computadores e a Internet, 6a Edição. Pearson, 
+2013.  
+ 
+PETERSON, L. L.; DAVIE, B. S. Computer Networks: A Systems Approach, 5th Ed. Morgan 
+Kaufmann, 2011.  
+TANENBAUM, A. S. Redes de Computadores, 5a Edição. Pearson, 2011. 
+ 
+Bibliografia Complementar: 
+PERLMAN, R. Interconnections: Bridges, Routers, Switches, and Internetworking, 2nd 
+Ed. Addison-Wesley, 1998.  
+STEVENS, W. R. TCP/IP Illustrated, Vol. 1: The Protocols. Addison-Wesley, 1994.  
+STEVENS, W. R.; FENNER, B.; RUDOFF, A. Programação de Rede UNIX, Vol. 1: API para 
+Soquetes de Rede. Bookman, 2005.  
+Artigos da área 
+ 
+NOME DA DISCIPLINA: SDA - SISTEMAS DISTRIBUÍDOS AVANÇADOS 
+CRÉDITOS: 4 
+CARGA HORÁRIA: 60 
+EMENTA: 
+Caracterização de sistemas distribuídos. Modelos de sistema. Comunicação 
+interprocessos. Serviços de nomes. Algoritmos distribuídos. Estudos de caso. 
+BIBLIOGRAFIA: 
+Bibliografia Básica: 
+COULOURIS, G.; DOLLIMORE, J.; KINDBERG, T. Sistemas Distribuídos: Conceitos e 
+Projeto, 4a Edição. Bookman, 2007.  
+TANENBAUM, A. S.; VAN STEEN, M. Sistemas Distribuídos: Princípios e Paradigmas, 2a 
+Edição. Pearson, 2007. 
+ 
+Bibliografia Complementar: 
+ATTIYA, H.; WELCH, J. D. Distributed Computing: Fundamentals, Simulation, and 
+Advanced Topics, 2nd Ed. John Wiley&Sons, 2004.  
+FOSTER, I.; KESSELMAN, C. (Eds.) The Grid: Blueprint for a Computing Infrastructure, 
+2nd Ed. Morgan Kaufmann, 2003.  
+KSHEMKALYANI, A. D.; SINGHAL, M. Distributed Computing: Principles, Algorithms, and 
+Systems. Cambridge University Press, 2008.  
+MULLENDER, S. (Ed.) Distributed Systems, 2nd Ed. Addison Wesley, 1994.  
+Artigos da área 
+ 
+ 
+NOME DA DISCIPLINA: SI – SISTEMAS INTELIGENTES 
+CRÉDITOS: 4 
+CARGA HORÁRIA: 60 
+EMENTA: Classes de problemas e características: P vs NP; domínios; multimodalidade; 
+multiobjetivos; dinâmicos. Aspectos teóricos e práticos de Aprendizado de Máquina: 
+representação do conhecimento; tipos de aprendizado; classes de tarefas; técnicas de 
+aprendizado; métricas de desempenho. Aspectos teóricos e práticos no uso de 
+ 
+heurísticas e meta-heurísticas: tipos de abordagens; algoritmos bio-inspirados; 
+operadores locais e de vizinhança; algoritmos híbridos; análise de desempenho. 
+ 
+BIBLIOGRAFIA: 
+Bibliografia Básica:  
+LINDEN, Ricardo. Algoritmos genéticos. 3. ed. Rio de Janeiro: Ciência Moderna, 
+2012. 475 p. ISBN 9788539901951 (broch.).  
+WITTEN, I. H; FRANK, Eibe. Data mining: practical machine learning tools and 
+techniques. 2nd ed. Califórnia: Morgan Kaufmann, 2007. 525 p. ISBN 0120884070 
+(broch.).  
+SIPSER, Michael. Introdução à teoria da computação. São Paulo: Thomson Learning, 
+2007. 459 p. ISBN 9788522104994 (broch.).  
+ 
+Bibliografia Complementar: 
+GOLDBERG, David E. Genetic algorithms in search, optimization, and machine 
+learning. Boston, MA: Addison Wesley, 2012. 412 p. ISBN 9780201157673 (enc.).  
+RUSSELL, Stuart J; NORVIG, Peter. Inteligência artificial. Rio de Janeiro: Elsevier, c2004. 
+1021 p. ISBN 8535211772 (broch.).  
+FACELI, Katti. Inteligência artificial: uma abordagem de aprendizado de máquina. Rio de 
+Janeiro: LTC, 2011. 378 p. ISBN 9788521618805(broch.).  
+MARSLAND, Stephen. Machine Learning: an algorithmic perspective. Boca Raton, Fl: 
+CRC Press, 2009. 390 p.  
+COELLO COELLO, Carlos A; LAMONT, Gary B. Applications of multi-objective 
+evolutionary algorithms. New Jersey: World Scientific, c2004. 761 p. (Advances in 
+natural computation ; 1.). ISBN 9812561064 (enc.).  
+EIBEN, Agoston E; SMITH, J. E. Introduction to evolutionary computing. New York, NY: 
+Springer, c2003. 299 p. (Natural computing series.). ISBN 3540401849 (enc.).  
+GOLDBARG, Marco Cesar; LUNA, Henrique Pacca L; GOLDBARG, Elizabeth. Otimização 
+combinatória e meta-heurísticas: algoritmos e aplicações. Rio de Janeiro: Elsevier, 
+2016. 392 p. ISBN 9788535278125  
+ 
+22.3. NÚCLEO DE DISCIPLINAS ELETIVAS 
+NOME DA DISCIPLINA: ACA - ACEITAÇÃO DE ARTIGO 
+CRÉDITOS: 4 
+CARGA HORÁRIA:  60 
+EMENTA: 
+Aceitação de artigo em evento ou revista científica da área a serem discriminadas pelo 
+Colegiado do PPGCA. 
+BIBLIOGRAFIA: 
+Não existente 
+ 
+ 
+NOME DA DISCIPLINA: TEMTC - TÓPICOS ESPECIAIS EM METODOLOGIA E TÉCNICAS 
+DE COMPUTAÇÃO 
+CRÉDITOS: 2, 3 e/ou 4 
+CARGA HORÁRIA: 30, 45 e/ou 60 
+EMENTA: 
+Esta disciplina tem por objetivo complementar a formação dos alunos por meio da 
+discussão de temas recentes na área de Metodologia e Técnicas de Computação. Cada 
+vez que esta disciplina for ministrada, o professor deverá apresentar uma ementa com 
+a bibliografia a ser adotada e critérios de avaliação ao CPPGCA para exame e 
+aprovação. Pode haver vários oferecimentos simultâneos da disciplina, com temas 
+específicos para cada oferecimento.  
+BIBLIOGRAFIA: 
+Cada vez que esta disciplina for ministrada, o professor deverá apresentar a 
+bibliografia a ser adotada ao CPPGCA para exame e aprovação. 
+  
+NOME DA DISCIPLINA: TESC - TÓPICOS ESPECIAIS EM SISTEMAS DE COMPUTAÇÃO 
+CRÉDITOS: 2, 3 e/ou 4 
+CARGA HORÁRIA: 30, 45 e/ou 60 
+EMENTA: 
+Esta disciplina tem por objetivo complementar a formação dos alunos por meio da 
+discussão de temas recentes na área de Sistemas de Computação. Cada vez que esta 
+disciplina for ministrada, o professor deverá apresentar uma ementa com a bibliografia 
+a ser adotada e critérios de avaliação ao CPPGCA para exame e aprovação. Pode haver 
+vários oferecimentos simultâneos da disciplina, com temas específicos para cada 
+oferecimento. 
+BIBLIOGRAFIA: 
+Cada vez que esta disciplina for ministrada, o professor deverá apresentar a bibliografia 
+a ser adotada ao CPPGCA para exame e aprovação. 
+   
+ 

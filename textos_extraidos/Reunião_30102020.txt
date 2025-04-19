@@ -1,0 +1,364 @@
+ 
+ 
+Ata Nº 091/2020 
+ATA DA REUNIÃO Nº 091/2020 DO COLEGIADO DO PROGRAMA DE PÓS-GRADUAÇÃO EM COMPUTAÇÃO 
+1 
+APLICADA 
+2 
+ 
+3 
+Ao trigésimo dia do mês de outubro de dois mil e vinte, às quatorze horas, reuniu-se por videoconferência 
+4 
+(aplicativo Teams), conforme Resolução n° 14/2020 do CONSUNI, o Colegiado do Programa de Pós-
+5 
+Graduação em Computação Aplicada, conforme convocação ordinária n° 10/2020. Presidiu a reunião o Prof. 
+6 
+Guilherme Piêgas Koslovski, coordenador do Programa de Pós-Graduação em Computação Aplicada, e 
+7 
+iniciou com a presença dos professores representantes docentes, Fabiano Baldo, Maurício Aronne Pillon, 
+8 
+Rafael Rodrigues ObelIheiro (suplente), Roberto Silvio Ubertino Rosso Junior, Marcelo da Silva Hounsell 
+9 
+(suplente), a representante técnica Tania Regina de Campos Loch e os representantes discente Taynara 
+10 
+Cerigueli Dutra (titular) e João Henrique Faes Battisti (suplente). Se fizeram presentes os docentes, 
+11 
+Avanilde Kemczinski, Adriano Fiorese, Charles Christian Miers, Janine Kniess e Rafael Stubs Parpinelli. Em 
+12 
+expedientes: O presidente agradeceu a presença de todos e colocou em aprovação a Ata 90/2020.  Em 
+13 
+discussão. Prof. Guilherme informou que houve uma alteração na ata referente a inclusão do Item 3.1. 
+14 
+Solicitação de coorientador Prof. Eleandro Maschio Krynski para aluna Taynara Cerigueli Dutra, que por não 
+15 
+ter sido solicitado destaque foi aprovado por unanimidade o voto do relator favorável a aprovação. Em 
+16 
+aprovação. Foi aprovada a ata por unanimidade. Em expedientes: Prof. Guilherme comentou que 
+17 
+precisamos conversar sobre o próximo semestre no sentido de calendário, como irá acontecer. 
+18 
+Casualmente hoje teremos o estabelecimento da comissão do próximo processo seletivo onde o Prof. 
+19 
+Rafael Parpinelli é um dos membros e já tem informações das possíveis datas. O calendário foi votado pelo 
+20 
+comitê e será aprovado pelo CONSUNI. O que acontece é que no próximo semestre teremos uma 
+21 
+particularidade, vamos poder escolher o início do semestre letivo. O que marcará o início do semestre será 
+22 
+o oferecimento da primeira disciplina.  A PROPPG aceita flexibilização no oferecimento de disciplinas, que 
+23 
+poderão ser condensadas em um menor período de tempo, não necessariamente no semestre inteiro. Outro 
+24 
+item é sobre o edital para coordenador. Preparamos a solicitação em Setembro, mas a direção geral estava 
+25 
+verificando como seria a votação: presencial ou online. A UDESC está aguardando aprovação para 
+26 
+utilização no nosso tipo de eleição. O próximo coordenador deverá ficar por três anos. Embora tenhamos 
+27 
+alterado o regimento geral de pós-graduação (aprovamos dois anos), o regimento geral da UDESC ainda 
+28 
+apresenta três anos. Após, comentou sobre o plano de curso que estava com Prof. Lourival para análise 
+29 
+técnica e que encontrou uma pequena diferença de nomenclatura. Quando emitimos colocamos projeto, 
+30 
+entretanto pela nova resolução o nome correto é plano. A diligência já foi atendida e o plano será colocado 
+31 
+em pauta na próxima reunião da Câmara de Pesquisa e Pós-Graduação. Quanto a disciplina de Projeto e 
+32 
+Análise de Algoritmos (PAA), prof. Guilherme informou que recebeu e-mail do prof. Maurício onde o mesmo 
+33 
+manifestou interesse em assumir compromisso de ministrá-la pelos próximos dois anos. Se concordarem, o 
+34 
+professor gostaria do comprometimento por todos do pleno que tenha prioridade em ministrar PAA pelos 
+35 
+próximos dois anos e prioridade de oferta de disciplina de sua linha pelo mesmo período. Como não ocorreu 
+36 
+nenhuma manifestação em contrário, registra-se na presente ata o compromisso estabelecido com o prof. 
+37 
+Maurício. Quanto as disciplinas para o próximo semestre letivo informaram que já recebeu indicações e irá 
+38 
+enviar e-mail solicitando novamente. Solicitou incluir o item 3.1 Banca Examinadora da apresentação da 
+39 
+dissertação da aluna Aline da Silva Moreira. Ao que todos concordaram. Prof. André Tavares compareceu a 
+40 
+reunião neste momento. Prof. Marcelo Hounsell solicitou urgência para o item 3.9 Relatório e parecer da 
+41 
+comissão de credenciamento e recredenciamento. Em votação todos concordaram. Ordem do dia: Prof. 
+42 
+Guilherme solicitou inverter a ordem e ler todas as solicitações de bancas examinadoras e ata constante 
+43 
+dos itens 3.1, 3.2, 3.6, 3.7 e 3.11. Todos concordaram. Item 3.1 Processo n° 31217/2020 (processo digital). 
+44 
+Interessado: Mestrando Gabriel Guebarra Conejo. Assunto: Homologação da aprovação em Ad Referendum 
+45 
+da banca de qualificação. Foi homologado a aprovação em Ad Referendum. Item 3.2 Processo n° 
+46 
+30724/2020. Interessado: Mestrando Eduardo Augusto Klosowski. Assunto: Exame de qualificação. Foi 
+47 
+aprovado ata do exame de qualificação. Item 3.6 Banca examinadora da apresentação da dissertação 
+48 
+ 
+ 
+Ata Nº 091/2020 
+do aluno Adnei Willian Donatti. Foi aprovado a composição da banca composta pelos doutores: Charles 
+49 
+Christian Miers - CCT/UDESC (presidente/orientador), Maurício Aronne Pillon – CCT/UDESC, Tereza Cristina 
+50 
+Melo de Brito Carvalho - USP e Fernando Frota Redigolo - USP (suplente). Item 3.7 Banca examinadora da 
+51 
+apresentação da dissertação do aluno Diego Sauter Possamai. Foi aprovado a composição da banca 
+52 
+composta pelos doutores: Marcelo da Silva Hounsell - CCT/UDESC (presidente/orientador), Avanilde 
+53 
+Kemczinski – CCT/UDESC, Frederick Van Amstel - UTFPR e André Tavares da Silva - CCT/UDESC (suplente). 
+54 
+Item 3.11 Banca examinadora da apresentação da dissertação da aluna Aline da Silva Moreira. Foi 
+55 
+aprovado a composição da banca composta pelos doutores: Maurício Aronne Pillon - CCT/UDES 
+56 
+(presidente/orientador), Charles Christian Miers - CCT/UDESC, Mario Antonio Ribeiro Dantas - UFJF e 
+57 
+Guilherme Piêgas Koslovski - CCT/UDESC (suplente). Prof. Guilherme salientou que quanto a gravação das 
+58 
+qualificações e defesas o orientador é quem deve arquivar o vídeo. Item 3.3 Processo n ° 34537/2020 
+59 
+(processo digital). Interessado: Mestrado em Computação Aplicada. Assunto: Relatório Final PROMOP - 
+60 
+período 01/08/2019 a 31/10/2020. Relator: Prof. Fabiano Baldo. O relator leu sua análise e parecer. Em 
+61 
+discussão. Em aprovação. Foi aprovado por unanimidade o voto do relator favorável à aprovação. Item 3.4 
+62 
+Processo n° 33765/2020 (processo digital). Interessado: Mestrado em Computação Aplicada. Assunto: 
+63 
+Processo Seletivo do PROMOP - período 01.11.2020 a 31.07.2021. Relator: Prof. Roberto Silvio Ubertino 
+64 
+Rosso Junior. O relator leu sua análise e parecer. Em discussão. Em aprovação. Foi aprovado por 
+65 
+unanimidade o voto do relator favorável à aprovação. Item 3.5 Processo n° 28066/2020 (processo digital). 
+66 
+Interessado: Mestrando Marco Antonio Marques. Assunto: Validação de disciplina. Relator: Prof. Maurício 
+67 
+Aronne Pillon. O relator leu sua análise e parecer. Em discussão. Em aprovação. Foi aprovado por 
+68 
+unanimidade o voto do relator favorável à aprovação da disciplina “Transformação Digital e Modelos Digitais 
+69 
+de Negócios” com 60h/a cursada da USP. Item 3.8 Comissão para o Processo Seletivo 2021/1. O 
+70 
+presidente explanou que esta comissão foi constituída na última semana tendo como membros Rafael 
+71 
+Parpinelli, Janine Kniess e Rafael Obelheiro. Para esclarecer como surgiram estes nomes, explicou que a 
+72 
+Tania emitiu uma planilha onde constam todas a comissões já realizadas e já estamos utilizando. Prof. 
+73 
+Rafael Parpinelli agradeceu a Tania por ter enviado os editais anteriores que os ajudou muito. Após, 
+74 
+questionou como emitir com linha antiga ou nova. Fez alguns comentários e mostrou o calendário e os 
+75 
+pontos que serão alterados. Prof. Guilherme solicitou aprovar o edital em novembro quando o plano e 
+76 
+calendário já estarão aprovados. Prof. Rafael Parpinelli solicitou para que os docentes encaminhem 
+77 
+intenção de número de vagas disponíveis. Item 3.9 34153/2020 (documento digital).  Relatório e parecer 
+78 
+elaborados 
+pela 
+Comissão 
+de 
+Credenciamento, 
+Descredenciamento, 
+Recredenciamento, 
+79 
+Acompanhamento e Autoavaliação do PPGCA.  O presidente deixou claro que este item foi convocado 
+80 
+com voz e voto para todos os membros do PPGCA e para que ele seja aprovado precisa de 2/3 dos votos 
+81 
+de todos, assim como a votação para o planejamento estratégico.  Esta comissão é formada pelos docentes 
+82 
+Marcelo, Maurício, Avanilde e Isabela. Prof. Marcelo informou que como o relatório é muito extenso faria um 
+83 
+breve resumo do relatório e depois os demais membros poderiam complementar se achassem necessário. 
+84 
+Informou que a comissão se reuniu para analisar os dados e seguiu a resolução que está vigente, usaram o 
+85 
+mesmo script, nenhum procedimento novo foi acrescentado, nenhuma métrica nova. Os docentes tiveram 
+86 
+um período para poder manifestar suas produções e passar suas informações para o coordenador. Foi feita 
+87 
+análise do TOP5, TOP10 e TOP 1 revista 3 eventos utilizando o Qualis vigente oficialmente (2016) devido a 
+88 
+impossibilidade oficial de se usar o novo (provisório). Estes valores foram plotados gerando as curvas e 
+89 
+desta vez percebeu-se que houve um ponto de inflexão bastante evidente nos gráficos. A comissão chegou 
+90 
+a evidência que há dois docentes que estão bem abaixo da produtividade dos outros colegas considerando 
+91 
+estes três indicadores. Para registrar, explicou que também foi preparado e analisado o gráfico com o Top 
+92 
+CAPES, que coincidiu com este número de dois docentes. Como análise a comissão constatou que os 
+93 
+professores André e Avanilde poderiam estar voltando como professores permanentes do programa. 
+94 
+Começamos a analisar outros tipos de informações, denominadas zona cinza, e percebemos que  Prof. 
+95 
+ 
+ 
+Ata Nº 091/2020 
+Cristiano não possui orientandos, não ministrou disciplinas em todo o ano, não participou de comissões e 
+96 
+reuniões do colegiado. Profa. Carla tem orientações e tem participado esporadicamente das reuniões. A 
+97 
+comissão, baseada nesta configuração, sugeriu a seguinte configuração para 2021. Docentes permanentes: 
+98 
+Adriano Fiorese, André Tavares da Silva, Avanilde Kemczinski, Charles Christian Miers, Fabiano Baldo, 
+99 
+Guilherme Piêgas Koslovski, Isabela Gasparini, Janine Kniess, Marcelo da Silva Hounsell, Maurício Aronne 
+100 
+Pillon, Rafael Stubs Parpinelli, Rafael Rodrigues Obelheiro e Roberto Silvio Ubertino Rosso Junior. 
+101 
+Docentes colaboradores: Carla Diacui Medeiros Berkenbrock. Docentes descredenciados: Cristiano Damiani 
+102 
+Vasconcellos. Prof. Rafael Parpinelli questionou para quem é endereçado este documento. Indicou que fez 
+103 
+uma leitura e não achou autoexplicativo e desconhece sua utilidade. Prof. Guilherme informou que solicitou 
+104 
+para que o relatório fosse registrado em um documento digital com todos os dados e endereçado para os 
+105 
+docentes tomarem conhecimento. Esta planilha é sempre atualizada e a que está no sistema já evoluiu, 
+106 
+então solicitei para que registrassem como foram analisados os dados. Caso alguém tenha interesse, a 
+107 
+comissão poderá enviar por e-mail. Profa. Janine questionou se a comissão decidiu descredenciar prof. 
+108 
+Cristiano. Prof. Marcelo informou que a comissão não descredencia, ela sugere ao colegiado para que os 
+109 
+membros decidam. Estamos analisando e apresentando o que foi encontrado. Prof. Roberto Rosso 
+110 
+comentou que entende que o processo de credenciamento e recredenciamento é feito para dar uma 
+111 
+produtividade ao grupo. Profa. Isabela compareceu a reunião neste momento. Prof. Adriano manifestou-se 
+112 
+no sentido de esclarecer o número mágico de 13 permanentes, sendo que 10 era o entendimento que seria 
+113 
+melhor. Teria sentido este número? Gostaria de esclarecimento. Prof. Marcelo explanou que 10 está no 
+114 
+comitê de área ou APCN para abrir um programa.  Prof. Marcelo falou sobre o porquê a comissão está 
+115 
+sugerindo descredenciar prof. Cristiano. A CAPES exigiu a comissão de autoavaliação e temos que realizar 
+116 
+esta autoavaliação. Prof. Guilherme explicou que no SUCUPIRA está registrado tudo o que aconteceu com 
+117 
+o programa. Prof. André comentou que o processo do ano passado foi muito complicado. Prof. Guilherme 
+118 
+incitou que referente aos professores colaboradores, ele e profa. Isabela fizeram um questionamento ao 
+119 
+comitê de área, que informou que os docentes não enquadrados como permanentes nos requisitos 
+120 
+definidos, são registrados como colaboradores. Prof. Marcelo fez algumas observações complementares 
+121 
+referente CAPES.  Prof. Charles Miers ressaltou dois pontos importantes quantitativo e qualitativo. Ninguém 
+122 
+criticou o instrumento. Temos um critério técnico e prof. Cristiano deveria estar aqui para discutir. 
+123 
+Comunicou que endossa o relatório. Após discussão o presidente colocou em votação o relatório da 
+124 
+comissão. Foi aprovado com treze votos a favor e dois contrários. Item 3.10 Discussão sobre o 
+125 
+planejamento estratégico. O presidente colocou o planejamento estratégico em tela. Prof. Marcelo sugeriu 
+126 
+que se de um período para leitura e após convocar uma reunião extraordinária só para o planejamento. 
+127 
+Prof. Guilherme concordou e registrou que até o dia 09/11 manifestem-se para uma primeira rodada de 
+128 
+metas. Salientou que necessita da ajuda de todos. Em comunicações pessoais: Prof. Marcelo comentou que 
+129 
+fez três apresentações para empresas, uma em conjunto com prof. Guilherme. Prof. Rafael Parpinelli 
+130 
+comentou sobre problemas com as disciplinas no Moodle. Todos os alunos perderam o conteúdo e gostaria 
+131 
+de saber quem poderia lhe ajudar. Prof. Guilherme sugeriu procurar Fabiana do suporte técnico. Quanto ao 
+132 
+estágio docência na pandemia questionou se algum orientando já realizou. Prof. Guilherme explicou como 
+133 
+seu orientando está realizando. Prof. Charles explanou que em novembro estará realizando a ERRC, pede 
+134 
+apoio de todos. Detalhou que 35 artigos foram aceitos e a maior quantidade foi de pós-graduação sendo 
+135 
+90% da UDESC. Prof. Rafael Obelheiro questionou se os docentes têm visto as comunicações da 
+136 
+assessoria de comunicação. Do pessoal da ESAG há notícias diárias. A CAPES valoriza a transparência e 
+137 
+inserção social. Prof. Rafael Parpinelli retirou-se da reunião neste momento. Prof. Marcelo lembrou que já 
+138 
+tem o Edital PAP da FAPESC olhem na página. Nada mais havendo a tratar, deu-se por encerrada a 
+139 
+reunião, da qual eu, Tania Regina de Campos Loch, secretária ad-hoc, lavrei a presente ata que, após lida e 
+140 
+aprovada, vai assinada por mim e por todos os presentes. 
+141 
+ 
+142 
+ 
+ 
+Ata Nº 091/2020 
+   
+________________________ 
+ 
+_______________________ 
+ 
+_________________________ 
+Guilherme Piêgas Koslovski 
+Coordenador do PPGCA 
+ 
+________________________ 
+Fabiano Baldo 
+titular 
+ 
+_______________________ 
+Roberto Silvio U. Rosso Jr. 
+titular 
+ 
+_________________________ 
+Marcelo da Silva Hounsell   
+suplente 
+ 
+________________________ 
+Maurício Aronne Pillon 
+titular 
+ 
+________________________ 
+Rafael Rodrigues Obelheiro 
+suplente 
+ 
+_________________________ 
+Adriano Fiorese 
+docente 
+ 
+_________________________ 
+Avanilde Kemczinski 
+docente 
+ 
+_______________________ 
+Charles Christian Miers 
+docente 
+ 
+_________________________ 
+Janine Kniess 
+Docente 
+ 
+_________________________ 
+Isabela Gasparini 
+suplente 
+ 
+_______________________ 
+Rafael Stubs Parpinelli 
+docente 
+ 
+ 
+Tania Regina de Campos Loch 
+técnica 
+ 
+Taynara Cerigueli Dutra 
+discente 
+ 
+ 
+143 
