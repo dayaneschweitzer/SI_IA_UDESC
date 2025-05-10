@@ -12,8 +12,13 @@ def gerar_embeddings(diretorio_textos="textos_extraidos", nome_index="index_fais
 
     for nome_arquivo in os.listdir(diretorio_textos):
         if nome_arquivo.endswith(".txt"):
-            with open(os.path.join(diretorio_textos, nome_arquivo), "r", encoding="utf-8") as f:
-                textos.append(f.read())
+            caminho = os.path.join(diretorio_textos, nome_arquivo)
+            with open(caminho, "r", encoding="utf-8") as f:
+                conteudo = f.read()
+                # Inclui o nome do arquivo como parte do texto para o embedding
+                nome_no_texto = nome_arquivo.replace("_", " ").replace(".txt", "")
+                texto_com_nome = nome_no_texto + " " + conteudo
+                textos.append(texto_com_nome)
             nomes.append(nome_arquivo)
 
     embeddings = modelo.encode(textos, convert_to_numpy=True)

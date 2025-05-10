@@ -1,9 +1,9 @@
 import sys
 from extrator import processar_pdfs
 from gerar_embeddings import gerar_embeddings
-from buscar import busca_semantica
+from buscar import busca_semantica, busca_literal_em_todos
 
-# Ignorar PDFs específicos (os mesmos da sua configuração anterior)
+# Ignorar PDFs específicos
 PDFS_IGNORAR = [
     "Documento_de_área_2019.pdf",
     "Documento_de_área_2017.pdf",
@@ -15,7 +15,7 @@ def executar_pipeline():
     print("1. Extraindo e dividindo documentos em chunks...")
     erros = processar_pdfs(pasta_pdfs="portarias", ignorar=PDFS_IGNORAR)
     if erros:
-        print("\nAlguns arquivos não puderam ser processados:")
+        print("\nArquivos com erro de leitura:")
         for e in erros:
             print(f"- {e}")
     else:
@@ -28,11 +28,21 @@ def loop_interativo():
     print("\n3. Busca Interativa por Perguntas")
     while True:
         pergunta = input("\nDigite sua pergunta (ou 'sair' para encerrar): ").strip()
+        if not pergunta:
+            print("Por favor, digite uma pergunta válida.")
+            continue
         if pergunta.lower() in ["sair", "exit", "quit"]:
             print("Encerrando a busca.")
             break
 
-        resultados = busca_semantica(pergunta, top_k=3)
+        # Busca por nome do arquivo primeiro
+        resultados = busca_literal_em_todos(pergunta)
+
+
+        # Se ainda não encontrar, tenta semântica
+        if not resultados:
+            resultados = busca_semantica(pergunta, top_k=3)
+
         if not resultados:
             print("Nenhum resultado encontrado.")
         else:
