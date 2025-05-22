@@ -9,7 +9,7 @@ import textwrap
 from unidecode import unidecode
 from difflib import SequenceMatcher
 
-modelo = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+modelo = SentenceTransformer('all-mpnet-base-v2')
 def carregar_index():
     return faiss.read_index("index_faiss.idx")
 
@@ -27,7 +27,7 @@ def normalizar(texto):
     return texto.strip()
 
 def encontrar_link(nome_arquivo):
-    nome_base = re.sub(r'_chunk\d+\.txt$', '', nome_arquivo) + ".txt"  # adiciona .txt
+    nome_base = re.sub(r'_chunk\d+\.txt$', '', nome_arquivo) + ".txt"
     chave_normalizada = normalizar(nome_base)
     
     for chave in mapeamento_links:
@@ -41,18 +41,22 @@ def encontrar_link(nome_arquivo):
     print(f"[DEBUG] Não encontrou link para '{nome_arquivo}' (normalizado: {chave_normalizada})")
     return None
 
-def busca_semantica(pergunta, top_k=3):
+def busca_semantica(pergunta, top_k=3, limiar=0.75):
     index = carregar_index()
-    embedding = modelo.encode([pergunta], convert_to_numpy=True)
+    embedding = modelo.encode([pergunta], convert_to_numpy=True, normalize_embeddings=True)
     distancias, indices = index.search(embedding, top_k)
     resultados = []
+
     for idx in indices[0]:
-        if idx >= len(nomes): continue
+        if idx >= len(nomes):
+            continue
         nome = nomes[idx]
         caminho = os.path.join("textos_extraidos", nome)
-        if not os.path.exists(caminho): continue
+        if not os.path.exists(caminho):
+            continue
         with open(caminho, "r", encoding="utf-8") as f:
             conteudo = f.read()
+
         pergunta_lower = pergunta.lower()
         trecho = ""
         for linha in conteudo.splitlines():
@@ -61,14 +65,23 @@ def busca_semantica(pergunta, top_k=3):
                 break
         if not trecho:
             trecho = textwrap.shorten(conteudo.replace("\n", " "), width=300, placeholder=" [...]")
+
         link = encontrar_link(nome)
-        similaridade = round(1 / (1 + distancias[0][list(indices[0]).index(idx)]), 2)
+        distancia = distancias[0][list(indices[0]).index(idx)]
+        similaridade = round(1 - (distancia / 2), 2)
+
+        if similaridade < limiar:
+            continue
+
         resultados.append({
             "nome": nome,
             "trecho": trecho,
             "link": link,
             "similaridade": similaridade
         })
+
+    # Ordenar os resultados do maior para o menor
+    resultados.sort(key=lambda x: x['similaridade'], reverse=True)
     return resultados
 
 def busca_literal_em_todos(pergunta, limite=0.4):

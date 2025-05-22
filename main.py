@@ -34,10 +34,10 @@ def loop_interativo():
         if pergunta.lower() in ["sair", "exit", "quit"]:
             print("Encerrando a busca.")
             break
-    
+
         resultados_sem = busca_semantica(pergunta)
-        if not resultados_sem or max(r['similaridade'] for r in resultados_sem) < 0.7:
-            print("\n[INFO] Busca literal sendo utilizada como fallback...\n")
+
+        if not resultados_sem:
             resultados_lit = busca_literal_em_todos(pergunta)
             for r in resultados_lit:
                 print(f"\nDocumento: {r['nome']}")

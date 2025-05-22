@@ -9,7 +9,7 @@ def extrair_texto_pdf(caminho_pdf):
     doc.close()
     return texto_total
 
-def dividir_em_chunks(texto, tamanho_max=500):
+def dividir_em_chunks(texto, tamanho_max=300):
     palavras = texto.split()
     chunks = []
     for i in range(0, len(palavras), tamanho_max):

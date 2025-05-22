@@ -5,7 +5,7 @@ import pickle
 import os
 
 def gerar_embeddings(diretorio_textos="textos_extraidos", nome_index="index_faiss.idx", nome_lista="nomes_textos.pkl"):
-    modelo = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+    modelo = SentenceTransformer('all-mpnet-base-v2')
 
     textos = []
     nomes = []
@@ -21,7 +21,7 @@ def gerar_embeddings(diretorio_textos="textos_extraidos", nome_index="index_fais
                 textos.append(texto_com_nome)
             nomes.append(nome_arquivo)
 
-    embeddings = modelo.encode(textos, convert_to_numpy=True)
+    embeddings = modelo.encode(textos, convert_to_numpy=True, normalize_embeddings=True)
     dimension = embeddings.shape[1]
     index = faiss.IndexFlatL2(dimension)
     index.add(embeddings)
