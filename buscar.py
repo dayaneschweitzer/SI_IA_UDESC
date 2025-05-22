@@ -10,7 +10,9 @@ from unidecode import unidecode
 from difflib import SequenceMatcher
 
 modelo = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
-index = faiss.read_index("index_faiss.idx")
+def carregar_index():
+    return faiss.read_index("index_faiss.idx")
+
 
 with open("nomes_textos.pkl", "rb") as f:
     nomes = pickle.load(f)
@@ -25,14 +27,22 @@ def normalizar(texto):
     return texto.strip()
 
 def encontrar_link(nome_arquivo):
-    nome_base = re.sub(r'_chunk\d+\.txt$', '', nome_arquivo)
+    nome_base = re.sub(r'_chunk\d+\.txt$', '', nome_arquivo) + ".txt"  # adiciona .txt
     chave_normalizada = normalizar(nome_base)
+    
     for chave in mapeamento_links:
-        if normalizar(chave).startswith(chave_normalizada):
+        chave_norm = normalizar(chave)
+        
+        if chave_norm == chave_normalizada:
             return mapeamento_links[chave]
+        if chave_norm.startswith(chave_normalizada):
+            return mapeamento_links[chave]
+    
+    print(f"[DEBUG] Não encontrou link para '{nome_arquivo}' (normalizado: {chave_normalizada})")
     return None
 
 def busca_semantica(pergunta, top_k=3):
+    index = carregar_index()
     embedding = modelo.encode([pergunta], convert_to_numpy=True)
     distancias, indices = index.search(embedding, top_k)
     resultados = []
@@ -62,15 +72,48 @@ def busca_semantica(pergunta, top_k=3):
     return resultados
 
 def busca_literal_em_todos(pergunta, limite=0.4):
+    import re
     resultados = []
     pergunta_normalizada = normalizar(pergunta)
 
+    match = re.search(r'\b0*(\d{1,4})(?:[\s_/-]*(\d{2,4}))?\b', pergunta_normalizada)
+
+    if match:
+        numero, ano = match.groups()
+        numero_formatado = f"{int(numero):03d}"
+
+        padroes = [numero_formatado]
+        if ano:
+            padroes.append(f"{numero_formatado}{ano}")
+
+        for nome in nomes:
+            nome_normalizado = normalizar(nome)
+            if any(p in nome_normalizado for p in padroes):
+                caminho = os.path.join("textos_extraidos", nome)
+                if not os.path.exists(caminho):
+                    continue
+                with open(caminho, "r", encoding="utf-8") as f:
+                    conteudo = f.read()
+                trecho = textwrap.shorten(conteudo.replace("\n", " "), width=400, placeholder=" [...]")
+                link = encontrar_link(nome)
+                resultados.append({
+                    "nome": nome,
+                    "trecho": trecho,
+                    "link": link,
+                    "similaridade": 1.0
+                })
+
+        if resultados:
+            return sorted(resultados, key=lambda x: x["nome"])
+
+    # Fallback: busca difusa
     for nome in nomes:
         nome_normalizado = normalizar(nome)
         ratio_nome = SequenceMatcher(None, pergunta_normalizada, nome_normalizado).ratio()
 
         caminho = os.path.join("textos_extraidos", nome)
-        if not os.path.exists(caminho): continue
+        if not os.path.exists(caminho):
+            continue
         with open(caminho, "r", encoding="utf-8") as f:
             conteudo = f.read()
             conteudo_normalizado = unidecode(conteudo.lower())
@@ -88,4 +131,4 @@ def busca_literal_em_todos(pergunta, limite=0.4):
             })
 
     resultados.sort(key=lambda x: x["similaridade"], reverse=True)
-    return resultados
+    return resultados[:5]

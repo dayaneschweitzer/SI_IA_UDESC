@@ -34,24 +34,23 @@ def loop_interativo():
         if pergunta.lower() in ["sair", "exit", "quit"]:
             print("Encerrando a busca.")
             break
-
-        # Busca por nome do arquivo primeiro
-        resultados = busca_literal_em_todos(pergunta)
-
-
-        # Se ainda não encontrar, tenta semântica
-        if not resultados:
-            resultados = busca_semantica(pergunta, top_k=3)
-
-        if not resultados:
-            print("Nenhum resultado encontrado.")
-        else:
-            for i, r in enumerate(resultados, 1):
-                print(f"\n{i}. Documento: {r['nome']}")
+    
+        resultados_sem = busca_semantica(pergunta)
+        if not resultados_sem or max(r['similaridade'] for r in resultados_sem) < 0.7:
+            print("\n[INFO] Busca literal sendo utilizada como fallback...\n")
+            resultados_lit = busca_literal_em_todos(pergunta)
+            for r in resultados_lit:
+                print(f"\nDocumento: {r['nome']}")
                 print(f"Trecho: {r['trecho']}")
+                print(f"Link: {r['link']}")
                 print(f"Similaridade: {r['similaridade']}")
-                if r['link']:
-                    print(f"Link: {r['link']}")
+                print("-" * 60)
+        else:
+            for r in resultados_sem:
+                print(f"\nDocumento: {r['nome']}")
+                print(f"Trecho: {r['trecho']}")
+                print(f"Link: {r['link']}")
+                print(f"Similaridade: {r['similaridade']}")
                 print("-" * 60)
 
 if __name__ == "__main__":
