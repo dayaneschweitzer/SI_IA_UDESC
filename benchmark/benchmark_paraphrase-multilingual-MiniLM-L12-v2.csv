@@ -1,0 +1,121 @@
+modelo,top_k,limiar,pergunta,respostas,sim_max,sim_mean
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,5,0.7900000214576721,0.7619999647140503
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Resolução do PPGCAP sobre credenciamento de docentes,5,0.7799999713897705,0.7459999918937683
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Reconhecimento do curso de Pós-graduação em Computação Aplicada,5,0.800000011920929,0.7300000190734863
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Portaria MEC 656/2017,5,0.6399999856948853,0.6260000467300415
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Qual a política de ensino médio da UDESC?,4,0.6499999761581421,0.6200000047683716
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Regras para bolsas de estudo internacionais,5,0.6700000166893005,0.6399999856948853
+paraphrase-multilingual-MiniLM-L12-v2,5,0.6,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,5,0.7900000214576721,0.7619999647140503
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Resolução do PPGCAP sobre credenciamento de docentes,5,0.7799999713897705,0.7459999918937683
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Reconhecimento do curso de Pós-graduação em Computação Aplicada,5,0.800000011920929,0.7300000190734863
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Portaria MEC 656/2017,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Qual a política de ensino médio da UDESC?,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Regras para bolsas de estudo internacionais,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.7,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,4,0.7900000214576721,0.7699999809265137
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Resolução do PPGCAP sobre credenciamento de docentes,3,0.7799999713897705,0.7633333206176758
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Reconhecimento do curso de Pós-graduação em Computação Aplicada,1,0.800000011920929,0.800000011920929
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Portaria MEC 656/2017,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Qual a política de ensino médio da UDESC?,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Regras para bolsas de estudo internacionais,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.75,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Resolução do PPGCAP sobre credenciamento de docentes,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Reconhecimento do curso de Pós-graduação em Computação Aplicada,1,0.800000011920929,0.800000011920929
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Portaria MEC 656/2017,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Qual a política de ensino médio da UDESC?,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Regras para bolsas de estudo internacionais,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,5,0.8,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,10,0.7900000214576721,0.7390000224113464
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Resolução do PPGCAP sobre credenciamento de docentes,10,0.7799999713897705,0.722000002861023
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Reconhecimento do curso de Pós-graduação em Computação Aplicada,10,0.800000011920929,0.6979999542236328
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Portaria MEC 656/2017,10,0.6399999856948853,0.6169999837875366
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Qual a política de ensino médio da UDESC?,4,0.6499999761581421,0.6200000047683716
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Regras para bolsas de estudo internacionais,8,0.6700000166893005,0.6274999976158142
+paraphrase-multilingual-MiniLM-L12-v2,10,0.6,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,10,0.7900000214576721,0.7390000224113464
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Resolução do PPGCAP sobre credenciamento de docentes,8,0.7799999713897705,0.7300000190734863
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Reconhecimento do curso de Pós-graduação em Computação Aplicada,5,0.800000011920929,0.7300000190734863
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Portaria MEC 656/2017,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Qual a política de ensino médio da UDESC?,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Regras para bolsas de estudo internacionais,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.7,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,4,0.7900000214576721,0.7699999809265137
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Resolução do PPGCAP sobre credenciamento de docentes,3,0.7799999713897705,0.7633333206176758
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Reconhecimento do curso de Pós-graduação em Computação Aplicada,1,0.800000011920929,0.800000011920929
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Portaria MEC 656/2017,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Qual a política de ensino médio da UDESC?,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Regras para bolsas de estudo internacionais,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.75,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Resolução do PPGCAP sobre credenciamento de docentes,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Reconhecimento do curso de Pós-graduação em Computação Aplicada,1,0.800000011920929,0.800000011920929
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Portaria MEC 656/2017,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Qual a política de ensino médio da UDESC?,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Regras para bolsas de estudo internacionais,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,10,0.8,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,20,0.7900000214576721,0.7110000252723694
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Resolução do PPGCAP sobre credenciamento de docentes,20,0.7799999713897705,0.6980000734329224
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Reconhecimento do curso de Pós-graduação em Computação Aplicada,20,0.800000011920929,0.6685000061988831
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Portaria MEC 656/2017,15,0.6399999856948853,0.6113333106040955
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Qual a política de ensino médio da UDESC?,4,0.6499999761581421,0.6200000047683716
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Regras para bolsas de estudo internacionais,8,0.6700000166893005,0.6274999976158142
+paraphrase-multilingual-MiniLM-L12-v2,20,0.6,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,13,0.7900000214576721,0.7323077321052551
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Resolução do PPGCAP sobre credenciamento de docentes,8,0.7799999713897705,0.7300000190734863
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Reconhecimento do curso de Pós-graduação em Computação Aplicada,5,0.800000011920929,0.7300000190734863
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Portaria MEC 656/2017,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Qual a política de ensino médio da UDESC?,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Regras para bolsas de estudo internacionais,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.7,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,4,0.7900000214576721,0.7699999809265137
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Resolução do PPGCAP sobre credenciamento de docentes,3,0.7799999713897705,0.7633333206176758
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Reconhecimento do curso de Pós-graduação em Computação Aplicada,1,0.800000011920929,0.800000011920929
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Portaria MEC 656/2017,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Qual a política de ensino médio da UDESC?,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Regras para bolsas de estudo internacionais,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.75,Clima em Florianópolis,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Portaria MEC 609,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Resolução do PPGCAP sobre credenciamento de docentes,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Reconhecimento do curso de Pós-graduação em Computação Aplicada,1,0.800000011920929,0.800000011920929
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Portaria MEC 656/2017,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Resolução 037,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Qual a política de ensino médio da UDESC?,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Diretrizes da ONU sobre IA,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Regras para bolsas de estudo internacionais,0,0.0,0.0
+paraphrase-multilingual-MiniLM-L12-v2,20,0.8,Clima em Florianópolis,0,0.0,0.0

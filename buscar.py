@@ -9,30 +9,27 @@ import textwrap
 from unidecode import unidecode
 from difflib import SequenceMatcher
 
-modelo = SentenceTransformer('all-mpnet-base-v2')
-def carregar_index():
-    return faiss.read_index("index_faiss.idx")
-
-
+# Carrega metadados
 with open("nomes_textos.pkl", "rb") as f:
     nomes = pickle.load(f)
 
 with open("mapeamento_links.json", "r", encoding="utf-8") as f:
     mapeamento_links = json.load(f)
 
+# Função de normalização
 def normalizar(texto):
     texto = unidecode(texto.lower())
     texto = texto.replace("_", " ").replace("-", " ")
     texto = re.sub(r'[\W_]+', ' ', texto)
     return texto.strip()
 
+# Encontrar link
 def encontrar_link(nome_arquivo):
     nome_base = re.sub(r'_chunk\d+\.txt$', '', nome_arquivo) + ".txt"
     chave_normalizada = normalizar(nome_base)
     
     for chave in mapeamento_links:
         chave_norm = normalizar(chave)
-        
         if chave_norm == chave_normalizada:
             return mapeamento_links[chave]
         if chave_norm.startswith(chave_normalizada):
@@ -41,8 +38,15 @@ def encontrar_link(nome_arquivo):
     print(f"[DEBUG] Não encontrou link para '{nome_arquivo}' (normalizado: {chave_normalizada})")
     return None
 
-def busca_semantica(pergunta, top_k=3, limiar=0.75):
-    index = carregar_index()
+# Carregar índice FAISS conforme o modelo
+def carregar_index(modelo_nome):
+    modelo_nome_safe = modelo_nome.replace("/", "_")
+    caminho_index = f"index_faiss_{modelo_nome_safe}.idx"
+    return faiss.read_index(caminho_index)
+
+# Busca semântica
+def busca_semantica(pergunta, modelo, modelo_nome, top_k=3, limiar=0.75):
+    index = carregar_index(modelo_nome)
     embedding = modelo.encode([pergunta], convert_to_numpy=True, normalize_embeddings=True)
     distancias, indices = index.search(embedding, top_k)
     resultados = []
@@ -80,12 +84,11 @@ def busca_semantica(pergunta, top_k=3, limiar=0.75):
             "similaridade": similaridade
         })
 
-    # Ordenar os resultados do maior para o menor
     resultados.sort(key=lambda x: x['similaridade'], reverse=True)
     return resultados
 
+# Busca literal
 def busca_literal_em_todos(pergunta, limite=0.4):
-    import re
     resultados = []
     pergunta_normalizada = normalizar(pergunta)
 
