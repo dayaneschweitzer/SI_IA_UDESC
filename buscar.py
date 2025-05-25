@@ -9,13 +9,6 @@ import textwrap
 from unidecode import unidecode
 from difflib import SequenceMatcher
 
-# Carrega metadados
-with open("nomes_textos.pkl", "rb") as f:
-    nomes = pickle.load(f)
-
-with open("mapeamento_links.json", "r", encoding="utf-8") as f:
-    mapeamento_links = json.load(f)
-
 # Função de normalização
 def normalizar(texto):
     texto = unidecode(texto.lower())
@@ -24,31 +17,37 @@ def normalizar(texto):
     return texto.strip()
 
 # Encontrar link
+with open("mapeamento_links.json", "r", encoding="utf-8") as f:
+    mapeamento_links = json.load(f)
+
 def encontrar_link(nome_arquivo):
     nome_base = re.sub(r'_chunk\d+\.txt$', '', nome_arquivo) + ".txt"
     chave_normalizada = normalizar(nome_base)
     
     for chave in mapeamento_links:
         chave_norm = normalizar(chave)
-        if chave_norm == chave_normalizada:
-            return mapeamento_links[chave]
-        if chave_norm.startswith(chave_normalizada):
+        if chave_norm == chave_normalizada or chave_norm.startswith(chave_normalizada):
             return mapeamento_links[chave]
     
     print(f"[DEBUG] Não encontrou link para '{nome_arquivo}' (normalizado: {chave_normalizada})")
     return None
 
-# Carregar índice FAISS conforme o modelo
-def carregar_index(modelo_nome):
-    modelo_nome_safe = modelo_nome.replace("/", "_")
-    caminho_index = f"index_faiss_{modelo_nome_safe}.idx"
-    return faiss.read_index(caminho_index)
+# Função para carregar os recursos por modelo
+def carregar_recursos(modelo_nome):
+    modelo_safe = modelo_nome.replace("/", "_")
+    index = faiss.read_index(f'index_faiss_{modelo_safe}.idx')
+    with open(f'pca_model_{modelo_safe}.pkl', 'rb') as f:
+        pca = pickle.load(f)
+    with open(f'nomes_textos_{modelo_safe}.pkl', 'rb') as f:
+        nomes = pickle.load(f)
+    return index, pca, nomes
 
-# Busca semântica
+# Busca semântica com PCA
 def busca_semantica(pergunta, modelo, modelo_nome, top_k=3, limiar=0.75):
-    index = carregar_index(modelo_nome)
+    index, pca, nomes = carregar_recursos(modelo_nome)
     embedding = modelo.encode([pergunta], convert_to_numpy=True, normalize_embeddings=True)
-    distancias, indices = index.search(embedding, top_k)
+    embedding_reduzido = pca.transform(embedding)
+    distancias, indices = index.search(embedding_reduzido, top_k)
     resultados = []
 
     for idx in indices[0]:
@@ -87,17 +86,19 @@ def busca_semantica(pergunta, modelo, modelo_nome, top_k=3, limiar=0.75):
     resultados.sort(key=lambda x: x['similaridade'], reverse=True)
     return resultados
 
-# Busca literal
-def busca_literal_em_todos(pergunta, limite=0.4):
+# Busca literal com normalização e difusa
+def busca_literal_em_todos(pergunta, modelo_nome, limite=0.4):
+    modelo_safe = modelo_nome.replace("/", "_")
+    with open(f'nomes_textos_{modelo_safe}.pkl', 'rb') as f:
+        nomes = pickle.load(f)
+    
     resultados = []
     pergunta_normalizada = normalizar(pergunta)
-
     match = re.search(r'\b0*(\d{1,4})(?:[\s_/-]*(\d{2,4}))?\b', pergunta_normalizada)
 
     if match:
         numero, ano = match.groups()
         numero_formatado = f"{int(numero):03d}"
-
         padroes = [numero_formatado]
         if ano:
             padroes.append(f"{numero_formatado}{ano}")
@@ -126,14 +127,13 @@ def busca_literal_em_todos(pergunta, limite=0.4):
     for nome in nomes:
         nome_normalizado = normalizar(nome)
         ratio_nome = SequenceMatcher(None, pergunta_normalizada, nome_normalizado).ratio()
-
         caminho = os.path.join("textos_extraidos", nome)
         if not os.path.exists(caminho):
             continue
         with open(caminho, "r", encoding="utf-8") as f:
             conteudo = f.read()
             conteudo_normalizado = unidecode(conteudo.lower())
-            ratio_conteudo = SequenceMatcher(None, conteudo_normalizado, pergunta_normalizada).ratio()
+            ratio_conteudo = SequenceMatcher(None, conteudo_normalizada, pergunta_normalizada).ratio()
 
         score = max(ratio_nome, ratio_conteudo)
         if score >= limite:
