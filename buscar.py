@@ -4,6 +4,7 @@ import pickle
 import os
 import re
 import json
+import time
 import numpy as np
 import textwrap
 from unidecode import unidecode
@@ -32,22 +33,38 @@ def encontrar_link(nome_arquivo):
     print(f"[DEBUG] Não encontrou link para '{nome_arquivo}' (normalizado: {chave_normalizada})")
     return None
 
-# Função para carregar os recursos por modelo
-def carregar_recursos(modelo_nome):
+# Função para carregar os recursos por modelo e PCA
+def carregar_recursos(modelo_nome, n_pca):
     modelo_safe = modelo_nome.replace("/", "_")
-    index = faiss.read_index(f'index_faiss_{modelo_safe}.idx')
-    with open(f'pca_model_{modelo_safe}.pkl', 'rb') as f:
+    suf = f"{modelo_safe}_pca{n_pca}"
+    
+    index = faiss.read_index(f'index_faiss_{suf}.idx')
+    
+    with open(f'pca_model_{suf}.pkl', 'rb') as f:
         pca = pickle.load(f)
-    with open(f'nomes_textos_{modelo_safe}.pkl', 'rb') as f:
+    
+    with open(f'nomes_textos_{suf}.pkl', 'rb') as f:
         nomes = pickle.load(f)
+    
     return index, pca, nomes
 
 # Busca semântica com PCA
-def busca_semantica(pergunta, modelo, modelo_nome, top_k=3, limiar=0.75):
-    index, pca, nomes = carregar_recursos(modelo_nome)
+def busca_semantica(pergunta, modelo, modelo_nome, n_pca, top_k=3, limiar=0.75):
+    try:
+        index, pca, nomes = carregar_recursos(modelo_nome, n_pca)
+    except FileNotFoundError as e:
+        print(f"Arquivo de recurso não encontrado para {modelo_nome} com PCA {n_pca}: {e}")
+        return [], 0.0
+
+    start = time.time()
+
     embedding = modelo.encode([pergunta], convert_to_numpy=True, normalize_embeddings=True)
     embedding_reduzido = pca.transform(embedding)
     distancias, indices = index.search(embedding_reduzido, top_k)
+
+    end = time.time()
+    tempo = end - start  # tempo de consulta
+
     resultados = []
 
     for idx in indices[0]:
@@ -84,12 +101,14 @@ def busca_semantica(pergunta, modelo, modelo_nome, top_k=3, limiar=0.75):
         })
 
     resultados.sort(key=lambda x: x['similaridade'], reverse=True)
-    return resultados
+    return resultados, tempo
 
 # Busca literal com normalização e difusa
-def busca_literal_em_todos(pergunta, modelo_nome, limite=0.4):
+def busca_literal_em_todos(pergunta, modelo_nome, n_pca, limite=0.4):
     modelo_safe = modelo_nome.replace("/", "_")
-    with open(f'nomes_textos_{modelo_safe}.pkl', 'rb') as f:
+    suf = f"{modelo_safe}_pca{n_pca}"
+    
+    with open(f'nomes_textos_{suf}.pkl', 'rb') as f:
         nomes = pickle.load(f)
     
     resultados = []
@@ -127,13 +146,14 @@ def busca_literal_em_todos(pergunta, modelo_nome, limite=0.4):
     for nome in nomes:
         nome_normalizado = normalizar(nome)
         ratio_nome = SequenceMatcher(None, pergunta_normalizada, nome_normalizado).ratio()
+        
         caminho = os.path.join("textos_extraidos", nome)
         if not os.path.exists(caminho):
             continue
         with open(caminho, "r", encoding="utf-8") as f:
             conteudo = f.read()
             conteudo_normalizado = unidecode(conteudo.lower())
-            ratio_conteudo = SequenceMatcher(None, conteudo_normalizada, pergunta_normalizada).ratio()
+            ratio_conteudo = SequenceMatcher(None, conteudo_normalizado, pergunta_normalizada).ratio()
 
         score = max(ratio_nome, ratio_conteudo)
         if score >= limite:

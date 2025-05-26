@@ -1,4 +1,7 @@
 import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '.')))
+
 from extrator import processar_pdfs
 from gerar_embeddings import gerar_embeddings
 from buscar import busca_semantica, busca_literal_em_todos
@@ -58,7 +61,7 @@ def loop_busca():
 
         if not resultados_sem:
             print("Nenhum resultado semântico. Fazendo busca literal...")
-            resultados_lit = busca_literal_em_todos(pergunta)
+            resultados_lit = busca_literal_em_todos(pergunta, modelo_nome)
             for r in resultados_lit:
                 print(f"\nDocumento: {r['nome']}")
                 print(f"Trecho: {r['trecho']}")
@@ -79,7 +82,15 @@ def executar_teste():
     subprocess.run([sys.executable, "benchmark/benchmark_busca.py"])
     print("Executando plot_benchmark.py ...")
     subprocess.run([sys.executable, "benchmark/plot_benchmark.py"])
-    print("✅ Benchmark e gráficos concluídos.")
+    print("Executando plot_benchmark_pca.py ...")
+    subprocess.run([sys.executable, "benchmark/plot_benchmark_pca.py"])
+    print("Benchmark e gráficos concluídos.")
+
+def executar_tudo():
+    print("\n== EXECUTANDO TUDO AUTOMATICAMENTE ==")
+    executar_pipeline()
+    executar_teste()
+    print("Toda a pipeline executada com sucesso.")
 
 if __name__ == "__main__":
     print("== Projeto: Busca Semântica de Legislação PPGCAP ==")
@@ -87,8 +98,9 @@ if __name__ == "__main__":
     print("1. Executar busca interativa")
     print("2. Executar benchmark e gerar gráficos")
     print("3. Executar pipeline completa (extração + embeddings)")
+    print("4. Executar tudo automaticamente")
 
-    escolha = input("Digite 1, 2 ou 3: ").strip()
+    escolha = input("Digite 1, 2, 3 ou 4: ").strip()
 
     if escolha == "1":
         loop_busca()
@@ -96,5 +108,7 @@ if __name__ == "__main__":
         executar_teste()
     elif escolha == "3":
         executar_pipeline()
+    elif escolha == "4":
+        executar_tudo()
     else:
         print("Opção inválida. Encerrando.")

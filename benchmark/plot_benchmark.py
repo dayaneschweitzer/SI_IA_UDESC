@@ -1,73 +1,100 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-import os
 
-def gerar_graficos():
-    modelos = [
-        'paraphrase-multilingual-MiniLM-L12-v2',
-        'all-mpnet-base-v2'
-    ]
+MODELOS = [
+    'paraphrase-multilingual-MiniLM-L12-v2',
+    'all-mpnet-base-v2'
+]
 
-    dfs = []
-    for modelo in modelos:
-        csv_path = os.path.join(os.path.dirname(__file__), f'benchmark_{modelo.replace("/", "_")}.csv')
-        if os.path.exists(csv_path):
-            df = pd.read_csv(csv_path)
-            dfs.append(df)
-        else:
-            print(f"Aviso: Arquivo {csv_path} não encontrado.")
+cores = ['blue', 'orange']
+PCA_COMPONENTE = 256  # Foco em PCA 256
 
-    if not dfs:
-        print("Nenhum arquivo de benchmark encontrado para gerar gráficos.")
-        return
+dfs = []
 
-    df = pd.concat(dfs, ignore_index=True)
+for modelo in MODELOS:
+    modelo_safe = modelo.replace("/", "_")
+    arquivo = os.path.join(os.path.dirname(__file__), f'benchmark_{modelo_safe}_pca{PCA_COMPONENTE}.csv')
+    if not os.path.exists(arquivo):
+        print(f"Aviso: Arquivo {arquivo} não encontrado.")
+        continue
 
-    os.makedirs(os.path.join(os.path.dirname(__file__), 'plots'), exist_ok=True)
+    df = pd.read_csv(arquivo)
+    df['modelo'] = modelo
+    dfs.append(df)
 
-    ## --- Gráfico comparativo de linhas --- ##
-    plt.figure(figsize=(10, 6))
-    sns.lineplot(
-        data=df, 
-        x='top_k', 
-        y='sim_mean', 
-        hue='modelo', 
-        style='limiar', 
-        markers=True,
-        dashes=False
-    )
-    plt.title('Comparativo: Similaridade Média por Modelo, Top_K e Limiar')
-    plt.xlabel('Top_K')
-    plt.ylabel('Similaridade Média')
-    plt.legend(title='Modelo / Limiar')
-    plt.grid(True)
+if not dfs:
+    print("Nenhum arquivo encontrado para gerar gráficos.")
+    sys.exit()
 
-    plt.savefig(os.path.join(os.path.dirname(__file__), 'plots', 'comparativo_modelos_limiar_topk.png'))
-    plt.show()
+df_all = pd.concat(dfs, ignore_index=True)
 
-    ## --- Heatmaps por modelo --- ##
-    for modelo in modelos:
-        csv_path = os.path.join(os.path.dirname(__file__), f'benchmark_{modelo.replace("/", "_")}.csv')
-        if not os.path.exists(csv_path):
-            continue
+## 1. Gráfico: Tempo médio de consulta
+tempo_medio = df_all.groupby('modelo')['tempo'].mean()
 
-        df_modelo = pd.read_csv(csv_path)
-        pivot = df_modelo.pivot_table(
-            index='top_k',
-            columns='limiar',
-            values='sim_mean',
-            aggfunc='mean'
-        )
+plt.figure(figsize=(8, 5))
+plt.bar(tempo_medio.index, tempo_medio.values, color=cores)
+plt.ylabel('Tempo Médio de Consulta (s)')
+plt.title(f'Tempo Médio de Consulta (PCA = {PCA_COMPONENTE})')
+plt.savefig(os.path.join(os.path.dirname(__file__), f'tempo_medio_pca{PCA_COMPONENTE}.png'))
+plt.close()
+print(f"Gráfico salvo: tempo_medio_pca{PCA_COMPONENTE}.png")
 
-        plt.figure(figsize=(8, 6))
-        sns.heatmap(pivot, annot=True, cmap='viridis')
-        plt.title(f'Heatmap: Similaridade Média - {modelo}')
-        plt.xlabel('Limiar')
-        plt.ylabel('Top_K')
+## 2. Gráfico: Similaridade Média
+sim_mean = df_all.groupby('modelo')['sim_mean'].mean()
 
-        plt.savefig(os.path.join(os.path.dirname(__file__), 'plots', f'heatmap_{modelo.replace("/", "_")}.png'))
-        plt.show()
+plt.figure(figsize=(8, 5))
+plt.bar(sim_mean.index, sim_mean.values, color=cores)
+plt.ylabel('Similaridade Média')
+plt.title(f'Similaridade Média (PCA = {PCA_COMPONENTE})')
+plt.savefig(os.path.join(os.path.dirname(__file__), f'sim_mean_pca{PCA_COMPONENTE}.png'))
+plt.close()
+print(f"Gráfico salvo: sim_mean_pca{PCA_COMPONENTE}.png")
 
-    print("✅ Gráficos gerados e salvos na pasta 'plots'.")
+## 3. Gráfico: Similaridade Máxima
+sim_max = df_all.groupby('modelo')['sim_max'].mean()
 
+plt.figure(figsize=(8, 5))
+plt.bar(sim_max.index, sim_max.values, color=cores)
+plt.ylabel('Similaridade Máxima')
+plt.title(f'Similaridade Máxima (PCA = {PCA_COMPONENTE})')
+plt.savefig(os.path.join(os.path.dirname(__file__), f'sim_max_pca{PCA_COMPONENTE}.png'))
+plt.close()
+print(f"Gráfico salvo: sim_max_pca{PCA_COMPONENTE}.png")
+
+## 4. Gráfico: top_k vs sim_mean
+plt.figure(figsize=(8, 5))
+for idx, modelo in enumerate(MODELOS):
+    df_m = df_all[df_all['modelo'] == modelo]
+    df_group = df_m.groupby('top_k')['sim_mean'].mean().reset_index()
+    plt.plot(df_group['top_k'], df_group['sim_mean'], marker='o', label=modelo, color=cores[idx])
+
+plt.xlabel('top_k')
+plt.ylabel('Similaridade Média')
+plt.title(f'top_k vs Similaridade Média (PCA = {PCA_COMPONENTE})')
+plt.legend()
+plt.grid()
+plt.savefig(os.path.join(os.path.dirname(__file__), f'topk_vs_sim_mean_pca{PCA_COMPONENTE}.png'))
+plt.close()
+print(f"Gráfico salvo: topk_vs_sim_mean_pca{PCA_COMPONENTE}.png")
+
+## 5. Gráfico: limiar vs sim_mean
+plt.figure(figsize=(8, 5))
+for idx, modelo in enumerate(MODELOS):
+    df_m = df_all[df_all['modelo'] == modelo]
+    df_group = df_m.groupby('limiar')['sim_mean'].mean().reset_index()
+    plt.plot(df_group['limiar'], df_group['sim_mean'], marker='o', label=modelo, color=cores[idx])
+
+plt.xlabel('Limiar')
+plt.ylabel('Similaridade Média')
+plt.title(f'Limiar vs Similaridade Média (PCA = {PCA_COMPONENTE})')
+plt.legend()
+plt.grid()
+plt.savefig(os.path.join(os.path.dirname(__file__), f'limiar_vs_sim_mean_pca{PCA_COMPONENTE}.png'))
+plt.close()
+print(f"Gráfico salvo: limiar_vs_sim_mean_pca{PCA_COMPONENTE}.png")
+
+print("Todos os gráficos comparativos gerados com sucesso.")

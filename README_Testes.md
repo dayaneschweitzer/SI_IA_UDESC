@@ -4,9 +4,6 @@ Este projeto realiza busca semântica e literal sobre textos legais relacionados
 Utiliza embeddings com Sentence Transformers, redução de dimensionalidade via PCA e FAISS para consultas eficientes.
 
 Estrutura do projeto:
-css
-Copiar
-Editar
 .
 ├── benchmark/
 │   ├── benchmark_busca.py
