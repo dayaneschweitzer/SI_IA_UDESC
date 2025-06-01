@@ -2,6 +2,7 @@ import sys
 from extrator import processar_pdfs
 from gerar_embeddings import gerar_embeddings
 from buscar import busca_semantica, busca_literal_em_todos
+from sentence_transformers import SentenceTransformer
 
 # Ignorar PDFs específicos
 PDFS_IGNORAR = [
@@ -10,6 +11,10 @@ PDFS_IGNORAR = [
     "Documento_de_área_2013_-_Regras_do_CA-CC_para_Avaliação_de_Mestrados_E_Qualis_Periódicos_(WebQualis).pdf",
     "Documento_de_área_2013_-_Regras_do_CA-CC_para_Avaliação_de_Mestrados.pdf"
 ]
+
+# Carregar modelo uma vez
+MODELO_NOME = "paraphrase-multilingual-MiniLM-L12-v2"
+modelo = SentenceTransformer(MODELO_NOME)
 
 def executar_pipeline():
     print("1. Extraindo e dividindo documentos em chunks...")
@@ -24,7 +29,7 @@ def executar_pipeline():
     print("\n2. Gerando embeddings e construindo índice FAISS...")
     gerar_embeddings()
 
-def loop_interativo():
+def loop_interativo(modelo, modelo_nome):
     print("\n3. Busca Interativa por Perguntas")
     while True:
         pergunta = input("\nDigite sua pergunta (ou 'sair' para encerrar): ").strip()
@@ -35,7 +40,7 @@ def loop_interativo():
             print("Encerrando a busca.")
             break
 
-        resultados_sem = busca_semantica(pergunta)
+        resultados_sem = busca_semantica(pergunta, modelo, modelo_nome)
 
         if not resultados_sem:
             resultados_lit = busca_literal_em_todos(pergunta)
@@ -56,4 +61,4 @@ def loop_interativo():
 if __name__ == "__main__":
     print("== Projeto: Busca Semântica de Legislação PPGCAP ==")
     executar_pipeline()
-    loop_interativo()
+    loop_interativo(modelo, MODELO_NOME)

@@ -4,8 +4,11 @@ import faiss
 import pickle
 import os
 
-def gerar_embeddings(diretorio_textos="textos_extraidos", nome_index="index_faiss.idx", nome_lista="nomes_textos.pkl"):
-    modelo = SentenceTransformer('all-mpnet-base-v2')
+def gerar_embeddings(diretorio_textos="textos_extraidos", nome_lista="nomes_textos.pkl"):
+    modelo_nome = 'paraphrase-multilingual-MiniLM-L12-v2'
+    modelo = SentenceTransformer(modelo_nome)
+    modelo_nome_safe = modelo_nome.replace("/", "_")
+    nome_index = f"index_faiss_{modelo_nome_safe}.idx"
 
     textos = []
     nomes = []
@@ -15,7 +18,6 @@ def gerar_embeddings(diretorio_textos="textos_extraidos", nome_index="index_fais
             caminho = os.path.join(diretorio_textos, nome_arquivo)
             with open(caminho, "r", encoding="utf-8") as f:
                 conteudo = f.read()
-                # Inclui o nome do arquivo como parte do texto para o embedding
                 nome_no_texto = nome_arquivo.replace("_", " ").replace(".txt", "")
                 texto_com_nome = nome_no_texto + " " + conteudo
                 textos.append(texto_com_nome)
@@ -30,4 +32,4 @@ def gerar_embeddings(diretorio_textos="textos_extraidos", nome_index="index_fais
     with open(nome_lista, "wb") as f:
         pickle.dump(nomes, f)
 
-    print(f"{len(nomes)} embeddings salvos no índice FAISS.")
+    print(f"{len(nomes)} embeddings salvos no índice FAISS: {nome_index}")

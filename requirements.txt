@@ -4,3 +4,4 @@ numpy
 unidecode
 textwrap3
 pymupdf
+flask
