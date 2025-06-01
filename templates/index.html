@@ -18,9 +18,11 @@
         input[type="text"] {
             width: 80%;
             padding: 10px;
+            font-size: 1em;
         }
         button {
             padding: 10px 15px;
+            font-size: 1em;
         }
         .resultado {
             background: white;
@@ -34,6 +36,12 @@
         .tempo {
             color: gray;
             font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
         }
     </style>
 </head>
@@ -55,22 +63,29 @@
         <div class="resultado {% if r.nome == 'Erro ao buscar' %}erro{% endif %}">
             <strong>{{ r.nome }}</strong><br>
             <p>{{ r.trecho }}</p>
-            <a href="{{ r.link }}" target="_blank">Ver documento</a><br>
+            {% if r.nome != 'Erro ao buscar' %}
+                <a href="{{ url_for('documento', nome=r.nome) }}" target="_blank">Ver documento</a><br>
+            {% endif %}
             <small>Similaridade: {{ r.similaridade }}</small>
         </div>
         {% endfor %}
-    {% elif resultados_lit %}
+    {% endif %}
+
+    {% if resultados_lit %}
         <h2>Resultados Literais</h2>
         {% for r in resultados_lit %}
         <div class="resultado">
             <strong>{{ r.nome }}</strong><br>
             <p>{{ r.trecho }}</p>
-            <a href="{{ r.link }}" target="_blank">Ver documento</a><br>
+            <a href="{{ url_for('documento', nome=r.nome) }}" target="_blank">Ver documento</a><br>
             <small>Similaridade: {{ r.similaridade }}</small>
         </div>
         {% endfor %}
-    {% elif pergunta %}
+    {% endif %}
+
+    {% if pergunta and not resultados_sem and not resultados_lit %}
         <p>Nenhum resultado encontrado para: <strong>{{ pergunta }}</strong></p>
     {% endif %}
 </body>
 </html>
+

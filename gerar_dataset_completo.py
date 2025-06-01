@@ -3,7 +3,7 @@ import pickle
 from sentence_transformers import SentenceTransformer
 
 def gerar_dataset_completo(diretorio_textos="textos_extraidos", saida="dados_completos.pkl"):
-    modelo_nome = "paraphrase-multilingual-MiniLM-L12-v2"
+    modelo_nome = "all-mpnet-base-v2"
     modelo = SentenceTransformer(modelo_nome)
 
     nomes_arquivos = []
@@ -19,8 +19,14 @@ def gerar_dataset_completo(diretorio_textos="textos_extraidos", saida="dados_com
 
     embeddings = modelo.encode(chunks, convert_to_numpy=True, normalize_embeddings=True)
 
+    nomes_bases = []
+    for nome in nomes_arquivos:
+        base = nome.split("_chunk")[0] if "_chunk" in nome else nome.replace(".txt", "")
+        nomes_bases.append(base)
+
     dados = {
-        "nomes_arquivos": nomes_arquivos,
+        "nomes_arquivos": nomes_arquivos,   
+        "nomes_bases": nomes_bases,         
         "chunks": chunks,
         "embeddings": embeddings
     }

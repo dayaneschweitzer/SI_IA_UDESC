@@ -2,7 +2,7 @@ import sys
 from buscar import buscar_resposta
 from sentence_transformers import SentenceTransformer
 
-MODELO_NOME = "paraphrase-multilingual-MiniLM-L12-v2"
+MODELO_NOME = "all-mpnet-base-v2"
 modelo = SentenceTransformer(MODELO_NOME)
 
 def loop_interativo(modelo):

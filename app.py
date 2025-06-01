@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 from sentence_transformers import SentenceTransformer
 from buscar import busca_semantica, busca_literal_em_todos
 import time
@@ -6,7 +6,7 @@ import time
 app = Flask(__name__)
 
 # Modelo fixo
-MODELO_NOME = "paraphrase-multilingual-MiniLM-L12-v2"
+MODELO_NOME = "all-mpnet-base-v2"
 modelo = SentenceTransformer(MODELO_NOME)
 
 @app.route("/", methods=["GET", "POST"])
@@ -15,7 +15,7 @@ def index():
     resultados_lit = []
     pergunta = ""
     tempo_resposta = 0
-    
+
     if request.method == "POST":
         pergunta = request.form.get("pergunta", "").strip()
         if pergunta:
@@ -37,6 +37,11 @@ def index():
                            resultados_sem=resultados_sem,
                            resultados_lit=resultados_lit,
                            tempo=tempo_resposta)
+
+# ✅ Rota para abrir documento diretamente
+@app.route("/documento/<path:nome>")
+def documento(nome):
+    return send_from_directory("textos_extraidos", nome)
 
 if __name__ == "__main__":
     app.run(debug=True)
