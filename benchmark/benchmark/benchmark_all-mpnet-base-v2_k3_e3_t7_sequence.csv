@@ -1,0 +1,11 @@
+modelo,top_k,peso_emb,peso_txt,matcher,pergunta,respostas,sim_max,sim_mean,tempo
+all-mpnet-base-v2,3,0.3,0.7,sequence,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,3,0.3161,0.31243333,0.001
+all-mpnet-base-v2,3,0.3,0.7,sequence,Portaria MEC 609,3,0.2177,0.21573333,0.001
+all-mpnet-base-v2,3,0.3,0.7,sequence,Resolução do PPGCAP sobre credenciamento de docentes,3,0.3215,0.31443334,0.001
+all-mpnet-base-v2,3,0.3,0.7,sequence,Reconhecimento do curso de Pós-graduação em Computação Aplicada,3,0.3201,0.3156,0.001
+all-mpnet-base-v2,3,0.3,0.7,sequence,Portaria MEC 656/2017,3,0.2821,0.2516,0.002
+all-mpnet-base-v2,3,0.3,0.7,sequence,Resolução 037,3,0.2257,0.223,0.002
+all-mpnet-base-v2,3,0.3,0.7,sequence,Qual a política de ensino médio da UDESC?,3,0.29860002,0.29450002,0.001
+all-mpnet-base-v2,3,0.3,0.7,sequence,Diretrizes da ONU sobre IA,3,0.279,0.24436666,0.001
+all-mpnet-base-v2,3,0.3,0.7,sequence,Regras para bolsas de estudo internacionais,3,0.30760002,0.30556667,0.001
+all-mpnet-base-v2,3,0.3,0.7,sequence,Clima em Florianópolis,3,0.3419,0.2866,0.001

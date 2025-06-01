@@ -1,0 +1,11 @@
+modelo,top_k,peso_emb,peso_txt,matcher,pergunta,respostas,sim_max,sim_mean,tempo
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Aprova alteração curricular do Curso de Mestrado Acadêmico em Computação Aplicada,10,0.33830002,0.32091,0.004
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Portaria MEC 609,10,0.3608,0.25479,0.002
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Resolução do PPGCAP sobre credenciamento de docentes,10,0.3246,0.31521,0.003
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Reconhecimento do curso de Pós-graduação em Computação Aplicada,10,0.338,0.31737,0.003
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Portaria MEC 656/2017,10,0.3869,0.27778998,0.002
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Resolução 037,10,0.283,0.24231999,0.002
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Qual a política de ensino médio da UDESC?,10,0.3023,0.29229,0.003
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Diretrizes da ONU sobre IA,10,0.2818,0.24436,0.003
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Regras para bolsas de estudo internacionais,10,0.3019,0.29481,0.003
+paraphrase-multilingual-MiniLM-L12-v2,10,0.3,0.7,rapidfuzz,Clima em Florianópolis,10,0.2765,0.24008,0.002

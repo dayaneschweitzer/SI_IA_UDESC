@@ -7,10 +7,16 @@ import unicodedata
 from difflib import SequenceMatcher
 from sentence_transformers import SentenceTransformer
 from sklearn.neighbors import NearestNeighbors
-from collections import defaultdict
+
+try:
+    from rapidfuzz import fuzz
+    RAPIDFUZZ_DISPONIVEL = True
+except ImportError:
+    RAPIDFUZZ_DISPONIVEL = False
 
 # Carrega dados
-with open("dados_completos.pkl", "rb") as f:
+data_path = os.path.join(os.path.dirname(__file__), "dados_completos.pkl")
+with open(data_path, "rb") as f:
     data = pickle.load(f)
 
 chunks = data["chunks"]
@@ -32,11 +38,26 @@ def encontrar_link(nome):
     base = nome.split("_chunk")[0] if "_chunk" in nome else nome
     return f"/documento/{base}"
 
-def busca_semantica(pergunta, modelo, modelo_nome="all-mpnet-base-v2"):
+def calcula_score(seq1, seq2, metric="sequence"):
+    if metric == "rapidfuzz" and RAPIDFUZZ_DISPONIVEL:
+        return fuzz.token_sort_ratio(seq1, seq2) / 100
+    return SequenceMatcher(None, seq1, seq2).ratio()
+
+def busca_semantica(pergunta, modelo, modelo_nome="all-mpnet-base-v2", top_k=5, 
+                    peso_embedding=0.5, peso_texto=0.5, metric="sequence", index=None):
+
     pergunta_lower = pergunta.lower()
     pergunta_embedding = modelo.encode([pergunta], convert_to_numpy=True)
-    distancias, indices = index.kneighbors(pergunta_embedding)
+    
+    # Usa índice existente ou cria dinamicamente
+    if index is None:
+        embedding_dim = pergunta_embedding.shape[1]
+        index = NearestNeighbors(n_neighbors=top_k, metric="cosine")
+        index.fit(embeddings)
+
+    distancias, indices = index.kneighbors(pergunta_embedding, n_neighbors=top_k)
     resultados = []
+    inicio = time.time()
 
     for idx in indices[0]:
         conteudo = chunks[idx]
@@ -45,7 +66,7 @@ def busca_semantica(pergunta, modelo, modelo_nome="all-mpnet-base-v2"):
         melhor_linha = ""
         melhor_score = 0.0
         for linha in conteudo.splitlines():
-            score = SequenceMatcher(None, pergunta_lower, linha.lower()).ratio()
+            score = calcula_score(pergunta_lower, linha.lower(), metric)
             if score > melhor_score:
                 melhor_score = score
                 melhor_linha = linha
@@ -58,8 +79,6 @@ def busca_semantica(pergunta, modelo, modelo_nome="all-mpnet-base-v2"):
         tokens_chunk = set(conteudo.lower().split())
         intersecao = tokens_pergunta.intersection(tokens_chunk)
 
-        peso_embedding = 0.5
-        peso_texto = 0.5
         similaridade = round(peso_embedding * similaridade_base + peso_texto * melhor_score, 4)
 
         if len(intersecao) >= 2:
@@ -75,13 +94,13 @@ def busca_semantica(pergunta, modelo, modelo_nome="all-mpnet-base-v2"):
         })
 
     resultados.sort(key=lambda x: x["similaridade"], reverse=True)
-    return resultados[:5]
+    tempo = round(time.time() - inicio, 3)
+    return resultados[:top_k], tempo
 
 def busca_literal_em_todos(pergunta, limite=0.4):
     resultados = []
     pergunta_normalizada = normalizar(pergunta)
 
-    # Busca por número e ano no nome dos arquivos
     match = re.search(r'\b0*(\d{1,4})(?:[\s_/-]*(\d{2,4}))?\b', pergunta_normalizada)
     if match:
         numero, ano = match.groups()
@@ -104,7 +123,6 @@ def busca_literal_em_todos(pergunta, limite=0.4):
         if resultados:
             return sorted(resultados, key=lambda x: x["nome"])
 
-    # Fallback: comparação difusa
     for nome, conteudo in zip(nome_arquivos, chunks):
         nome_normalizado = normalizar(nome)
         ratio_nome = SequenceMatcher(None, pergunta_normalizada, nome_normalizado).ratio()
