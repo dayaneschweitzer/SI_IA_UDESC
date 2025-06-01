@@ -1,148 +1,92 @@
-from sentence_transformers import SentenceTransformer
-import faiss
-import pickle
 import os
-import re
-import json
-import numpy as np
+import pickle
+import time
 import textwrap
-from unidecode import unidecode
 from difflib import SequenceMatcher
+from sentence_transformers import SentenceTransformer
+from sklearn.neighbors import NearestNeighbors
 
-# Carrega metadados
-with open("nomes_textos.pkl", "rb") as f:
-    nomes = pickle.load(f)
+# Carrega modelo e dados
+with open("dados_completos.pkl", "rb") as f:
+    data = pickle.load(f)
 
-with open("mapeamento_links.json", "r", encoding="utf-8") as f:
-    mapeamento_links = json.load(f)
+chunks = data["chunks"]
+embeddings = data["embeddings"]
+nome_arquivos = data["nomes_arquivos"]
 
-# Função de normalização
-def normalizar(texto):
-    texto = unidecode(texto.lower())
-    texto = texto.replace("_", " ").replace("-", " ")
-    texto = re.sub(r'[\W_]+', ' ', texto)
-    return texto.strip()
+# Monta índice
+index = NearestNeighbors(n_neighbors=10, metric="cosine")
+index.fit(embeddings)
 
-# Encontrar link
-def encontrar_link(nome_arquivo):
-    nome_base = re.sub(r'_chunk\d+\.txt$', '', nome_arquivo) + ".txt"
-    chave_normalizada = normalizar(nome_base)
-    
-    for chave in mapeamento_links:
-        chave_norm = normalizar(chave)
-        if chave_norm == chave_normalizada:
-            return mapeamento_links[chave]
-        if chave_norm.startswith(chave_normalizada):
-            return mapeamento_links[chave]
-    
-    print(f"[DEBUG] Não encontrou link para '{nome_arquivo}' (normalizado: {chave_normalizada})")
-    return None
+# Modelo carregado externamente
+modelo = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 
-# Carregar índice FAISS conforme o modelo
-def carregar_index(modelo_nome):
-    modelo_nome_safe = modelo_nome.replace("/", "_")
-    caminho_index = f"index_faiss_{modelo_nome_safe}.idx"
-    return faiss.read_index(caminho_index)
 
-# Busca semântica
-def busca_semantica(pergunta, modelo, modelo_nome, top_k=3, limiar=0.75):
-    index = carregar_index(modelo_nome)
-    embedding = modelo.encode([pergunta], convert_to_numpy=True, normalize_embeddings=True)
-    distancias, indices = index.search(embedding, top_k)
+def busca_semantica(pergunta, modelo, modelo_nome="paraphrase-multilingual-MiniLM-L12-v2"):
+    pergunta_lower = pergunta.lower()
+    inicio = time.time()
+    pergunta_embedding = modelo.encode([pergunta], convert_to_numpy=True)
+    distancias, indices = index.kneighbors(pergunta_embedding)
     resultados = []
 
     for idx in indices[0]:
-        if idx >= len(nomes):
-            continue
-        nome = nomes[idx]
-        caminho = os.path.join("textos_extraidos", nome)
-        if not os.path.exists(caminho):
-            continue
-        with open(caminho, "r", encoding="utf-8") as f:
-            conteudo = f.read()
+        conteudo = chunks[idx]
+        nome_arquivo = nome_arquivos[idx]
 
-        pergunta_lower = pergunta.lower()
-        trecho = ""
+        # Busca a melhor linha parecida dentro do chunk
+        melhor_linha = ""
+        melhor_score = 0.0
         for linha in conteudo.splitlines():
-            if any(p in linha.lower() for p in pergunta_lower.split()):
-                trecho = linha.strip()
-                break
-        if not trecho:
-            trecho = textwrap.shorten(conteudo.replace("\n", " "), width=300, placeholder=" [...]")
+            score = SequenceMatcher(None, pergunta_lower, linha.lower()).ratio()
+            if score > melhor_score:
+                melhor_score = score
+                melhor_linha = linha
 
-        link = encontrar_link(nome)
+        trecho = melhor_linha.strip() if melhor_linha else textwrap.shorten(conteudo.replace("\n", " "), width=300)
         distancia = distancias[0][list(indices[0]).index(idx)]
-        similaridade = round(1 - (distancia / 2), 2)
+        similaridade_base = round(1 - (distancia / 2), 4)
 
-        if similaridade < limiar:
-            continue
+        # Ajuste com mais peso textual e bônus por termos da pergunta no chunk
+        peso_embedding = 0.5
+        peso_texto = 0.5
+        similaridade = round(peso_embedding * similaridade_base + peso_texto * melhor_score, 4)
+
+        # Bônus por presença explícita de termos da pergunta no chunk
+        tokens_pergunta = set(pergunta_lower.split())
+        tokens_chunk = set(conteudo.lower().split())
+        intersecao = tokens_pergunta.intersection(tokens_chunk)
+
+        if len(intersecao) >= 2:
+            similaridade = min(similaridade + 0.05, 1.0)
+        if melhor_score > 0.92:
+            similaridade = min(similaridade + 0.03, 1.0)
 
         resultados.append({
-            "nome": nome,
+            "nome": nome_arquivo,
             "trecho": trecho,
-            "link": link,
+            "link": "#",  # Pode ser ajustado se houver mapeamento
             "similaridade": similaridade
         })
 
-    resultados.sort(key=lambda x: x['similaridade'], reverse=True)
-    return resultados
+    # Ordena os resultados pela nova similaridade combinada
+    resultados.sort(key=lambda x: x["similaridade"], reverse=True)
+    tempo = round(time.time() - inicio, 3)
+    return resultados[:5]
 
-# Busca literal
+
 def busca_literal_em_todos(pergunta, limite=0.4):
     resultados = []
-    pergunta_normalizada = normalizar(pergunta)
+    pergunta_lower = pergunta.lower()
 
-    match = re.search(r'\b0*(\d{1,4})(?:[\s_/-]*(\d{2,4}))?\b', pergunta_normalizada)
-
-    if match:
-        numero, ano = match.groups()
-        numero_formatado = f"{int(numero):03d}"
-
-        padroes = [numero_formatado]
-        if ano:
-            padroes.append(f"{numero_formatado}{ano}")
-
-        for nome in nomes:
-            nome_normalizado = normalizar(nome)
-            if any(p in nome_normalizado for p in padroes):
-                caminho = os.path.join("textos_extraidos", nome)
-                if not os.path.exists(caminho):
-                    continue
-                with open(caminho, "r", encoding="utf-8") as f:
-                    conteudo = f.read()
-                trecho = textwrap.shorten(conteudo.replace("\n", " "), width=400, placeholder=" [...]")
-                link = encontrar_link(nome)
-                resultados.append({
-                    "nome": nome,
-                    "trecho": trecho,
-                    "link": link,
-                    "similaridade": 1.0
-                })
-
-        if resultados:
-            return sorted(resultados, key=lambda x: x["nome"])
-
-    # Fallback: busca difusa
-    for nome in nomes:
-        nome_normalizado = normalizar(nome)
-        ratio_nome = SequenceMatcher(None, pergunta_normalizada, nome_normalizado).ratio()
-
-        caminho = os.path.join("textos_extraidos", nome)
-        if not os.path.exists(caminho):
-            continue
-        with open(caminho, "r", encoding="utf-8") as f:
-            conteudo = f.read()
-            conteudo_normalizado = unidecode(conteudo.lower())
-            ratio_conteudo = SequenceMatcher(None, conteudo_normalizado, pergunta_normalizada).ratio()
-
-        score = max(ratio_nome, ratio_conteudo)
+    for i, conteudo in enumerate(chunks):
+        nome_arquivo = nome_arquivos[i]
+        score = SequenceMatcher(None, conteudo.lower(), pergunta_lower).ratio()
         if score >= limite:
             trecho = textwrap.shorten(conteudo.replace("\n", " "), width=400, placeholder=" [...]")
-            link = encontrar_link(nome)
             resultados.append({
-                "nome": nome,
+                "nome": nome_arquivo,
                 "trecho": trecho,
-                "link": link,
+                "link": "#",
                 "similaridade": round(score, 2)
             })
 
