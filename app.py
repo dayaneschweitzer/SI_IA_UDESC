@@ -22,8 +22,11 @@ def index():
             inicio = time.time()
             try:
                 resultados_sem = busca_semantica(pergunta, modelo, MODELO_NOME)
-                if not resultados_sem:
-                    resultados_lit = busca_literal_em_todos(pergunta)
+                resultados_lit = busca_literal_em_todos(pergunta)
+
+                # Se a melhor semântica for fraca, desconsidera
+                if not resultados_sem or (resultados_sem[0]["similaridade"] < 0.45):
+                    resultados_sem = []
             except Exception as e:
                 resultados_sem = [{
                     "nome": "Erro ao buscar",
@@ -35,7 +38,7 @@ def index():
 
     return render_template("index.html", pergunta=pergunta,
                            resultados_sem=resultados_sem,
-                           resultados_lit=resultados_lit,
+                           resultados_lit=resultados_lit if not resultados_sem else [],
                            tempo=tempo_resposta)
 
 # ✅ Rota para abrir documento diretamente
