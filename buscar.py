@@ -1,120 +1,88 @@
-from sentence_transformers import SentenceTransformer
-import faiss
-import pickle
 import os
-import re
-import json
+import pickle
 import time
-import numpy as np
 import textwrap
-from unidecode import unidecode
+import re
+import unicodedata
 from difflib import SequenceMatcher
+from sentence_transformers import SentenceTransformer
+from sklearn.neighbors import NearestNeighbors
+from collections import defaultdict
 
-# Função de normalização
+# Carrega dados
+with open("dados_completos.pkl", "rb") as f:
+    data = pickle.load(f)
+
+chunks = data["chunks"]
+embeddings = data["embeddings"]
+nome_arquivos = data["nomes_arquivos"]
+
+# Monta índice semântico
+index = NearestNeighbors(n_neighbors=10, metric="cosine")
+index.fit(embeddings)
+
+modelo = SentenceTransformer("all-mpnet-base-v2")
+
 def normalizar(texto):
-    texto = unidecode(texto.lower())
-    texto = texto.replace("_", " ").replace("-", " ")
-    texto = re.sub(r'[\W_]+', ' ', texto)
-    return texto.strip()
+    texto = texto.lower().strip()
+    texto = unicodedata.normalize("NFKD", texto).encode("ascii", "ignore").decode("utf-8")
+    return re.sub(r"[\s_./-]+", "", texto)
 
-# Encontrar link
-with open("mapeamento_links.json", "r", encoding="utf-8") as f:
-    mapeamento_links = json.load(f)
+def encontrar_link(nome):
+    base = nome.split("_chunk")[0] if "_chunk" in nome else nome
+    return f"/documento/{base}"
 
-def encontrar_link(nome_arquivo):
-    nome_base = re.sub(r'_chunk\d+\.txt$', '', nome_arquivo) + ".txt"
-    chave_normalizada = normalizar(nome_base)
-    
-    for chave in mapeamento_links:
-        chave_norm = normalizar(chave)
-        if chave_norm == chave_normalizada or chave_norm.startswith(chave_normalizada):
-            return mapeamento_links[chave]
-    
-    print(f"[DEBUG] Não encontrou link para '{nome_arquivo}' (normalizado: {chave_normalizada})")
-    return None
-
-# Função para carregar os recursos por modelo e PCA
-def carregar_recursos(modelo_nome, n_pca):
-    modelo_safe = modelo_nome.replace("/", "_")
-    suf = f"{modelo_safe}_pca{n_pca}"
-    
-    index = faiss.read_index(f'index_faiss_{suf}.idx')
-    
-    with open(f'pca_model_{suf}.pkl', 'rb') as f:
-        pca = pickle.load(f)
-    
-    with open(f'nomes_textos_{suf}.pkl', 'rb') as f:
-        nomes = pickle.load(f)
-    
-    return index, pca, nomes
-
-# Busca semântica com PCA
-def busca_semantica(pergunta, modelo, modelo_nome, n_pca, top_k=3, limiar=0.75):
-    try:
-        index, pca, nomes = carregar_recursos(modelo_nome, n_pca)
-    except FileNotFoundError as e:
-        print(f"Arquivo de recurso não encontrado para {modelo_nome} com PCA {n_pca}: {e}")
-        return [], 0.0
-
-    start = time.time()
-
-    embedding = modelo.encode([pergunta], convert_to_numpy=True, normalize_embeddings=True)
-    embedding_reduzido = pca.transform(embedding)
-    distancias, indices = index.search(embedding_reduzido, top_k)
-
-    end = time.time()
-    tempo = end - start  # tempo de consulta
-
+def busca_semantica(pergunta, modelo, modelo_nome="all-mpnet-base-v2"):
+    pergunta_lower = pergunta.lower()
+    pergunta_embedding = modelo.encode([pergunta], convert_to_numpy=True)
+    distancias, indices = index.kneighbors(pergunta_embedding)
     resultados = []
 
     for idx in indices[0]:
-        if idx >= len(nomes):
-            continue
-        nome = nomes[idx]
-        caminho = os.path.join("textos_extraidos", nome)
-        if not os.path.exists(caminho):
-            continue
-        with open(caminho, "r", encoding="utf-8") as f:
-            conteudo = f.read()
+        conteudo = chunks[idx]
+        nome_arquivo = nome_arquivos[idx]
 
-        pergunta_lower = pergunta.lower()
-        trecho = ""
+        melhor_linha = ""
+        melhor_score = 0.0
         for linha in conteudo.splitlines():
-            if any(p in linha.lower() for p in pergunta_lower.split()):
-                trecho = linha.strip()
-                break
-        if not trecho:
-            trecho = textwrap.shorten(conteudo.replace("\n", " "), width=300, placeholder=" [...]")
+            score = SequenceMatcher(None, pergunta_lower, linha.lower()).ratio()
+            if score > melhor_score:
+                melhor_score = score
+                melhor_linha = linha
 
-        link = encontrar_link(nome)
+        trecho = melhor_linha.strip() if melhor_linha else textwrap.shorten(conteudo.replace("\n", " "), width=300)
         distancia = distancias[0][list(indices[0]).index(idx)]
-        similaridade = round(1 - (distancia / 2), 2)
+        similaridade_base = round(1 - (distancia / 2), 4)
 
-        if similaridade < limiar:
-            continue
+        tokens_pergunta = set(pergunta_lower.split())
+        tokens_chunk = set(conteudo.lower().split())
+        intersecao = tokens_pergunta.intersection(tokens_chunk)
+
+        peso_embedding = 0.5
+        peso_texto = 0.5
+        similaridade = round(peso_embedding * similaridade_base + peso_texto * melhor_score, 4)
+
+        if len(intersecao) >= 2:
+            similaridade = min(similaridade + 0.05, 1.0)
+        if melhor_score > 0.92:
+            similaridade = min(similaridade + 0.03, 1.0)
 
         resultados.append({
-            "nome": nome,
+            "nome": nome_arquivo,
             "trecho": trecho,
-            "link": link,
+            "link": encontrar_link(nome_arquivo),
             "similaridade": similaridade
         })
 
-    resultados.sort(key=lambda x: x['similaridade'], reverse=True)
-    return resultados, tempo
+    resultados.sort(key=lambda x: x["similaridade"], reverse=True)
+    return resultados[:5]
 
-# Busca literal com normalização e difusa
-def busca_literal_em_todos(pergunta, modelo_nome, n_pca, limite=0.4):
-    modelo_safe = modelo_nome.replace("/", "_")
-    suf = f"{modelo_safe}_pca{n_pca}"
-    
-    with open(f'nomes_textos_{suf}.pkl', 'rb') as f:
-        nomes = pickle.load(f)
-    
+def busca_literal_em_todos(pergunta, limite=0.4):
     resultados = []
     pergunta_normalizada = normalizar(pergunta)
-    match = re.search(r'\b0*(\d{1,4})(?:[\s_/-]*(\d{2,4}))?\b', pergunta_normalizada)
 
+    # Busca por número e ano no nome dos arquivos
+    match = re.search(r'\b0*(\d{1,4})(?:[\s_/-]*(\d{2,4}))?\b', pergunta_normalizada)
     if match:
         numero, ano = match.groups()
         numero_formatado = f"{int(numero):03d}"
@@ -122,47 +90,34 @@ def busca_literal_em_todos(pergunta, modelo_nome, n_pca, limite=0.4):
         if ano:
             padroes.append(f"{numero_formatado}{ano}")
 
-        for nome in nomes:
+        for nome, conteudo in zip(nome_arquivos, chunks):
             nome_normalizado = normalizar(nome)
             if any(p in nome_normalizado for p in padroes):
-                caminho = os.path.join("textos_extraidos", nome)
-                if not os.path.exists(caminho):
-                    continue
-                with open(caminho, "r", encoding="utf-8") as f:
-                    conteudo = f.read()
                 trecho = textwrap.shorten(conteudo.replace("\n", " "), width=400, placeholder=" [...]")
-                link = encontrar_link(nome)
                 resultados.append({
                     "nome": nome,
                     "trecho": trecho,
-                    "link": link,
+                    "link": encontrar_link(nome),
                     "similaridade": 1.0
                 })
 
         if resultados:
             return sorted(resultados, key=lambda x: x["nome"])
 
-    # Fallback: busca difusa
-    for nome in nomes:
+    # Fallback: comparação difusa
+    for nome, conteudo in zip(nome_arquivos, chunks):
         nome_normalizado = normalizar(nome)
         ratio_nome = SequenceMatcher(None, pergunta_normalizada, nome_normalizado).ratio()
-        
-        caminho = os.path.join("textos_extraidos", nome)
-        if not os.path.exists(caminho):
-            continue
-        with open(caminho, "r", encoding="utf-8") as f:
-            conteudo = f.read()
-            conteudo_normalizado = unidecode(conteudo.lower())
-            ratio_conteudo = SequenceMatcher(None, conteudo_normalizado, pergunta_normalizada).ratio()
+        conteudo_normalizado = normalizar(conteudo)
+        ratio_conteudo = SequenceMatcher(None, conteudo_normalizado, pergunta_normalizada).ratio()
 
         score = max(ratio_nome, ratio_conteudo)
         if score >= limite:
             trecho = textwrap.shorten(conteudo.replace("\n", " "), width=400, placeholder=" [...]")
-            link = encontrar_link(nome)
             resultados.append({
                 "nome": nome,
                 "trecho": trecho,
-                "link": link,
+                "link": encontrar_link(nome),
                 "similaridade": round(score, 2)
             })
 
