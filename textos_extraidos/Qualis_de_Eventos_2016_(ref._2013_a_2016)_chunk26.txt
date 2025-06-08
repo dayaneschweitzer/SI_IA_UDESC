@@ -1,1 +1,0 @@
-B5 WRE WRE - Workshop of Robotics in Education B5 WRVA WRVA - Workshop de Realidade Virtual e Aumentada B5 WSL WSL - Workshop de Software Livre B5 WTF WTF - Workshop de Testes e Tolerância a Falhas B5 WTranS WTRANS - Workshop de Transparência de Sistema B5 WTTM WTTM - Workshop on the Theory of Transactional Memory B5 WVC WVC - Workshop de Visão Computacional B5

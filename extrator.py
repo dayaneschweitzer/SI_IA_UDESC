@@ -1,37 +1,36 @@
-import fitz
+import json
 import os
+import fitz 
 
-def extrair_texto_pdf(caminho_pdf):
-    doc = fitz.open(caminho_pdf)
-    texto_total = ""
-    for pagina in doc:
-        texto_total += pagina.get_text()
-    doc.close()
-    return texto_total
+json_path = "C:/SI_IA_UDESC/PDFs_Udesc/resolucoes_ppgcap.json"
+pdf_folder = "C:/SI_IA_UDESC/PDFs_Udesc"
+output_folder = "textos_extraidos"
 
-def dividir_em_chunks(texto, tamanho_max=300):
+os.makedirs(output_folder, exist_ok=True)
+
+def dividir_em_chunks(texto, tamanho_chunk=300):
     palavras = texto.split()
-    chunks = []
-    for i in range(0, len(palavras), tamanho_max):
-        chunk = " ".join(palavras[i:i + tamanho_max])
-        chunks.append(chunk)
+    chunks = [' '.join(palavras[i:i + tamanho_chunk]) for i in range(0, len(palavras), tamanho_chunk)]
     return chunks
 
-def processar_pdfs(pasta_pdfs="portarias", ignorar=[]):
-    os.makedirs("textos_extraidos", exist_ok=True)
-    erros = []
+with open(json_path, 'r', encoding='utf-8') as f:
+    resolucoes = json.load(f)
 
-    for arquivo in os.listdir(pasta_pdfs):
-        if arquivo.endswith(".pdf") and arquivo not in ignorar:
-            caminho = os.path.join(pasta_pdfs, arquivo)
-            try:
-                texto = extrair_texto_pdf(caminho)
-                chunks = dividir_em_chunks(texto, tamanho_max=500)
-                for i, chunk in enumerate(chunks):
-                    nome_txt = arquivo.replace(".pdf", f"_chunk{i}.txt")
-                    with open(os.path.join("textos_extraidos", nome_txt), "w", encoding="utf-8") as f:
-                        f.write(chunk)
-            except Exception as e:
-                print(f"Erro ao processar {arquivo}: {e}")
-                erros.append(arquivo)
-    return erros
+for resolucao in resolucoes:
+    titulo = resolucao["titulo"]
+    pdf_path = os.path.join(pdf_folder, resolucao["arquivo"])
+    
+    texto_completo = ""
+    with fitz.open(pdf_path) as pdf:
+        for pagina in pdf:
+            texto_completo += pagina.get_text()
+    
+    chunks = dividir_em_chunks(texto_completo)
+    
+    for i, chunk in enumerate(chunks):
+        chunk_filename = f"{titulo.replace(' ', '_').replace('/', '_')}_chunk_{i+1}.txt"
+        chunk_path = os.path.join(output_folder, chunk_filename)
+        with open(chunk_path, 'w', encoding='utf-8') as chunk_file:
+            chunk_file.write(chunk)
+
+print("Textos extraídos e salvos em chunks na pasta 'textos_extraidos'.")
