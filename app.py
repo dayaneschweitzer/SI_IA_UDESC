@@ -56,10 +56,15 @@ def index():
                     conteudo_docs += f"\n--- Documento: {doc_meta['arquivo']} (chunk {doc_meta.get('chunk_id', 0)}) ---\n"
                     conteudo_docs += chunk_texto + "\n"
 
+                    link = doc_meta.get('link', None)
+
+                    if not link:
+                        link = "#" 
+
                     resultados_sem.append({
                         "nome": doc_meta.get('titulo', doc_meta['arquivo']),
                         "trecho": chunk_texto,
-                        "link": doc_meta.get('link', f"/documento/{doc_meta['arquivo']}")
+                        "link": link
                     })
 
                 prompt = """
@@ -104,10 +109,6 @@ Se a informação não estiver nos documentos, diga: "Não encontrei essa inform
 def reset():
     session.pop("chat_history", None)
     return "Histórico resetado. <a href='/'>Voltar</a>"
-
-@app.route("/documento/<path:nome>")
-def documento(nome):
-    return send_from_directory(pdf_base_path, nome)
 
 if __name__ == "__main__":
     app.run(debug=True)
