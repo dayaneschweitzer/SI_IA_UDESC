@@ -5,76 +5,212 @@
     <title>Sistema de Busca de Legislação PPGCAP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
     <style>
-        body {
-            margin: 2rem;
+        /* Botão flutuante */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0f381a;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
         }
-        .chat-entry {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border: 1px solid #e1e1e1;
+
+        .chat-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            height: 80%;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+
+            display: {{ 'flex' if pergunta_atual or chat_history or saudacao else 'none' }};
+        }
+
+        .chat-header {
+            background-color: #0f381a;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+
+        .chat-entry.user {
+            align-self: flex-end;
+            background-color: #daf1ff;
+            border-radius: 12px 12px 0 12px;
+            max-width: 80%;
+            margin: 5px 0;
+            padding: 10px;
+        }
+
+        .chat-entry.assistant {
+            align-self: flex-start;
+            background-color: #e8f5e9;
+            border-radius: 12px 12px 12px 0;
+            max-width: 80%;
+            margin: 5px 0;
+            padding: 10px;
+        }
+
+        .chat-input {
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            display: flex;
+        }
+
+        .chat-input input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
             border-radius: 5px;
+            margin-right: 5px;
         }
-        .user {
-            font-weight: bold;
-            color: #007bff;
+
+        .chat-input button {
+            padding: 8px 12px;
+            background-color: #0f381a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .assistant {
-            font-weight: bold;
-            color: #28a745;
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .quick-replies form {
+            display: inline;
+        }
+
+        .quick-replies button {
+            background-color: #e0e0e0;
+            color: #333;
+            border: none;
+            border-radius: 15px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .reset-button {
+            width: 100%;
+            padding: 8px 12px;
+            margin: 10px 0;
+            background-color: #125401;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h2>Sistema de Busca de Legislação PPGCAP</h2>
-    
-    <form method="POST">
-        <label for="pergunta">Digite sua pergunta:</label>
-        <input type="text" id="pergunta" name="pergunta" required>
+
+<!-- Botão flutuante -->
+<button class="chat-button" onclick="toggleChat()">💬</button>
+
+<!-- Chat flutuante -->
+<div class="chat-popup" id="chatPopup">
+    <div class="chat-header">
+        Sistema de Busca de Legislação PPGCAP
+    </div>
+    <div class="chat-messages" id="chatMessages">
+
+        {% if saudacao %}
+        <div class="chat-entry assistant">
+            <p>{{ saudacao }}</p>
+        </div>
+        {% endif %}
+
+        {% for turn in chat_history %}
+        {% if turn.pergunta %}
+        <div class="chat-entry user">
+            <p>{{ turn.pergunta }}</p>
+        </div>
+        {% endif %}
+        <div class="chat-entry assistant">
+            <p>{{ turn.resposta }}</p>
+        </div>
+        {% endfor %}
+
+        {% if resultados_sem and not resposta_atual.startswith('Erro ao buscar') %}
+            <div class="chat-entry assistant">
+                <p><strong>Documentos relevantes:</strong></p>
+                <ul>
+                    {% for resultado in resultados_sem %}
+                    <li>
+                        <a href="{{ resultado.link }}" target="_blank">{{ resultado.nome }}</a>
+                        <br>
+                        <small>{{ resultado.trecho }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <p><strong>Esses documentos respondem à sua dúvida?</strong></p>
+                <div class="quick-replies">
+                    <!-- Quick reply buttons -->
+                    <form method="POST">
+                        <input type="hidden" name="pergunta" value="Encontrei meu arquivo">
+                        <button type="submit">Encontrei meu arquivo</button>
+                    </form>
+                    <form method="POST">
+                        <input type="hidden" name="pergunta" value="Quero mais documentos sobre o mesmo assunto">
+                        <button type="submit">Quero mais documentos</button>
+                    </form>
+                    <form method="POST">
+                        <input type="hidden" name="pergunta" value="Não encontrei o que procurava, quero refinar a busca">
+                        <button type="submit">Refinar busca</button>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <form method="POST" class="chat-input">
+        <input type="text" name="pergunta" placeholder="Digite sua pergunta..." required>
         <button type="submit">Enviar</button>
     </form>
-    
-    <p><a href="/reset">Resetar histórico</a></p>
 
-    {% if resultados_sem %}
-        <h3>Encontrei o(s) seguinte(s) documento(s) similar(es) à sua busca:</h3>
-        <ul>
-            {% for resultado in resultados_sem %}
-            <li>
-                <strong>{{ resultado.nome }}</strong> - 
-                <a href="{{ resultado.link }}" target="_blank">Clique aqui para abrir o PDF</a>
-                <p>Trecho relevante: {{ resultado.trecho }}</p>
-            </li>
-            {% endfor %}
-        </ul>
+    <form action="/reset" method="GET" style="padding: 0 10px;">
+        <button type="submit" class="reset-button">Limpar Histórico</button>
+    </form>
+</div>
 
-        <p><strong>Esse(s) documento(s) responde(m) à sua dúvida?</strong></p>
-        <p>Se não, por favor, me dê mais detalhes sobre o assunto que você está procurando.</p>
+<script>
+    function toggleChat() {
+        var chat = document.getElementById("chatPopup");
+        if (chat.style.display === "none" || chat.style.display === "") {
+            chat.style.display = "flex";
+        } else {
+            chat.style.display = "none";
+        }
+    }
+</script>
 
-        <!-- Botões de resposta padrão -->
-        <form method="POST" style="display: inline;">
-            <input type="hidden" name="pergunta" value="Quero mais documentos sobre o mesmo assunto">
-            <button type="submit">Quero mais documentos sobre o mesmo assunto</button>
-        </form>
-        <form method="POST" style="display: inline;">
-            <input type="hidden" name="pergunta" value="Não encontrei o que procurava, quero refinar a busca">
-            <button type="submit">Não encontrei o que procurava, quero refinar a busca</button>
-        </form>
-    {% endif %}
-
-    {% if pergunta_atual %}
-        <h3>Resposta atual:</h3>
-        <p>{{ resposta_atual }}</p>
-        <p><strong>Tempo de resposta:</strong> {{ tempo }} segundos</p>
-    {% endif %}
-
-    <h3>Histórico de conversa:</h3>
-    {% for turn in chat_history %}
-    <div class="chat-entry">
-        <p class="user">Usuário:</p>
-        <p>{{ turn.pergunta }}</p>
-        <p class="assistant">Assistente:</p>
-        <p>{{ turn.resposta }}</p>
-    </div>
-    {% endfor %}
 </body>
 </html>

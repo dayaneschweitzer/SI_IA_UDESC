@@ -49,7 +49,10 @@ for filename in os.listdir(textos_folder):
 
             info_doc = informacoes_documentos.get(nome_base_pdf, {})
             titulo = info_doc.get("titulo", nome_base_pdf)
-            link = info_doc.get("link", f"/documento/{filename}")
+            link = info_doc.get("link")
+            if not link:
+                link = "#"
+
 
             for i, chunk in enumerate(chunks):
                 embedding = modelo.encode(chunk, convert_to_numpy=True)
