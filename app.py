@@ -4,35 +4,50 @@ import pickle
 import json
 import faiss
 import numpy as np
+import unicodedata
 from flask import Flask, request, render_template, session
 from sentence_transformers import SentenceTransformer
 from langchain_ollama import OllamaLLM
 
+def normalizar_nome(nome):
+    nome = nome.lower()
+    nome = unicodedata.normalize('NFD', nome).encode('ascii', 'ignore').decode('utf-8')
+    nome = nome.replace('ç', 'c')
+    nome = nome.replace('_', '').replace('-', '').replace(' ', '')
+    return nome
+
+# Pastas
 pdf_base_path = os.path.abspath("PDFs_Udesc")
 vetores_folder = os.path.abspath("vetores")
 
+# Flask
 app = Flask(__name__, template_folder='.')
 app.secret_key = "chave_super_secreta_para_sessao"
 
+# FAISS + metadados
 faiss_index = faiss.read_index(os.path.join(vetores_folder, "faiss_index.index"))
 
 with open(os.path.join(vetores_folder, "metadados.pkl"), 'rb') as f:
     metadados = pickle.load(f)
 
+# JSON
 with open(os.path.join(pdf_base_path, "resolucoes_ppgcap.json"), 'r', encoding='utf-8') as f:
     resolucoes_info = json.load(f)
 
+# mapa de lookup para json
 mapa_arquivos = {
-    item["arquivo"]: {
+    normalizar_nome(item["arquivo"]): {
         "titulo": item["titulo"],
         "link": item["link"]
     }
     for item in resolucoes_info
 }
 
+# Modelo
 modelo_nome = "all-mpnet-base-v2"
 modelo = SentenceTransformer(modelo_nome)
 
+# LLM
 llm = OllamaLLM(model="mistral")
 
 @app.route("/", methods=["GET", "POST"])
@@ -91,7 +106,7 @@ def index():
             inicio = time.time()
             try:
                 embedding_pergunta = modelo.encode(pergunta, convert_to_numpy=True)
-                k = 2
+                k = 5
                 D, I = faiss_index.search(np.array([embedding_pergunta]), k)
 
                 documentos_relevantes = {}
@@ -101,19 +116,20 @@ def index():
                         continue
                     doc_meta = metadados[idx]
 
-                    arquivo_original = doc_meta.get("arquivo", "")
-                    arquivo_pdf_nome = arquivo_original.split("_chunk_")[0].replace(".txt", ".pdf")
+                    # Pegar nome do arquivo do metadados.pkl
+                    arquivo_pdf = doc_meta.get("arquivo", "")
+                    arquivo_pdf_normalizado = normalizar_nome(arquivo_pdf)
 
-                    info_json = mapa_arquivos.get(arquivo_pdf_nome, None)
+                    info_json = mapa_arquivos.get(arquivo_pdf_normalizado)
 
                     if info_json:
                         titulo = info_json["titulo"]
                         link = info_json["link"]
                     else:
-                        titulo = doc_meta.get("titulo", arquivo_original)
-                        link = doc_meta.get("link", "#")
+                        titulo = arquivo_pdf
+                        link = "#"
 
-                    trecho_resumido = doc_meta['texto'][:150].replace("\n", " ").strip() + "..."
+                    trecho_resumido = doc_meta["texto"][:150].replace("\n", " ").strip() + "..."
 
                     if titulo not in documentos_relevantes:
                         documentos_relevantes[titulo] = {
@@ -131,10 +147,11 @@ def index():
                 for titulo, doc_info in documentos_relevantes.items():
                     resultados_sem.append({
                         "nome": titulo,
-                        "trecho": doc_info['trecho'],
-                        "link": doc_info['link']
+                        "trecho": doc_info["trecho"],
+                        "link": doc_info["link"]
                     })
 
+                # Construir prompt
                 prompt = f"""
 Você é um assistente especializado em legislação do PPGCAP.
 
@@ -142,15 +159,18 @@ Seu papel é ajudar o usuário a encontrar informações nas resoluções oficia
 
 Você deve responder de forma clara e amigável.
 
-IMPORTANTE: você só pode responder com base nos documentos listados abaixo. 
-Se a informação não estiver presente, diga: "Não encontrei essa informação nos documentos."
+IMPORTANTE:
+- Quando citar documentos, cite pelo TÍTULO completo (ex: "Resolução 042/2023 - Distribuição de Bolsas").
+- Se desejar, inclua a URL oficial do documento (link).
+- NÃO cite nomes de arquivos PDF como 'Resolucao_042_2023_-_Distribuicao_Bolsas.pdf'.
+- Se a informação não estiver presente, diga: "Não encontrei essa informação nos documentos."
 
 {conteudo_docs_texto}
 
 Histórico da conversa:
 """
 
-                historico_recente = chat_history[-1:]
+                historico_recente = chat_history[-2:]
 
                 for turn in historico_recente:
                     if turn["pergunta"]:
@@ -158,8 +178,10 @@ Histórico da conversa:
 
                 prompt += f"\nUsuário: {pergunta}\nAssistente: "
 
+                # Chamada LLM
                 resposta_final = llm.invoke(prompt)
 
+                # Atualizar histórico
                 chat_history.append({
                     "pergunta": pergunta,
                     "resposta": resposta_final
