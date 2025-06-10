@@ -16,25 +16,20 @@ def normalizar_nome(nome):
     nome = nome.replace('_', '').replace('-', '').replace(' ', '')
     return nome
 
-# Pastas
 pdf_base_path = os.path.abspath("PDFs_Udesc")
 vetores_folder = os.path.abspath("vetores")
 
-# Flask
 app = Flask(__name__, template_folder='.')
 app.secret_key = "chave_super_secreta_para_sessao"
 
-# FAISS + metadados
 faiss_index = faiss.read_index(os.path.join(vetores_folder, "faiss_index.index"))
 
 with open(os.path.join(vetores_folder, "metadados.pkl"), 'rb') as f:
     metadados = pickle.load(f)
 
-# JSON
 with open(os.path.join(pdf_base_path, "resolucoes_ppgcap.json"), 'r', encoding='utf-8') as f:
     resolucoes_info = json.load(f)
 
-# mapa de lookup para json
 mapa_arquivos = {
     normalizar_nome(item["arquivo"]): {
         "titulo": item["titulo"],
@@ -43,12 +38,11 @@ mapa_arquivos = {
     for item in resolucoes_info
 }
 
-# Modelo
 modelo_nome = "all-mpnet-base-v2"
 modelo = SentenceTransformer(modelo_nome)
 
-# LLM
-llm = OllamaLLM(model="mistral")
+MODEL_NAME = "mistral"
+llm = OllamaLLM(model=MODEL_NAME)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -60,20 +54,13 @@ def index():
     resposta_final = ""
     tempo_resposta = 0
     resultados_sem = []
-
-    if not chat_history:
-        saudacao = "Olá! Sou o assistente do PPGCAP. Como posso ajudar você com as legislações? 📚"
-        chat_history.append({
-            "pergunta": "",
-            "resposta": saudacao
-        })
-        session["chat_history"] = chat_history
+    exibir_botoes = False
 
     if request.method == "POST":
         pergunta = request.form.get("pergunta", "").strip()
 
         if pergunta.lower() in ["oi", "olá", "bom dia", "boa tarde", "boa noite"]:
-            resposta_final = "Olá! Como posso te ajudar? Você pode me perguntar sobre qualquer legislação do PPGCAP. 📚"
+            resposta_final = "Olá! Eu sou o assistente do PPGCAP. Como posso ajudar você com as legislações? 📚"
             chat_history.append({
                 "pergunta": pergunta,
                 "resposta": resposta_final
@@ -85,10 +72,11 @@ def index():
                                    pergunta_atual=pergunta,
                                    resposta_atual=resposta_final,
                                    resultados_sem=[],
-                                   tempo=tempo_resposta)
+                                   tempo=tempo_resposta,
+                                   exibir_botoes=False)
 
-        if pergunta.lower() == "encontrei meu arquivo":
-            resposta_final = "Excelente! Se quiser fazer mais buscas, estou por aqui. 😊"
+        if pergunta.lower() == "sim, atenderam.":
+            resposta_final = "Ótimo! Se precisar de mais alguma coisa, é só perguntar. 😊"
             chat_history.append({
                 "pergunta": pergunta,
                 "resposta": resposta_final
@@ -100,7 +88,24 @@ def index():
                                    pergunta_atual=pergunta,
                                    resposta_atual=resposta_final,
                                    resultados_sem=[],
-                                   tempo=tempo_resposta)
+                                   tempo=tempo_resposta,
+                                   exibir_botoes=False)
+
+        if pergunta.lower() == "não, quero refazer a busca":
+            resposta_final = "Certo, por favor, digite sua nova pergunta."
+            chat_history.append({
+                "pergunta": pergunta,
+                "resposta": resposta_final
+            })
+            session["chat_history"] = chat_history
+            tempo_resposta = 0.01
+            return render_template("index.html",
+                                   chat_history=chat_history,
+                                   pergunta_atual=pergunta,
+                                   resposta_atual=resposta_final,
+                                   resultados_sem=[],
+                                   tempo=tempo_resposta,
+                                   exibir_botoes=False)
 
         if pergunta:
             inicio = time.time()
@@ -109,17 +114,19 @@ def index():
                 k = 5
                 D, I = faiss_index.search(np.array([embedding_pergunta]), k)
 
-                documentos_relevantes = {}
+                documentos_relevantes = []
+
+                threshold = 2.0
 
                 for distancia, idx in zip(D[0], I[0]):
                     if idx == -1:
                         continue
-                    doc_meta = metadados[idx]
+                    if distancia > threshold:
+                        continue
 
-                    # Pegar nome do arquivo do metadados.pkl
+                    doc_meta = metadados[idx]
                     arquivo_pdf = doc_meta.get("arquivo", "")
                     arquivo_pdf_normalizado = normalizar_nome(arquivo_pdf)
-
                     info_json = mapa_arquivos.get(arquivo_pdf_normalizado)
 
                     if info_json:
@@ -129,59 +136,73 @@ def index():
                         titulo = arquivo_pdf
                         link = "#"
 
-                    trecho_resumido = doc_meta["texto"][:150].replace("\n", " ").strip() + "..."
+                    trecho_resumido = doc_meta["texto"][:300].replace("\n", " ").strip() + "..."
 
-                    if titulo not in documentos_relevantes:
-                        documentos_relevantes[titulo] = {
-                            "link": link,
-                            "trecho": trecho_resumido
-                        }
-
-                conteudo_docs_texto = "Aqui estão os documentos relevantes:\n\n"
-                for titulo, doc_info in documentos_relevantes.items():
-                    conteudo_docs_texto += f"\n--- Documento: {titulo} ---\n"
-                    conteudo_docs_texto += f"Link: {doc_info['link']}\n"
-                    conteudo_docs_texto += f"Trecho: {doc_info['trecho']}\n"
-
-                resultados_sem = []
-                for titulo, doc_info in documentos_relevantes.items():
-                    resultados_sem.append({
+                    documentos_relevantes.append({
                         "nome": titulo,
-                        "trecho": doc_info["trecho"],
-                        "link": doc_info["link"]
+                        "link": link,
+                        "trecho": trecho_resumido
                     })
 
-                # Construir prompt
-                prompt = f"""
+                if not documentos_relevantes:
+                    prompt = f"""
+Você é um assistente especializado em legislação do PPGCAP.
+
+A pergunta do usuário foi: "{pergunta}"
+
+Nenhum documento relevante foi encontrado para essa pergunta.
+
+IMPORTANTE:
+- Responda com a seguinte frase: "Não encontrei nenhum documento sobre esse assunto. Você poderia fornecer mais detalhes sobre o que procura?"
+- NÃO tente inventar documentos ou informações.
+
+Sua resposta:
+"""
+                    exibir_botoes = False
+                else:
+                    conteudo_docs_texto = ""
+                    for i, doc in enumerate(documentos_relevantes):
+                        conteudo_docs_texto += f"Documento {i+1}:\n"
+                        conteudo_docs_texto += f"Título: {doc['nome']}\n"
+                        conteudo_docs_texto += f"Link: {doc['link']}\n"
+                        conteudo_docs_texto += f"Trecho: {doc['trecho']}\n\n"
+
+                    prompt = f"""
 Você é um assistente especializado em legislação do PPGCAP.
 
 Seu papel é ajudar o usuário a encontrar informações nas resoluções oficiais do programa.
 
-Você deve responder de forma clara e amigável.
-
 IMPORTANTE:
-- Quando citar documentos, cite pelo TÍTULO completo (ex: "Resolução 042/2023 - Distribuição de Bolsas").
-- Se desejar, inclua a URL oficial do documento (link).
-- NÃO cite nomes de arquivos PDF como 'Resolucao_042_2023_-_Distribuicao_Bolsas.pdf'.
-- Se a informação não estiver presente, diga: "Não encontrei essa informação nos documentos."
+- Responda apenas com base nos documentos listados abaixo.
+- NÃO cite documentos que não estejam listados.
+- NÃO invente títulos ou links.
+- Se a pergunta do usuário não estiver relacionada às legislações do PPGCAP, diga: "Não posso falar nada sobre esse assunto."
+
+Aqui está a pergunta do usuário: "{pergunta}"
+
+Documentos relevantes encontrados:
 
 {conteudo_docs_texto}
 
-Histórico da conversa:
+Formato de resposta que você deve seguir:
+
+Aqui está um documento relevante com sua busca:
+
+Título: [Título do documento mais relevante]
+Link: [Link correspondente]
+
+Além disso, encontrei outros três arquivos que podem ser relevantes por conter o trecho "{pergunta}":
+
+[Listar os três documentos com Título + Link + pequeno trecho]
+
+Finalizar com a pergunta:
+Esses documentos lhe atendem?
 """
+                    resultados_sem = documentos_relevantes
+                    exibir_botoes = True
 
-                historico_recente = chat_history[-2:]
-
-                for turn in historico_recente:
-                    if turn["pergunta"]:
-                        prompt += f"\nUsuário: {turn['pergunta']}\nAssistente: {turn['resposta']}"
-
-                prompt += f"\nUsuário: {pergunta}\nAssistente: "
-
-                # Chamada LLM
                 resposta_final = llm.invoke(prompt)
 
-                # Atualizar histórico
                 chat_history.append({
                     "pergunta": pergunta,
                     "resposta": resposta_final
@@ -198,7 +219,8 @@ Histórico da conversa:
                            pergunta_atual=pergunta,
                            resposta_atual=resposta_final,
                            resultados_sem=resultados_sem,
-                           tempo=tempo_resposta)
+                           tempo=tempo_resposta,
+                           exibir_botoes=exibir_botoes)
 
 @app.route("/reset")
 def reset():

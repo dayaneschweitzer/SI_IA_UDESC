@@ -5,7 +5,6 @@
     <title>Sistema de Busca de Legislação PPGCAP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
     <style>
-        /* Botão flutuante */
         .chat-button {
             position: fixed;
             bottom: 20px;
@@ -38,7 +37,7 @@
             z-index: 1000;
             overflow: hidden;
 
-            display: {{ 'flex' if pergunta_atual or chat_history or saudacao else 'none' }};
+            display: {{ 'flex' if pergunta_atual or chat_history else 'none' }};
         }
 
         .chat-header {
@@ -127,25 +126,34 @@
             cursor: pointer;
             text-align: center;
         }
+
+        #typingIndicator {
+            font-style: italic;
+            color: #888;
+            margin-top: 5px;
+            display: none;
+        }
+
+        #typingIndicator span {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
-<!-- Botão flutuante -->
 <button class="chat-button" onclick="toggleChat()">💬</button>
 
-<!-- Chat flutuante -->
 <div class="chat-popup" id="chatPopup">
     <div class="chat-header">
         Sistema de Busca de Legislação PPGCAP
     </div>
     <div class="chat-messages" id="chatMessages">
-
-        {% if saudacao %}
-        <div class="chat-entry assistant">
-            <p>{{ saudacao }}</p>
-        </div>
-        {% endif %}
 
         {% for turn in chat_history %}
         {% if turn.pergunta %}
@@ -170,28 +178,31 @@
                     </li>
                     {% endfor %}
                 </ul>
-
-                <p><strong>Esses documentos respondem à sua dúvida?</strong></p>
-                <div class="quick-replies">
-                    <!-- Quick reply buttons -->
-                    <form method="POST">
-                        <input type="hidden" name="pergunta" value="Encontrei meu arquivo">
-                        <button type="submit">Encontrei meu arquivo</button>
-                    </form>
-                    <form method="POST">
-                        <input type="hidden" name="pergunta" value="Quero mais documentos sobre o mesmo assunto">
-                        <button type="submit">Quero mais documentos</button>
-                    </form>
-                    <form method="POST">
-                        <input type="hidden" name="pergunta" value="Não encontrei o que procurava, quero refinar a busca">
-                        <button type="submit">Refinar busca</button>
-                    </form>
-                </div>
             </div>
+        {% endif %}
+
+        <div class="chat-entry assistant" id="typingIndicator">
+            <p>Digitando<span>...</span></p>
+        </div>
+
+        {% if exibir_botoes %}
+        <div class="chat-entry assistant">
+            <p><strong>Esses documentos lhe atendem?</strong></p>
+            <div class="quick-replies">
+                <form method="POST">
+                    <input type="hidden" name="pergunta" value="Sim, atenderam.">
+                    <button type="submit">👍 Sim, atenderam.</button>
+                </form>
+                <form method="POST">
+                    <input type="hidden" name="pergunta" value="Não, quero refazer a busca">
+                    <button type="submit">🔄 Não, quero refazer a busca</button>
+                </form>
+            </div>
+        </div>
         {% endif %}
     </div>
 
-    <form method="POST" class="chat-input">
+    <form method="POST" class="chat-input" onsubmit="showTyping()">
         <input type="text" name="pergunta" placeholder="Digite sua pergunta..." required>
         <button type="submit">Enviar</button>
     </form>
@@ -209,6 +220,10 @@
         } else {
             chat.style.display = "none";
         }
+    }
+
+    function showTyping() {
+        document.getElementById("typingIndicator").style.display = "block";
     }
 </script>
 
