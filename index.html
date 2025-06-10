@@ -162,34 +162,34 @@
         </div>
         {% endif %}
         <div class="chat-entry assistant">
-            <p>{{ turn.resposta }}</p>
+            <p class="assistant-response">{{ turn.resposta }}</p>
         </div>
         {% endfor %}
 
         {% if mostrar_3_arquivos %}
-            <div class="chat-entry assistant">
-                <p><strong>Conforme solicitado, aqui estão os outros três documentos relevantes:</strong></p>
-                <ul>
-                    {% for resultado in resultados_sem[1:4] %}
-                    <li>
-                        <strong>{{ resultado.nome }}</strong><br>
-                        <a href="{{ resultado.link }}" target="_blank">{{ resultado.link }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
+        <div class="chat-entry assistant">
+            <p><strong>Conforme solicitado, aqui estão os outros três documentos relevantes:</strong></p>
+            <ul>
+                {% for resultado in resultados_sem[1:4] %}
+                <li style="margin-bottom: 10px;">
+                    <strong>{{ resultado.nome }}</strong><br>
+                    <a href="{{ resultado.link }}" target="_blank" rel="noopener noreferrer">{{ resultado.link }}</a>
+                </li>
+                {% endfor %}
+            </ul>
 
-                <p><strong>Esses documentos lhe atendem?</strong></p>
-                <div class="quick-replies">
-                    <form method="POST">
-                        <input type="hidden" name="pergunta" value="👍 Sim, atenderam.">
-                        <button type="submit">👍 Sim, atenderam.</button>
-                    </form>
-                    <form method="POST">
-                        <input type="hidden" name="pergunta" value="🔄 Não, quero refazer a busca">
-                        <button type="submit">🔄 Não, quero refazer a busca</button>
-                    </form>
-                </div>
+            <p><strong>Esses documentos lhe atendem?</strong></p>
+            <div class="quick-replies">
+                <form method="POST">
+                    <input type="hidden" name="pergunta" value="👍 Sim, atenderam.">
+                    <button type="submit">👍 Sim, atenderam.</button>
+                </form>
+                <form method="POST">
+                    <input type="hidden" name="pergunta" value="🔄 Não, quero refazer a busca">
+                    <button type="submit">🔄 Não, quero refazer a busca</button>
+                </form>
             </div>
+        </div>
         {% endif %}
 
         <div class="chat-entry assistant" id="typingIndicator">
@@ -236,6 +236,23 @@
     function showTyping() {
         document.getElementById("typingIndicator").style.display = "block";
     }
+
+    function autoLinkAssistantResponses() {
+        const responses = document.querySelectorAll(".assistant-response");
+
+        responses.forEach(function(el) {
+            // Primeiro, remove os < > que estiverem envolvendo a URL
+            el.innerHTML = el.innerHTML.replace(/<((https?:\/\/[^\s<>"]+))>/g, '$1');
+
+            // Depois, transforma em link normal
+            const urlRegex = /(https?:\/\/[^\s<>"]+)/g;
+            el.innerHTML = el.innerHTML.replace(urlRegex, function(_, url) {
+                return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + '</a>';
+            });
+        });
+    }
+
+    window.onload = autoLinkAssistantResponses;
 </script>
 
 </body>
