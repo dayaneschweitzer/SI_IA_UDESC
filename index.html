@@ -166,18 +166,29 @@
         </div>
         {% endfor %}
 
-        {% if resultados_sem and not resposta_atual.startswith('Erro ao buscar') %}
+        {% if mostrar_3_arquivos %}
             <div class="chat-entry assistant">
-                <p><strong>Documentos relevantes:</strong></p>
+                <p><strong>Conforme solicitado, aqui estão os outros três documentos relevantes:</strong></p>
                 <ul>
-                    {% for resultado in resultados_sem %}
+                    {% for resultado in resultados_sem[1:4] %}
                     <li>
-                        <a href="{{ resultado.link }}" target="_blank">{{ resultado.nome }}</a>
-                        <br>
-                        <small>{{ resultado.trecho }}</small>
+                        <strong>{{ resultado.nome }}</strong><br>
+                        <a href="{{ resultado.link }}" target="_blank">{{ resultado.link }}</a>
                     </li>
                     {% endfor %}
                 </ul>
+
+                <p><strong>Esses documentos lhe atendem?</strong></p>
+                <div class="quick-replies">
+                    <form method="POST">
+                        <input type="hidden" name="pergunta" value="👍 Sim, atenderam.">
+                        <button type="submit">👍 Sim, atenderam.</button>
+                    </form>
+                    <form method="POST">
+                        <input type="hidden" name="pergunta" value="🔄 Não, quero refazer a busca">
+                        <button type="submit">🔄 Não, quero refazer a busca</button>
+                    </form>
+                </div>
             </div>
         {% endif %}
 
@@ -185,17 +196,17 @@
             <p>Digitando<span>...</span></p>
         </div>
 
-        {% if exibir_botoes %}
+        {% if exibir_botoes and not mostrar_3_arquivos %}
         <div class="chat-entry assistant">
-            <p><strong>Esses documentos lhe atendem?</strong></p>
+            <p><strong>Deseja que eu lhe envie os outros três resultados mais próximos?</strong></p>
             <div class="quick-replies">
                 <form method="POST">
-                    <input type="hidden" name="pergunta" value="Sim, atenderam.">
-                    <button type="submit">👍 Sim, atenderam.</button>
+                    <input type="hidden" name="pergunta" value="👍 Sim, me envie os outros três resultados mais próximos">
+                    <button type="submit">👍 Sim, me envie os outros três resultados mais próximos</button>
                 </form>
                 <form method="POST">
-                    <input type="hidden" name="pergunta" value="Não, quero refazer a busca">
-                    <button type="submit">🔄 Não, quero refazer a busca</button>
+                    <input type="hidden" name="pergunta" value="Não, já encontrei meu documento.">
+                    <button type="submit">🔄 Não, já encontrei meu documento.</button>
                 </form>
             </div>
         </div>

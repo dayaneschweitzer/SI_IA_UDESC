@@ -48,12 +48,18 @@ llm = OllamaLLM(model=MODEL_NAME)
 def index():
     if "chat_history" not in session:
         session["chat_history"] = []
+    if "resultados_sem" not in session:
+        session["resultados_sem"] = []
+    if "mostrar_3_arquivos" not in session:
+        session["mostrar_3_arquivos"] = False
 
     chat_history = session["chat_history"]
+    resultados_sem = session["resultados_sem"]
+    mostrar_3_arquivos = session["mostrar_3_arquivos"]
+
     pergunta = ""
     resposta_final = ""
     tempo_resposta = 0
-    resultados_sem = []
     exibir_botoes = False
 
     if request.method == "POST":
@@ -73,15 +79,18 @@ def index():
                                    resposta_atual=resposta_final,
                                    resultados_sem=[],
                                    tempo=tempo_resposta,
-                                   exibir_botoes=False)
+                                   exibir_botoes=False,
+                                   mostrar_3_arquivos=False)
 
-        if pergunta.lower() == "sim, atenderam.":
+        if pergunta.lower() == "não, já encontrei meu documento.":
             resposta_final = "Ótimo! Se precisar de mais alguma coisa, é só perguntar. 😊"
             chat_history.append({
                 "pergunta": pergunta,
                 "resposta": resposta_final
             })
             session["chat_history"] = chat_history
+            session["mostrar_3_arquivos"] = False
+            session["resultados_sem"] = []
             tempo_resposta = 0.01
             return render_template("index.html",
                                    chat_history=chat_history,
@@ -89,15 +98,56 @@ def index():
                                    resposta_atual=resposta_final,
                                    resultados_sem=[],
                                    tempo=tempo_resposta,
-                                   exibir_botoes=False)
+                                   exibir_botoes=False,
+                                   mostrar_3_arquivos=False)
 
-        if pergunta.lower() == "não, quero refazer a busca":
+        if pergunta.lower() == "👍 sim, me envie os outros três resultados mais próximos":
+            resposta_final = "Aqui estão os outros três documentos relevantes que encontrei:"
+            chat_history.append({
+                "pergunta": pergunta,
+                "resposta": resposta_final
+            })
+            session["chat_history"] = chat_history
+            session["mostrar_3_arquivos"] = True
+            exibir_botoes = True
+            tempo_resposta = 0.01
+            return render_template("index.html",
+                                   chat_history=chat_history,
+                                   pergunta_atual=pergunta,
+                                   resposta_atual=resposta_final,
+                                   resultados_sem=resultados_sem,
+                                   tempo=tempo_resposta,
+                                   exibir_botoes=True,
+                                   mostrar_3_arquivos=True)
+
+        if pergunta.lower() == "👍 sim, atenderam.":
+            resposta_final = "Que bom que os documentos atenderam sua necessidade! 😊 Se precisar de mais alguma coisa, estou à disposição."
+            chat_history.append({
+                "pergunta": pergunta,
+                "resposta": resposta_final
+            })
+            session["chat_history"] = chat_history
+            session["mostrar_3_arquivos"] = False
+            session["resultados_sem"] = []
+            tempo_resposta = 0.01
+            return render_template("index.html",
+                                   chat_history=chat_history,
+                                   pergunta_atual=pergunta,
+                                   resposta_atual=resposta_final,
+                                   resultados_sem=[],
+                                   tempo=tempo_resposta,
+                                   exibir_botoes=False,
+                                   mostrar_3_arquivos=False)
+
+        if pergunta.lower() == "🔄 não, quero refazer a busca":
             resposta_final = "Certo, por favor, digite sua nova pergunta."
             chat_history.append({
                 "pergunta": pergunta,
                 "resposta": resposta_final
             })
             session["chat_history"] = chat_history
+            session["mostrar_3_arquivos"] = False
+            session["resultados_sem"] = []
             tempo_resposta = 0.01
             return render_template("index.html",
                                    chat_history=chat_history,
@@ -105,7 +155,8 @@ def index():
                                    resposta_atual=resposta_final,
                                    resultados_sem=[],
                                    tempo=tempo_resposta,
-                                   exibir_botoes=False)
+                                   exibir_botoes=False,
+                                   mostrar_3_arquivos=False)
 
         if pergunta:
             inicio = time.time()
@@ -136,13 +187,12 @@ def index():
                         titulo = arquivo_pdf
                         link = "#"
 
-                    trecho_resumido = doc_meta["texto"][:300].replace("\n", " ").strip() + "..."
-
                     documentos_relevantes.append({
                         "nome": titulo,
-                        "link": link,
-                        "trecho": trecho_resumido
+                        "link": link
                     })
+
+                session["resultados_sem"] = documentos_relevantes
 
                 if not documentos_relevantes:
                     prompt = f"""
@@ -159,13 +209,11 @@ IMPORTANTE:
 Sua resposta:
 """
                     exibir_botoes = False
+                    session["mostrar_3_arquivos"] = False
+
                 else:
-                    conteudo_docs_texto = ""
-                    for i, doc in enumerate(documentos_relevantes):
-                        conteudo_docs_texto += f"Documento {i+1}:\n"
-                        conteudo_docs_texto += f"Título: {doc['nome']}\n"
-                        conteudo_docs_texto += f"Link: {doc['link']}\n"
-                        conteudo_docs_texto += f"Trecho: {doc['trecho']}\n\n"
+                    doc_principal = documentos_relevantes[0]
+                    conteudo_docs_texto = f"Título: {doc_principal['nome']}\nLink: {doc_principal['link']}\n"
 
                     prompt = f"""
 Você é um assistente especializado em legislação do PPGCAP.
@@ -173,33 +221,26 @@ Você é um assistente especializado em legislação do PPGCAP.
 Seu papel é ajudar o usuário a encontrar informações nas resoluções oficiais do programa.
 
 IMPORTANTE:
-- Responda apenas com base nos documentos listados abaixo.
+- Responda apenas com base no documento principal listado abaixo.
 - NÃO cite documentos que não estejam listados.
 - NÃO invente títulos ou links.
 - Se a pergunta do usuário não estiver relacionada às legislações do PPGCAP, diga: "Não posso falar nada sobre esse assunto."
 
 Aqui está a pergunta do usuário: "{pergunta}"
 
-Documentos relevantes encontrados:
+Documento principal relevante encontrado:
 
 {conteudo_docs_texto}
 
-Formato de resposta que você deve seguir:
+Além disso, encontrei outros três arquivos que podem ser relevantes por conter o trecho "{pergunta}".
 
-Aqui está um documento relevante com sua busca:
+Finalize sua resposta com:
+"Deseja que eu lhe envie?"
 
-Título: [Título do documento mais relevante]
-Link: [Link correspondente]
-
-Além disso, encontrei outros três arquivos que podem ser relevantes por conter o trecho "{pergunta}":
-
-[Listar os três documentos com Título + Link + pequeno trecho]
-
-Finalizar com a pergunta:
-Esses documentos lhe atendem?
+Não envie os 3 arquivos ainda. Apenas aguarde a resposta do usuário.
 """
-                    resultados_sem = documentos_relevantes
                     exibir_botoes = True
+                    session["mostrar_3_arquivos"] = False
 
                 resposta_final = llm.invoke(prompt)
 
@@ -218,13 +259,16 @@ Esses documentos lhe atendem?
                            chat_history=chat_history,
                            pergunta_atual=pergunta,
                            resposta_atual=resposta_final,
-                           resultados_sem=resultados_sem,
+                           resultados_sem=session["resultados_sem"],
                            tempo=tempo_resposta,
-                           exibir_botoes=exibir_botoes)
+                           exibir_botoes=exibir_botoes,
+                           mostrar_3_arquivos=session["mostrar_3_arquivos"])
 
 @app.route("/reset")
 def reset():
     session.pop("chat_history", None)
+    session.pop("resultados_sem", None)
+    session.pop("mostrar_3_arquivos", None)
     return "Histórico resetado. <a href='/'>Voltar</a>"
 
 if __name__ == "__main__":
