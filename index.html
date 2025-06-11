@@ -241,11 +241,10 @@
         const responses = document.querySelectorAll(".assistant-response");
 
         responses.forEach(function(el) {
-            // Primeiro, remove os < > que estiverem envolvendo a URL
             el.innerHTML = el.innerHTML.replace(/<((https?:\/\/[^\s<>"]+))>/g, '$1');
 
-            // Depois, transforma em link normal
-            const urlRegex = /(https?:\/\/[^\s<>"]+)/g;
+            const urlRegex = /(https?:\/\/[^\s<>"]+[^\s<>",.;!?:)\]])/g;
+
             el.innerHTML = el.innerHTML.replace(urlRegex, function(_, url) {
                 return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + '</a>';
             });

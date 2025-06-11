@@ -1,20 +1,18 @@
 import os
-import time
 import pickle
 import json
-import faiss
-import numpy as np
 import unicodedata
 from flask import Flask, request, render_template, session
-from sentence_transformers import SentenceTransformer
 from langchain_ollama import OllamaLLM
 
-def normalizar_nome(nome):
-    nome = nome.lower()
-    nome = unicodedata.normalize('NFD', nome).encode('ascii', 'ignore').decode('utf-8')
-    nome = nome.replace('ç', 'c')
-    nome = nome.replace('_', '').replace('-', '').replace(' ', '')
-    return nome
+def normalizar_texto(texto):
+    texto = texto.lower()
+    texto = unicodedata.normalize('NFD', texto).encode('ascii', 'ignore').decode('utf-8')
+    texto = texto.replace('ç', 'c')
+    texto = texto.replace('-', ' ')
+    texto = texto.replace('_', ' ')
+    texto = ' '.join(texto.split()) 
+    return texto
 
 pdf_base_path = os.path.abspath("PDFs_Udesc")
 vetores_folder = os.path.abspath("vetores")
@@ -22,24 +20,11 @@ vetores_folder = os.path.abspath("vetores")
 app = Flask(__name__, template_folder='.')
 app.secret_key = "chave_super_secreta_para_sessao"
 
-faiss_index = faiss.read_index(os.path.join(vetores_folder, "faiss_index.index"))
-
-with open(os.path.join(vetores_folder, "metadados.pkl"), 'rb') as f:
-    metadados = pickle.load(f)
-
 with open(os.path.join(pdf_base_path, "resolucoes_ppgcap.json"), 'r', encoding='utf-8') as f:
     resolucoes_info = json.load(f)
 
-mapa_arquivos = {
-    normalizar_nome(item["arquivo"]): {
-        "titulo": item["titulo"],
-        "link": item["link"]
-    }
-    for item in resolucoes_info
-}
-
-modelo_nome = "all-mpnet-base-v2"
-modelo = SentenceTransformer(modelo_nome)
+with open(os.path.join(vetores_folder, "full_textos.pkl"), 'rb') as f:
+    full_textos = pickle.load(f)
 
 MODEL_NAME = "mistral"
 llm = OllamaLLM(model=MODEL_NAME)
@@ -48,201 +33,93 @@ llm = OllamaLLM(model=MODEL_NAME)
 def index():
     if "chat_history" not in session:
         session["chat_history"] = []
-    if "resultados_sem" not in session:
-        session["resultados_sem"] = []
-    if "mostrar_3_arquivos" not in session:
-        session["mostrar_3_arquivos"] = False
 
     chat_history = session["chat_history"]
-    resultados_sem = session["resultados_sem"]
-    mostrar_3_arquivos = session["mostrar_3_arquivos"]
 
     pergunta = ""
     resposta_final = ""
     tempo_resposta = 0
-    exibir_botoes = False
 
     if request.method == "POST":
         pergunta = request.form.get("pergunta", "").strip()
 
-        if pergunta.lower() in ["oi", "olá", "bom dia", "boa tarde", "boa noite"]:
-            resposta_final = "Olá! Eu sou o assistente do PPGCAP. Como posso ajudar você com as legislações? 📚"
-            chat_history.append({
-                "pergunta": pergunta,
-                "resposta": resposta_final
-            })
-            session["chat_history"] = chat_history
-            tempo_resposta = 0.01
-            return render_template("index.html",
-                                   chat_history=chat_history,
-                                   pergunta_atual=pergunta,
-                                   resposta_atual=resposta_final,
-                                   resultados_sem=[],
-                                   tempo=tempo_resposta,
-                                   exibir_botoes=False,
-                                   mostrar_3_arquivos=False)
-
-        if pergunta.lower() == "não, já encontrei meu documento.":
-            resposta_final = "Ótimo! Se precisar de mais alguma coisa, é só perguntar. 😊"
-            chat_history.append({
-                "pergunta": pergunta,
-                "resposta": resposta_final
-            })
-            session["chat_history"] = chat_history
-            session["mostrar_3_arquivos"] = False
-            session["resultados_sem"] = []
-            tempo_resposta = 0.01
-            return render_template("index.html",
-                                   chat_history=chat_history,
-                                   pergunta_atual=pergunta,
-                                   resposta_atual=resposta_final,
-                                   resultados_sem=[],
-                                   tempo=tempo_resposta,
-                                   exibir_botoes=False,
-                                   mostrar_3_arquivos=False)
-
-        if pergunta.lower() == "👍 sim, me envie os outros três resultados mais próximos":
-            resposta_final = "Aqui estão os outros três documentos relevantes que encontrei:"
-            chat_history.append({
-                "pergunta": pergunta,
-                "resposta": resposta_final
-            })
-            session["chat_history"] = chat_history
-            session["mostrar_3_arquivos"] = True
-            exibir_botoes = True
-            tempo_resposta = 0.01
-            return render_template("index.html",
-                                   chat_history=chat_history,
-                                   pergunta_atual=pergunta,
-                                   resposta_atual=resposta_final,
-                                   resultados_sem=resultados_sem,
-                                   tempo=tempo_resposta,
-                                   exibir_botoes=True,
-                                   mostrar_3_arquivos=True)
-
-        if pergunta.lower() == "👍 sim, atenderam.":
-            resposta_final = "Que bom que os documentos atenderam sua necessidade! 😊 Se precisar de mais alguma coisa, estou à disposição."
-            chat_history.append({
-                "pergunta": pergunta,
-                "resposta": resposta_final
-            })
-            session["chat_history"] = chat_history
-            session["mostrar_3_arquivos"] = False
-            session["resultados_sem"] = []
-            tempo_resposta = 0.01
-            return render_template("index.html",
-                                   chat_history=chat_history,
-                                   pergunta_atual=pergunta,
-                                   resposta_atual=resposta_final,
-                                   resultados_sem=[],
-                                   tempo=tempo_resposta,
-                                   exibir_botoes=False,
-                                   mostrar_3_arquivos=False)
-
-        if pergunta.lower() == "🔄 não, quero refazer a busca":
-            resposta_final = "Certo, por favor, digite sua nova pergunta."
-            chat_history.append({
-                "pergunta": pergunta,
-                "resposta": resposta_final
-            })
-            session["chat_history"] = chat_history
-            session["mostrar_3_arquivos"] = False
-            session["resultados_sem"] = []
-            tempo_resposta = 0.01
-            return render_template("index.html",
-                                   chat_history=chat_history,
-                                   pergunta_atual=pergunta,
-                                   resposta_atual=resposta_final,
-                                   resultados_sem=[],
-                                   tempo=tempo_resposta,
-                                   exibir_botoes=False,
-                                   mostrar_3_arquivos=False)
-
         if pergunta:
+            import time
             inicio = time.time()
             try:
-                embedding_pergunta = modelo.encode(pergunta, convert_to_numpy=True)
-                k = 5
-                D, I = faiss_index.search(np.array([embedding_pergunta]), k)
+                lista_titulos = ""
+                for item in resolucoes_info:
+                    titulo = item.get("titulo", "Sem título")
+                    link = item.get("link", "#")
+                    lista_titulos += f"- {titulo} ({link})\n"
 
-                documentos_relevantes = []
-
-                threshold = 2.0
-
-                for distancia, idx in zip(D[0], I[0]):
-                    if idx == -1:
-                        continue
-                    if distancia > threshold:
-                        continue
-
-                    doc_meta = metadados[idx]
-                    arquivo_pdf = doc_meta.get("arquivo", "")
-                    arquivo_pdf_normalizado = normalizar_nome(arquivo_pdf)
-                    info_json = mapa_arquivos.get(arquivo_pdf_normalizado)
-
-                    if info_json:
-                        titulo = info_json["titulo"]
-                        link = info_json["link"]
-                    else:
-                        titulo = arquivo_pdf
-                        link = "#"
-
-                    documentos_relevantes.append({
-                        "nome": titulo,
-                        "link": link
-                    })
-
-                session["resultados_sem"] = documentos_relevantes
-
-                if not documentos_relevantes:
-                    prompt = f"""
+                prompt_escolha = f"""
 Você é um assistente especializado em legislação do PPGCAP.
 
-A pergunta do usuário foi: "{pergunta}"
+Abaixo está uma lista de resoluções disponíveis:
 
-Nenhum documento relevante foi encontrado para essa pergunta.
-
-IMPORTANTE:
-- Responda com a seguinte frase: "Não encontrei nenhum documento sobre esse assunto. Você poderia fornecer mais detalhes sobre o que procura?"
-- NÃO tente inventar documentos ou informações.
-
-Sua resposta:
-"""
-                    exibir_botoes = False
-                    session["mostrar_3_arquivos"] = False
-
-                else:
-                    doc_principal = documentos_relevantes[0]
-                    conteudo_docs_texto = f"Título: {doc_principal['nome']}\nLink: {doc_principal['link']}\n"
-
-                    prompt = f"""
-Você é um assistente especializado em legislação do PPGCAP.
-
-Seu papel é ajudar o usuário a encontrar informações nas resoluções oficiais do programa.
-
-IMPORTANTE:
-- Responda apenas com base no documento principal listado abaixo.
-- NÃO cite documentos que não estejam listados.
-- NÃO invente títulos ou links.
-- Se a pergunta do usuário não estiver relacionada às legislações do PPGCAP, diga: "Não posso falar nada sobre esse assunto."
+{lista_titulos}
 
 Aqui está a pergunta do usuário: "{pergunta}"
 
-Documento principal relevante encontrado:
+Sua tarefa:
+- Analise a pergunta e a lista de resoluções.
+- Escolha apenas uma resolução da lista que você considera mais relevante para responder à pergunta.
+- Copie exatamente o **título como está na lista acima** — não invente, não resuma, não reescreva.
+- Se houver mais de uma resolução que poderia responder, escolha a mais específica e mais diretamente relacionada.
+- Se nenhuma for relevante, responda: "Nenhuma resolução é relevante para essa pergunta."
 
-{conteudo_docs_texto}
+Formato da resposta esperado (copiar o título exatamente como na lista):
+"Resolução XXX/AAAA - Título completo da resolução"
+"""
 
-Além disso, encontrei outros três arquivos que podem ser relevantes por conter o trecho "{pergunta}".
+                print("\n[DEBUG] Prompt para escolha de documento:\n", prompt_escolha, "\n", "="*60)
+
+                resposta_llm_etapa1 = llm.invoke(prompt_escolha)
+                print(f"[DEBUG] Resposta da LLM na etapa 1: {resposta_llm_etapa1}")
+
+                resposta_normalizada = normalizar_texto(resposta_llm_etapa1)
+
+                documento_escolhido = None
+                for item in resolucoes_info:
+                    titulo_normalizado = normalizar_texto(item.get("titulo", ""))
+                    if titulo_normalizado in resposta_normalizada or resposta_normalizada in titulo_normalizado:
+                        documento_escolhido = item
+                        break
+
+                if not documento_escolhido or "nenhuma resolucao" in resposta_normalizada:
+                    resposta_final = "Não consegui identificar qual documento você quer. Por favor, tente novamente com uma pergunta mais específica."
+                else:
+                    arquivo_pdf = documento_escolhido.get("arquivo", "")
+                    texto_completo = full_textos.get(arquivo_pdf, "")
+
+                    prompt_resposta = f"""
+Você é um assistente especializado em legislação do PPGCAP.
+
+Aqui está a pergunta do usuário: "{pergunta}"
+
+Você deve responder com base no seguinte texto da resolução escolhida:
+
+Título: {documento_escolhido.get("titulo", "")}
+Link: {documento_escolhido.get("link", "#")}
+Texto completo:
+
+{texto_completo}
+
+IMPORTANTE:
+- Responda de forma clara e objetiva.
+- Se a pergunta não tiver resposta no texto acima, diga: "Não encontrei resposta para essa pergunta na resolução informada."
+- Não invente informações.
 
 Finalize sua resposta com:
 "Deseja que eu lhe envie?"
 
 Não envie os 3 arquivos ainda. Apenas aguarde a resposta do usuário.
 """
-                    exibir_botoes = True
-                    session["mostrar_3_arquivos"] = False
 
-                resposta_final = llm.invoke(prompt)
+                    print("\n[DEBUG] Prompt para geração de resposta:\n", prompt_resposta, "\n", "="*60)
+
+                    resposta_final = llm.invoke(prompt_resposta)
 
                 chat_history.append({
                     "pergunta": pergunta,
@@ -259,16 +136,11 @@ Não envie os 3 arquivos ainda. Apenas aguarde a resposta do usuário.
                            chat_history=chat_history,
                            pergunta_atual=pergunta,
                            resposta_atual=resposta_final,
-                           resultados_sem=session["resultados_sem"],
-                           tempo=tempo_resposta,
-                           exibir_botoes=exibir_botoes,
-                           mostrar_3_arquivos=session["mostrar_3_arquivos"])
+                           tempo=tempo_resposta)
 
 @app.route("/reset")
 def reset():
     session.pop("chat_history", None)
-    session.pop("resultados_sem", None)
-    session.pop("mostrar_3_arquivos", None)
     return "Histórico resetado. <a href='/'>Voltar</a>"
 
 if __name__ == "__main__":
