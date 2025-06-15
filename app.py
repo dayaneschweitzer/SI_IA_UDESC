@@ -122,7 +122,7 @@ Texto completo:
 
 IMPORTANTE:
 - Responda de forma clara e objetiva.
-- Comece com: "O documento que encontra [tema da pergunta] pode ser encontrado no seguinte documento:"
+- Comece com: "As informações sobre [tema da pergunta] pode ser encontrado no seguinte documento:"
 - Em seguida, inclua um link HTML no formato: <a href="{link}" target="_blank">{titulo}</a>
 - Finalize com: "Ajudo com algo a mais?"
 - NÃO repita a pergunta do usuário.

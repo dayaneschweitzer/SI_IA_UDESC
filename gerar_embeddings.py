@@ -1,6 +1,5 @@
 import os
 import pickle
-import faiss
 import numpy as np
 import json
 import re
@@ -170,10 +169,6 @@ if embeddings.shape[0] == 0:
     exit(1)
 
 dim = embeddings.shape[1]
-index = faiss.IndexFlatL2(dim)
-index.add(embeddings)
-
-faiss.write_index(index, os.path.join(vetores_folder, "faiss_index.index"))
 
 with open(os.path.join(vetores_folder, "metadados.pkl"), 'wb') as f:
     pickle.dump(metadados, f)
