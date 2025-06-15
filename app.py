@@ -14,6 +14,21 @@ def normalizar_texto(texto):
     texto = ' '.join(texto.split()) 
     return texto
 
+def detectou_conteudo_inadequado(pergunta):
+    texto = normalizar_texto(pergunta)
+    palavroes = ["droga", "puta", "são ruim", "são ruins", "mulheres", "não sabem", "gays", "negros", "pretos", "sexo", "sexualidade", "lésbica"]
+    aleatorias = ["rico", "hackear", "loteria", "uma piada", "uma historia"]
+    pejorativas = ["é feio", "matar", "morte aos", "odeio", "bichas", "bixas", "tiro", "tiros", "lgbt"]
+    saudacoes = ["oi", "ola", "bom dia", "boa tarde", "boa noite"]
+
+    for termo in saudacoes:
+        if termo in texto:
+            return "saudacao"
+    for termo in palavroes + aleatorias + pejorativas:
+        if termo in texto:
+            return "inadequado"
+    return "normal"
+
 pdf_base_path = os.path.abspath("PDFs_Udesc")
 vetores_folder = os.path.abspath("vetores")
 
@@ -32,10 +47,9 @@ llm = OllamaLLM(model=MODEL_NAME)
 @app.route("/", methods=["GET", "POST"])
 def index():
     if "chat_history" not in session:
-        session["chat_history"] = []
+        session["chat_history"] = [{"pergunta": "", "resposta": "Olá! Sou um assistente especializado nas resoluções do PPGCAP. Como posso te ajudar?"}]
 
     chat_history = session["chat_history"]
-
     pergunta = ""
     resposta_final = ""
     tempo_resposta = 0
@@ -47,13 +61,20 @@ def index():
             import time
             inicio = time.time()
             try:
-                lista_titulos = ""
-                for item in resolucoes_info:
-                    titulo = item.get("titulo", "Sem título")
-                    link = item.get("link", "#")
-                    lista_titulos += f"- {titulo} ({link})\n"
+                tipo = detectou_conteudo_inadequado(pergunta)
 
-                prompt_escolha = f"""
+                if tipo == "saudacao":
+                    resposta_final = "Olá! Espero que você esteja bem. Estou aqui para lhe ajudar com as resoluções do PPGCAP. Envie sua pergunta quando quiser."
+                elif tipo == "inadequado":
+                    resposta_final = "Desculpe, não posso responder a esse tipo de pergunta."
+                else:
+                    lista_titulos = ""
+                    for item in resolucoes_info:
+                        titulo = item.get("titulo", "Sem título")
+                        link = item.get("link", "#")
+                        lista_titulos += f"- {titulo} ({link})\n"
+
+                    prompt_escolha = f"""
 Você é um assistente especializado em legislação do PPGCAP.
 
 Abaixo está uma lista de resoluções disponíveis:
@@ -66,60 +87,49 @@ Sua tarefa:
 - Analise a pergunta e a lista de resoluções.
 - Escolha apenas uma resolução da lista que você considera mais relevante para responder à pergunta.
 - Copie exatamente o **título como está na lista acima** — não invente, não resuma, não reescreva.
-- Se houver mais de uma resolução que poderia responder, escolha a mais específica e mais diretamente relacionada.
 - Se nenhuma for relevante, responda: "Nenhuma resolução é relevante para essa pergunta."
-
-Formato da resposta esperado (copiar o título exatamente como na lista):
-"Resolução XXX/AAAA - Título completo da resolução"
 """
+                    resposta_llm_etapa1 = llm.invoke(prompt_escolha)
+                    resposta_normalizada = normalizar_texto(resposta_llm_etapa1)
 
-                print("\n[DEBUG] Prompt para escolha de documento:\n", prompt_escolha, "\n", "="*60)
+                    documento_escolhido = None
+                    for item in resolucoes_info:
+                        titulo_normalizado = normalizar_texto(item.get("titulo", ""))
+                        if titulo_normalizado in resposta_normalizada or resposta_normalizada in titulo_normalizado:
+                            documento_escolhido = item
+                            break
 
-                resposta_llm_etapa1 = llm.invoke(prompt_escolha)
-                print(f"[DEBUG] Resposta da LLM na etapa 1: {resposta_llm_etapa1}")
+                    if not documento_escolhido or "nenhuma resolucao" in resposta_normalizada:
+                        resposta_final = "Não consegui identificar qual documento você quer. Por favor, tente novamente com uma pergunta mais específica."
+                    else:
+                        arquivo_pdf = documento_escolhido.get("arquivo", "")
+                        texto_completo = full_textos.get(arquivo_pdf, "")
+                        titulo = documento_escolhido.get("titulo", "")
+                        link = documento_escolhido.get("link", "#")
 
-                resposta_normalizada = normalizar_texto(resposta_llm_etapa1)
-
-                documento_escolhido = None
-                for item in resolucoes_info:
-                    titulo_normalizado = normalizar_texto(item.get("titulo", ""))
-                    if titulo_normalizado in resposta_normalizada or resposta_normalizada in titulo_normalizado:
-                        documento_escolhido = item
-                        break
-
-                if not documento_escolhido or "nenhuma resolucao" in resposta_normalizada:
-                    resposta_final = "Não consegui identificar qual documento você quer. Por favor, tente novamente com uma pergunta mais específica."
-                else:
-                    arquivo_pdf = documento_escolhido.get("arquivo", "")
-                    texto_completo = full_textos.get(arquivo_pdf, "")
-
-                    prompt_resposta = f"""
+                        prompt_resposta = f"""
 Você é um assistente especializado em legislação do PPGCAP.
 
 Aqui está a pergunta do usuário: "{pergunta}"
 
 Você deve responder com base no seguinte texto da resolução escolhida:
 
-Título: {documento_escolhido.get("titulo", "")}
-Link: {documento_escolhido.get("link", "#")}
+Título: {titulo}
+Link: {link}
 Texto completo:
 
 {texto_completo}
 
 IMPORTANTE:
 - Responda de forma clara e objetiva.
-- Se a pergunta não tiver resposta no texto acima, diga: "Não encontrei resposta para essa pergunta na resolução informada."
-- Não invente informações.
-
-Finalize sua resposta com:
-"Deseja que eu lhe envie?"
-
-Não envie os 3 arquivos ainda. Apenas aguarde a resposta do usuário.
+- Comece com: "O documento que encontra [tema da pergunta] pode ser encontrado no seguinte documento:"
+- Em seguida, inclua um link HTML no formato: <a href="{link}" target="_blank">{titulo}</a>
+- Finalize com: "Ajudo com algo a mais?"
+- NÃO repita a pergunta do usuário.
 """
 
-                    print("\n[DEBUG] Prompt para geração de resposta:\n", prompt_resposta, "\n", "="*60)
-
-                    resposta_final = llm.invoke(prompt_resposta)
+                        resposta_modelo = llm.invoke(prompt_resposta)
+                        resposta_final = resposta_modelo
 
                 chat_history.append({
                     "pergunta": pergunta,
@@ -128,7 +138,7 @@ Não envie os 3 arquivos ainda. Apenas aguarde a resposta do usuário.
                 session["chat_history"] = chat_history
 
             except Exception as e:
-                resposta_final = f"Erro ao buscar ou gerar resposta: {str(e)}"
+                resposta_final = f"Ocorreu um erro ao processar sua solicitação: {str(e)}"
 
             tempo_resposta = round(time.time() - inicio, 3)
 

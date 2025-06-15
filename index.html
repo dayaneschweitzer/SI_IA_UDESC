@@ -162,7 +162,7 @@
         </div>
         {% endif %}
         <div class="chat-entry assistant">
-            <p class="assistant-response">{{ turn.resposta }}</p>
+            <p class="assistant-response">{{ turn.resposta | safe }}</p>
         </div>
         {% endfor %}
 
@@ -236,22 +236,6 @@
     function showTyping() {
         document.getElementById("typingIndicator").style.display = "block";
     }
-
-    function autoLinkAssistantResponses() {
-        const responses = document.querySelectorAll(".assistant-response");
-
-        responses.forEach(function(el) {
-            el.innerHTML = el.innerHTML.replace(/<((https?:\/\/[^\s<>"]+))>/g, '$1');
-
-            const urlRegex = /(https?:\/\/[^\s<>"]+[^\s<>",.;!?:)\]])/g;
-
-            el.innerHTML = el.innerHTML.replace(urlRegex, function(_, url) {
-                return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + url + '</a>';
-            });
-        });
-    }
-
-    window.onload = autoLinkAssistantResponses;
 </script>
 
 </body>
