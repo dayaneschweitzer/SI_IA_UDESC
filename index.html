@@ -36,8 +36,7 @@
             flex-direction: column;
             z-index: 1000;
             overflow: hidden;
-
-            display: {{ 'flex' if pergunta_atual or chat_history else 'none' }};
+            display: flex;
         }
 
         .chat-header {
@@ -95,26 +94,6 @@
             cursor: pointer;
         }
 
-        .quick-replies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 10px;
-        }
-
-        .quick-replies form {
-            display: inline;
-        }
-
-        .quick-replies button {
-            background-color: #e0e0e0;
-            color: #333;
-            border: none;
-            border-radius: 15px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
         .reset-button {
             width: 100%;
             padding: 8px 12px;
@@ -125,23 +104,6 @@
             border-radius: 5px;
             cursor: pointer;
             text-align: center;
-        }
-
-        #typingIndicator {
-            font-style: italic;
-            color: #888;
-            margin-top: 5px;
-            display: none;
-        }
-
-        #typingIndicator span {
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
         }
     </style>
 </head>
@@ -154,63 +116,16 @@
         Sistema de Busca de Legislação PPGCAP
     </div>
     <div class="chat-messages" id="chatMessages">
-
         {% for turn in chat_history %}
-        {% if turn.pergunta %}
-        <div class="chat-entry user">
-            <p>{{ turn.pergunta }}</p>
-        </div>
-        {% endif %}
-        <div class="chat-entry assistant">
-            <p class="assistant-response">{{ turn.resposta | safe }}</p>
-        </div>
+            {% if turn.pergunta %}
+            <div class="chat-entry user">
+                <p>{{ turn.pergunta }}</p>
+            </div>
+            {% endif %}
+            <div class="chat-entry assistant">
+                <p>{{ turn.resposta|safe }}</p>
+            </div>
         {% endfor %}
-
-        {% if mostrar_3_arquivos %}
-        <div class="chat-entry assistant">
-            <p><strong>Conforme solicitado, aqui estão os outros três documentos relevantes:</strong></p>
-            <ul>
-                {% for resultado in resultados_sem[1:4] %}
-                <li style="margin-bottom: 10px;">
-                    <strong>{{ resultado.nome }}</strong><br>
-                    <a href="{{ resultado.link }}" target="_blank" rel="noopener noreferrer">{{ resultado.link }}</a>
-                </li>
-                {% endfor %}
-            </ul>
-
-            <p><strong>Esses documentos lhe atendem?</strong></p>
-            <div class="quick-replies">
-                <form method="POST">
-                    <input type="hidden" name="pergunta" value="👍 Sim, atenderam.">
-                    <button type="submit">👍 Sim, atenderam.</button>
-                </form>
-                <form method="POST">
-                    <input type="hidden" name="pergunta" value="🔄 Não, quero refazer a busca">
-                    <button type="submit">🔄 Não, quero refazer a busca</button>
-                </form>
-            </div>
-        </div>
-        {% endif %}
-
-        <div class="chat-entry assistant" id="typingIndicator">
-            <p>Digitando<span>...</span></p>
-        </div>
-
-        {% if exibir_botoes and not mostrar_3_arquivos %}
-        <div class="chat-entry assistant">
-            <p><strong>Deseja que eu lhe envie os outros três resultados mais próximos?</strong></p>
-            <div class="quick-replies">
-                <form method="POST">
-                    <input type="hidden" name="pergunta" value="👍 Sim, me envie os outros três resultados mais próximos">
-                    <button type="submit">👍 Sim, me envie os outros três resultados mais próximos</button>
-                </form>
-                <form method="POST">
-                    <input type="hidden" name="pergunta" value="Não, já encontrei meu documento.">
-                    <button type="submit">🔄 Não, já encontrei meu documento.</button>
-                </form>
-            </div>
-        </div>
-        {% endif %}
     </div>
 
     <form method="POST" class="chat-input" onsubmit="showTyping()">
@@ -234,7 +149,7 @@
     }
 
     function showTyping() {
-        document.getElementById("typingIndicator").style.display = "block";
+        // Este campo pode ser usado se quiser simular "digitando..."
     }
 </script>
 

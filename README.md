@@ -9,7 +9,7 @@
 
 Este projeto desenvolve um sistema de busca semântica e resposta automatizada para documentos legislativos do Programa de Pós-Graduação em Computação Aplicada (PPGCAP) da UDESC. A aplicação utiliza um modelo de linguagem LLM (via Ollama + LangChain) para identificar o documento mais relevante a partir de uma lista de resoluções disponíveis, e em seguida, responde à pergunta do usuário com base no texto completo desse documento.
 
-O sistema não utiliza mais FAISS nem embeddings vetoriais para a busca. A relevância do documento é determinada diretamente por um modelo LLM por meio de raciocínio textual.
+A relevância do documento é determinada diretamente por um modelo LLM por meio de raciocínio textual.
 
 ---
 
