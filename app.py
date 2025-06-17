@@ -54,15 +54,30 @@ def index():
 
     if pergunta:
         pergunta_lower = pergunta.lower()
-        if any(s in pergunta_lower for s in ["olá", "oi", "bom dia", "boa tarde", "boa noite"]):
+
+        if any(p in pergunta_lower for p in ["olá", "oi", "bom dia", "boa tarde", "boa noite"]):
             resposta = "Olá, espero que você esteja bem! :) Como posso ajudar você hoje?"
-        elif "suic" in pergunta_lower:
-            resposta = ('Encontre ajuda com um dos voluntários do Centro de Valorização da Vida - '
-                        '<a href="https://cvv.org.br/" target="_blank">cvv.org.br</a><br>'
-                        'Ou ligue 188 (Gratuito)<br>Ajudo com algo a mais?')
-        elif any(p in pergunta_lower for p in ["mulher", "gay", "preto", "idiota", "piada", "presidente", "data de hoje"]):
-            resposta = ("Desculpe, não posso falar nada a respeito disso. Eu só posso ajudar com a busca por "
-                        "resoluções e portarias do PPGCAP. Precisa de ajuda nesse sentido?")
+
+        elif any(p in pergunta_lower for p in [
+            "quero morrer", "me matar", "tirar minha vida", "acabar com tudo", "não aguento mais",
+            "suic", "morrer", "não quero viver", "sumir", "desistir da vida"
+        ]):
+            resposta = (
+                'Encontre ajuda com um dos voluntários do Centro de Valorização da Vida - '
+                '<a href="https://cvv.org.br/" target="_blank">cvv.org.br</a><br>'
+                'Ou ligue 188 (Gratuito)<br>Ajudo com algo a mais?'
+            )
+
+        elif any(p in pergunta_lower for p in [
+            "mulher", "gay", "preto", "piada", "presidente", "data de hoje", "branco", "negro", "trans",
+            "quem é", "quantos anos", "sabe programar", "idiota", "burro", "ladrão", "lgbt", "religião"
+        ]):
+            resposta = (
+                "Desculpe, não posso falar nada a respeito disso. "
+                "Só posso ajudar com a busca por resoluções e portarias do PPGCAP. "
+                "Precisa de ajuda nesse sentido?"
+            )
+
         else:
             principal, outros = selecionar_documentos(pergunta)
             tp, lp = principal["titulo"], principal["link"]
