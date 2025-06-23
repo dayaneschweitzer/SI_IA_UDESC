@@ -1,28 +1,38 @@
 import os
 import pickle
 import numpy as np
+import requests
+import shelve
+from hashlib import sha256
 from flask import Flask, request, render_template, session
-from google.ai.generativelanguage_v1beta import GenerativeServiceClient, Content, Part, EmbedContentRequest, GenerateContentRequest, TaskType
-from google.api_core.client_options import ClientOptions
-
-api_key = "AIzaSyDl1NxUz3X2893pXIMnzZFH41XXYVw6kSU"
-client = GenerativeServiceClient(client_options=ClientOptions(api_key=api_key))
 
 app = Flask(__name__, template_folder='.')
 app.secret_key = "chave_super_secreta"
 
 with open("vetores/metadados.pkl", "rb") as f:
     metadados = pickle.load(f)
-embeddings = np.load("vetores/embeddings.npy")
+embeddings = np.load("vetores/norm_embeddings.npy")
 
 def gerar_embedding(texto):
-    req = EmbedContentRequest(
-        model="models/embedding-001",
-        content=Content(parts=[Part(text=texto)]),
-        task_type=TaskType.RETRIEVAL_QUERY
-    )
-    resp = client.embed_content(req)
-    return np.array(resp.embedding.values)
+    try:
+        with shelve.open("vetores/pergunta_cache", flag='c') as cache:
+            if texto in cache:
+                return np.array(cache[texto])
+
+            response = requests.post(
+                "http://localhost:11434/api/embeddings",
+                json={"model": "nomic-embed-text", "prompt": texto}
+            )
+            if response.status_code == 200:
+                embedding = response.json()["embedding"]
+                cache[texto] = embedding
+                return np.array(embedding)
+            else:
+                print(f"Erro {response.status_code} ao gerar embedding da pergunta.")
+                return np.zeros(768)
+    except Exception as e:
+        print(f"Erro ao conectar com Ollama: {e}")
+        return np.zeros(768)
 
 def selecionar_documentos(pergunta):
     qe = gerar_embedding(pergunta)
@@ -44,10 +54,48 @@ def selecionar_documentos(pergunta):
 
     return doc0, outros
 
+def gerar_resposta_mistral(pergunta, documentos):
+    contexto = ""
+    for doc in documentos:
+        contexto += f"{doc['titulo']}:\n{doc['texto']}\n\n"
+
+    prompt = (
+        "Você é um assistente especializado nas resoluções administrativas do PPGCAP da UDESC. "
+        "Com base nos documentos abaixo, responda com precisão e clareza à pergunta fornecida. "
+        "Se a resposta não estiver claramente presente, diga que não encontrou essa informação nos documentos.\n\n"
+        f"Documentos:\n{contexto}\n"
+        f"Pergunta: {pergunta}\n"
+        "Resposta:"
+    )
+
+    prompt_hash = sha256(prompt.encode("utf-8")).hexdigest()
+
+    try:
+        with shelve.open("vetores/resposta_cache", flag='c') as cache:
+            if prompt_hash in cache:
+                return cache[prompt_hash]
+
+            response = requests.post(
+                "http://localhost:11434/api/generate",
+                json={"model": "mistral", "prompt": prompt, "stream": False}
+            )
+            if response.status_code == 200:
+                resposta = response.json()["response"].strip()
+                cache[prompt_hash] = resposta
+            else:
+                resposta = f"Erro {response.status_code} ao consultar o modelo Mistral via Ollama."
+    except Exception as e:
+        resposta = f"Erro ao conectar com Ollama: {e}"
+
+    return resposta
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     if "chat_history" not in session:
-        session["chat_history"] = [{"pergunta": "", "resposta": "Olá! Sou um assistente especializado nas resoluções do PPGCAP. Como posso te ajudar?"}]
+        session["chat_history"] = [{
+            "pergunta": "",
+            "resposta": "Olá! Sou um assistente especializado nas resoluções do PPGCAP. Como posso te ajudar?"
+        }]
 
     pergunta = request.form.get("pergunta", "").strip() if request.method == "POST" else ""
     resposta = ""
@@ -80,19 +128,15 @@ def index():
 
         else:
             principal, outros = selecionar_documentos(pergunta)
-            tp, lp = principal["titulo"], principal["link"]
+            documentos_contexto = [principal] + outros
+            resposta_gerada = gerar_resposta_mistral(pergunta, documentos_contexto)
 
-            resposta = (f"As informações sobre <strong>{pergunta}</strong> podem ser encontradas no seguinte documento:<br>"
-                        f"<a href=\"{lp}\" target=\"_blank\">{tp}</a><br><br>")
-
+            resposta = f"{resposta_gerada}<br><br>"
+            resposta += f'Documento principal: <a href="{principal["link"]}" target="_blank">{principal["titulo"]}</a><br>'
             if outros:
-                resposta += "Encontrei outros documentos que podem ser relevantes sobre esse tema:<br>"
+                resposta += "Outros documentos relevantes:<br>"
                 for doc in outros:
                     resposta += f'<a href="{doc["link"]}" target="_blank">{doc["titulo"]}</a><br>'
-                resposta += "Ajudo com algo mais?"
-            else:
-                resposta += ("Esse documento lhe ajuda ou prefere que eu refaça a busca? "
-                              "É só você me dar mais informações do que procura que eu posso lhe ajudar! :)")
 
         session["chat_history"].append({"pergunta": pergunta, "resposta": resposta})
         session.modified = True
