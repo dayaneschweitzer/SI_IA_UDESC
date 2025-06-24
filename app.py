@@ -7,16 +7,13 @@ from flask import Flask, request, render_template, session
 from sentence_transformers import SentenceTransformer
 import requests
 
-# Inicializar Flask
 app = Flask(__name__, template_folder='.')
 app.secret_key = "chave_super_secreta"
 
-# Carregar arquivos
 with open("vetores/metadados.pkl", "rb") as f:
     metadados = pickle.load(f)
 embeddings = np.load("vetores/norm_embeddings.npy")
 
-# Carregar modelo de embeddings
 modelo = SentenceTransformer("intfloat/e5-base-v2")
 
 def gerar_embedding(texto):
@@ -59,8 +56,10 @@ def gerar_resposta_mistral(pergunta, documentos):
 
     prompt = (
         "Você é um assistente especializado nas resoluções administrativas do PPGCAP da UDESC. "
-        "Com base nos documentos abaixo, responda com precisão e clareza à pergunta fornecida. "
-        "Se a resposta não estiver claramente presente, diga que não encontrou essa informação nos documentos.\n\n"
+        "Com base nos documentos abaixo, identifique qual documento melhor responde a pergunta do usuário. "
+        "Se o usuário mencionar um nome/numero específico (ex: '047/2025'), identifique exatamente esse, se existir. "
+        "Apenas identifique o título mais relevante sem repetir conteúdo. "
+        "Se nenhum for relevante, diga que não encontrou um documento claro.\n\n"
         f"Documentos:\n{contexto}\n"
         f"Pergunta: {pergunta}\n"
         "Resposta:"
@@ -126,15 +125,23 @@ def index():
 
         else:
             principal, outros = selecionar_documentos(pergunta)
-            documentos_contexto = [principal] + outros
-            resposta_gerada = gerar_resposta_mistral(pergunta, documentos_contexto)
+            tp, lp = principal["titulo"], principal["link"]
 
-            resposta = f"{resposta_gerada}<br><br>"
-            resposta += f'Documento principal: <a href="{principal["link"]}" target="_blank">{principal["titulo"]}</a><br>'
+            resposta = (
+                f"As informações sobre <strong>{pergunta}</strong> podem ser encontradas no seguinte documento:<br>"
+                f"<a href=\"{lp}\" target=\"_blank\">{tp}</a><br><br>"
+            )
+
             if outros:
-                resposta += "Outros documentos relevantes:<br>"
+                resposta += "Encontrei outros documentos que podem ser relevantes sobre esse tema:<br>"
                 for doc in outros:
                     resposta += f'<a href="{doc["link"]}" target="_blank">{doc["titulo"]}</a><br>'
+                resposta += "Ajudo com algo mais?"
+            else:
+                resposta += (
+                    "Esse documento lhe ajuda ou prefere que eu refaça a busca? "
+                    "É só você me dar mais informações do que procura que eu posso lhe ajudar! :)"
+                )
 
         session["chat_history"].append({"pergunta": pergunta, "resposta": resposta})
         session.modified = True
