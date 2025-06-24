@@ -1,37 +1,35 @@
 import os
 import pickle
 import numpy as np
-import requests
 import shelve
 from hashlib import sha256
 from flask import Flask, request, render_template, session
+from sentence_transformers import SentenceTransformer
+import requests
 
+# Inicializar Flask
 app = Flask(__name__, template_folder='.')
 app.secret_key = "chave_super_secreta"
 
+# Carregar arquivos
 with open("vetores/metadados.pkl", "rb") as f:
     metadados = pickle.load(f)
 embeddings = np.load("vetores/norm_embeddings.npy")
 
+# Carregar modelo de embeddings
+modelo = SentenceTransformer("intfloat/e5-base-v2")
+
 def gerar_embedding(texto):
+    entrada = f"query: {texto}"
     try:
         with shelve.open("vetores/pergunta_cache", flag='c') as cache:
-            if texto in cache:
-                return np.array(cache[texto])
-
-            response = requests.post(
-                "http://localhost:11434/api/embeddings",
-                json={"model": "nomic-embed-text", "prompt": texto}
-            )
-            if response.status_code == 200:
-                embedding = response.json()["embedding"]
-                cache[texto] = embedding
-                return np.array(embedding)
-            else:
-                print(f"Erro {response.status_code} ao gerar embedding da pergunta.")
-                return np.zeros(768)
+            if entrada in cache:
+                return np.array(cache[entrada])
+            emb = modelo.encode(entrada, convert_to_numpy=True)
+            cache[entrada] = emb.tolist()
+            return emb
     except Exception as e:
-        print(f"Erro ao conectar com Ollama: {e}")
+        print(f"Erro ao gerar embedding: {e}")
         return np.zeros(768)
 
 def selecionar_documentos(pergunta):
