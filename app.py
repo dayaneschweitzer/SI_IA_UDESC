@@ -1,4 +1,5 @@
 import os
+import re
 import pickle
 import numpy as np
 import shelve
@@ -10,10 +11,10 @@ import requests
 app = Flask(__name__, template_folder='.')
 app.secret_key = "chave_super_secreta"
 
+# Carregando dados
 with open("vetores/metadados.pkl", "rb") as f:
     metadados = pickle.load(f)
 embeddings = np.load("vetores/norm_embeddings.npy")
-
 modelo = SentenceTransformer("intfloat/e5-base-v2")
 
 def gerar_embedding(texto):
@@ -27,131 +28,90 @@ def gerar_embedding(texto):
             return emb
     except Exception as e:
         print(f"Erro ao gerar embedding: {e}")
-        return np.zeros(768)
+        return np.zeros(embeddings.shape[1])
+
+def buscar_resolucao_por_numero(pergunta):
+    match = re.search(r"\b(\d{3})/(\d{4})\b", pergunta)
+    if not match:
+        return None
+    numero = f"{match.group(1)}/{match.group(2)}"
+    for doc in metadados:
+        if numero in doc["titulo"] or numero in doc["texto"]:
+            return numero, doc
+    return None
 
 def selecionar_documentos(pergunta):
     qe = gerar_embedding(pergunta)
     scores = np.dot(embeddings, qe) / (np.linalg.norm(embeddings, axis=1) * np.linalg.norm(qe) + 1e-10)
-    top_idxs = np.argsort(scores)[-10:][::-1]
+    idxs = np.argsort(scores)[-5:][::-1]
+    return [metadados[i] for i in idxs]
 
-    idx0 = top_idxs[0]
-    doc0 = metadados[idx0]
-    usados = {doc0["link"]}
-
-    outros = []
-    for idx in top_idxs[1:]:
-        link = metadados[idx]["link"]
-        if link and link not in usados:
-            outros.append(metadados[idx])
-            usados.add(link)
-        if len(outros) >= 4:
-            break
-
-    return doc0, outros
-
-def gerar_resposta_mistral(pergunta, documentos):
-    contexto = ""
-    for doc in documentos:
-        contexto += f"{doc['titulo']}:\n{doc['texto']}\n\n"
-
+def gerar_resposta_mistral(pergunta, docs):
+    contexto = "\n".join(f"- {d['titulo']}" for d in docs)
     prompt = (
-        "Você é um assistente especializado nas resoluções administrativas do PPGCAP da UDESC. "
-        "Com base nos documentos abaixo, identifique qual documento melhor responde a pergunta do usuário. "
-        "Se o usuário mencionar um nome/numero específico (ex: '047/2025'), identifique exatamente esse, se existir. "
-        "Apenas identifique o título mais relevante sem repetir conteúdo. "
-        "Se nenhum for relevante, diga que não encontrou um documento claro.\n\n"
-        f"Documentos:\n{contexto}\n"
+        "Você é um assistente especializado nas resoluções administrativas do PPGCAP da UDESC.\n"
+        "Com base nessa lista de títulos, diga apenas o título que melhor responde à pergunta.\n"
+        "Se existir o número mencionado (ex: '047/2025'), devolva esse título. Se não houver correspondência, responda 'nenhum documento claro encontrado'.\n\n"
+        f"Títulos:\n{contexto}\n\n"
         f"Pergunta: {pergunta}\n"
         "Resposta:"
     )
-
-    prompt_hash = sha256(prompt.encode("utf-8")).hexdigest()
-
+    h = sha256(prompt.encode()).hexdigest()
     try:
         with shelve.open("vetores/resposta_cache", flag='c') as cache:
-            if prompt_hash in cache:
-                return cache[prompt_hash]
-
-            response = requests.post(
+            if h in cache:
+                return cache[h]
+            resp = requests.post(
                 "http://localhost:11434/api/generate",
                 json={"model": "mistral", "prompt": prompt, "stream": False}
             )
-            if response.status_code == 200:
-                resposta = response.json()["response"].strip()
-                cache[prompt_hash] = resposta
-            else:
-                resposta = f"Erro {response.status_code} ao consultar o modelo Mistral via Ollama."
-    except Exception as e:
-        resposta = f"Erro ao conectar com Ollama: {e}"
-
-    return resposta
+            titulo = resp.json().get("response", "").strip() if resp.status_code == 200 else ""
+            cache[h] = titulo
+            return titulo
+    except Exception:
+        return ""
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     if "chat_history" not in session:
-        session["chat_history"] = [{
-            "pergunta": "",
-            "resposta": "Olá! Sou um assistente especializado nas resoluções do PPGCAP. Como posso te ajudar?"
-        }]
+        session["chat_history"] = [{"pergunta": "", "resposta": "Olá! Sou um assistente especializado nas resoluções do PPGCAP. Como posso te ajudar?"}]
 
-    pergunta = request.form.get("pergunta", "").strip() if request.method == "POST" else ""
-    resposta = ""
-
+    pergunta = request.form.get("pergunta","").strip()
     if pergunta:
-        pergunta_lower = pergunta.lower()
-
-        if any(p in pergunta_lower for p in ["olá", "oi", "bom dia", "boa tarde", "boa noite"]):
-            resposta = "Olá, espero que você esteja bem! :) Como posso ajudar você hoje?"
-
-        elif any(p in pergunta_lower for p in [
-            "quero morrer", "me matar", "tirar minha vida", "acabar com tudo", "não aguento mais",
-            "suic", "morrer", "não quero viver", "sumir", "desistir da vida"
-        ]):
-            resposta = (
-                'Encontre ajuda com um dos voluntários do Centro de Valorização da Vida - '
-                '<a href="https://cvv.org.br/" target="_blank">cvv.org.br</a><br>'
-                'Ou ligue 188 (Gratuito)<br>Ajudo com algo a mais?'
-            )
-
-        elif any(p in pergunta_lower for p in [
-            "mulher", "gay", "preto", "piada", "presidente", "data de hoje", "branco", "negro", "trans",
-            "quem é", "quantos anos", "sabe programar", "idiota", "burro", "ladrão", "lgbt", "religião"
-        ]):
-            resposta = (
-                "Desculpe, não posso falar nada a respeito disso. "
-                "Só posso ajudar com a busca por resoluções e portarias do PPGCAP. "
-                "Precisa de ajuda nesse sentido?"
-            )
-
-        else:
-            principal, outros = selecionar_documentos(pergunta)
-            tp, lp = principal["titulo"], principal["link"]
-
+        numero_info = buscar_resolucao_por_numero(pergunta)
+        if numero_info:
+            numero, doc = numero_info
             resposta = (
                 f"As informações sobre <strong>{pergunta}</strong> podem ser encontradas no seguinte documento:<br>"
-                f"<a href=\"{lp}\" target=\"_blank\">{tp}</a><br><br>"
+                f"<a href=\"{doc['link']}\" target=\"_blank\">{doc['titulo']}</a><br><br>"
+                "Ajudo com algo mais?"
             )
-
+        else:
+            docs = selecionar_documentos(pergunta)
+            escolhido = gerar_resposta_mistral(pergunta, docs)
+            principal = next((d for d in docs if escolhido.lower() in d["titulo"].lower()), docs[0])
+            resposta = (
+                f"As informações sobre <strong>{pergunta}</strong> podem ser encontradas no seguinte documento:<br>"
+                f"<a href=\"{principal['link']}\" target=\"_blank\">{principal['titulo']}</a><br><br>"
+            )
+            outros = [d for d in docs if d != principal]
             if outros:
                 resposta += "Encontrei outros documentos que podem ser relevantes sobre esse tema:<br>"
-                for doc in outros:
-                    resposta += f'<a href="{doc["link"]}" target="_blank">{doc["titulo"]}</a><br>'
+                for d in outros:
+                    resposta += f'<a href="{d["link"]}" target="_blank">{d["titulo"]}</a><br>'
                 resposta += "Ajudo com algo mais?"
             else:
-                resposta += (
-                    "Esse documento lhe ajuda ou prefere que eu refaça a busca? "
-                    "É só você me dar mais informações do que procura que eu posso lhe ajudar! :)"
-                )
+                resposta += "Esse documento lhe ajuda ou prefere que eu refaça a busca? :)"
 
-        session["chat_history"].append({"pergunta": pergunta, "resposta": resposta})
+        session["chat_history"].append({"pergunta": pergunta,"resposta": resposta})
         session.modified = True
 
     return render_template("index.html", chat_history=session["chat_history"])
 
 @app.route("/reset")
 def reset():
-    session.pop("chat_history", None)
+    session.pop("chat_history",None)
     return "Histórico resetado. <a href='/'>Voltar</a>"
 
-if __name__ == "__main__":
+if __name__=="__main__":
     app.run(debug=True)
